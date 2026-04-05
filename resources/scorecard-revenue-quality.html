@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revenue Quality Assessment | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #0d2140;
+      --navy-mid:    #163460;
+      --navy-light:  #1e4278;
+      --gold:        #b8912a;
+      --gold-light:  #f2e4c4;
+      --text:        #0f1923;
+      --text-mid:    #374151;
+      --text-light:  #6b7280;
+      --border:      #c8cdd6;
+      --border-light:#e5e9ef;
+      --bg-row:      #f8f9fb;
+      --green-text:  #14532d;
+      --green-bg:    #f0faf3;
+      --green-border:#166534;
+      --yellow-text: #78350f;
+      --yellow-bg:   #fffbeb;
+      --yellow-border:#92400e;
+      --red-text:    #7f1d1d;
+      --red-bg:      #fff5f5;
+      --red-border:  #991b1b;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: #e8eaed;
+      padding: 40px 20px;
+      font-size: 13px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page {
+      background: #fff;
+      width: 816px;
+      margin: 0 auto;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.18);
+    }
+
+    /* LETTERHEAD */
+    .letterhead { background: var(--navy); }
+    .lh-top {
+      padding: 22px 48px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--gold);
+    }
+    .firm-name { color: #fff; font-size: 16px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+    .firm-name span { color: var(--gold); }
+    .lh-meta { text-align: right; }
+    .lh-meta .confidential {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--gold); border: 1px solid var(--gold); padding: 2px 8px;
+      display: inline-block; margin-bottom: 4px;
+    }
+    .lh-meta .doc-date { display: block; color: rgba(255,255,255,0.5); font-size: 11px; }
+    .lh-title { padding: 24px 48px 26px; }
+    .lh-eyebrow {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.45); margin-bottom: 8px;
+    }
+    .lh-h1 {
+      font-size: 26px; font-weight: 800; color: #fff;
+      letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 8px;
+    }
+    .lh-h1 .accent { color: var(--gold); }
+    .lh-sub { font-size: 12.5px; color: rgba(255,255,255,0.62); max-width: 560px; line-height: 1.6; }
+    .section-indicator {
+      padding: 11px 48px;
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; gap: 6px; align-items: center;
+    }
+    .section-indicator .pip { width: 24px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18); }
+    .section-indicator .pip.active { background: var(--gold); }
+    .section-indicator .pip-label {
+      font-size: 10px; color: rgba(255,255,255,0.38);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-left: 8px;
+    }
+
+    /* METHODOLOGY */
+    .methodology {
+      border-bottom: 1px solid var(--border);
+      padding: 13px 48px;
+      background: var(--bg-row);
+      display: flex; align-items: center; gap: 32px;
+    }
+    .method-label {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--text-light); white-space: nowrap; flex-shrink: 0;
+    }
+    .method-items { display: flex; gap: 24px; flex-wrap: wrap; }
+    .method-item { display: flex; align-items: center; gap: 7px; font-size: 11.5px; font-weight: 500; color: var(--text-mid); }
+    .method-swatch { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .method-swatch.g { background: var(--green-border); }
+    .method-swatch.y { background: var(--yellow-border); }
+    .method-swatch.r { background: var(--red-border); }
+
+    /* ASSESSMENT */
+    .assessment { padding: 0 48px 40px; }
+    .factor-block { margin-top: 28px; }
+    .factor-block:first-child { margin-top: 32px; }
+    .factor-label-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 9px 0; border-bottom: 2px solid var(--navy);
+    }
+    .factor-index {
+      width: 22px; height: 22px; background: var(--navy); color: #fff;
+      font-size: 11px; font-weight: 700; display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .factor-name {
+      font-size: 13px; font-weight: 700; letter-spacing: 0.04em;
+      text-transform: uppercase; color: var(--navy);
+    }
+
+    .criteria-table { width: 100%; border-collapse: collapse; border: 1px solid var(--border); border-top: none; }
+    .criteria-table th {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 8px 14px; text-align: left; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .criteria-table th:last-child { border-right: none; }
+    .criteria-table th.g { background: var(--green-bg); color: var(--green-text); }
+    .criteria-table th.y { background: var(--yellow-bg); color: var(--yellow-text); }
+    .criteria-table th.r { background: var(--red-bg); color: var(--red-text); }
+    .criteria-table th .pts { font-weight: 400; opacity: 0.7; font-size: 10px; }
+
+    .criteria-table td {
+      padding: 12px 14px; vertical-align: top; font-size: 12px; line-height: 1.55;
+      color: var(--text-mid); border-right: 1px solid var(--border-light);
+      cursor: pointer; transition: background 0.12s; width: 33.33%;
+    }
+    .criteria-table td:last-child { border-right: none; }
+    .criteria-table td:hover { background: #f0f4f8; }
+
+    .criteria-table td.sel-g { background: var(--green-bg); border-left: 3px solid var(--green-border); color: var(--green-text); font-weight: 500; padding-left: 11px; }
+    .criteria-table td.sel-y { background: var(--yellow-bg); border-left: 3px solid var(--yellow-border); color: var(--yellow-text); font-weight: 500; padding-left: 11px; }
+    .criteria-table td.sel-r { background: var(--red-bg); border-left: 3px solid var(--red-border); color: var(--red-text); font-weight: 500; padding-left: 11px; }
+
+    /* SCORE */
+    .score-section { margin: 32px 0 0; border: 1px solid var(--border); }
+    .score-header {
+      background: var(--navy); padding: 12px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .score-header span { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+    .score-header .score-live { font-size: 20px; font-weight: 800; color: #fff; letter-spacing: -0.02em; }
+    .score-header .score-live .denom { font-size: 13px; font-weight: 400; color: rgba(255,255,255,0.5); }
+    .score-bands-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid var(--border); }
+    .score-band { padding: 14px 16px; border-right: 1px solid var(--border); }
+    .score-band:last-child { border-right: none; }
+    .score-band .range { font-size: 15px; font-weight: 800; margin-bottom: 5px; letter-spacing: -0.01em; }
+    .score-band.g .range { color: var(--green-border); }
+    .score-band.y .range { color: var(--yellow-border); }
+    .score-band.r .range { color: var(--red-border); }
+    .score-band .interp { font-size: 11px; color: var(--text-mid); line-height: 1.5; }
+    .score-band.active-g { background: var(--green-bg); }
+    .score-band.active-y { background: var(--yellow-bg); }
+    .score-band.active-r { background: var(--red-bg); }
+
+    /* NEXT STEP */
+    .next-step {
+      margin: 24px 0 0; padding: 16px 20px;
+      border: 1px solid var(--gold); background: #fdf8ee;
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .next-step p { font-size: 12px; color: var(--text-mid); line-height: 1.5; }
+    .next-step p strong { color: var(--text); }
+    .next-step a {
+      white-space: nowrap; background: var(--navy); color: #fff; text-decoration: none;
+      font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em;
+      padding: 10px 20px; text-transform: uppercase; flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    .doc-footer {
+      margin-top: 28px; border-top: 2px solid var(--navy);
+      padding: 14px 48px; display: flex; justify-content: space-between; align-items: center; gap: 20px;
+    }
+    .doc-footer .footer-left { font-size: 10.5px; color: var(--text-light); line-height: 1.6; }
+    .doc-footer .footer-left strong { color: var(--text-mid); }
+    .doc-footer .footer-right { text-align: right; font-size: 10.5px; color: var(--text-light); line-height: 1.6; flex-shrink: 0; }
+    .disclaimer {
+      margin: 10px 48px 32px; font-size: 9.5px; color: var(--text-light); line-height: 1.6;
+      border-top: 1px solid var(--border-light); padding-top: 10px;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .page { box-shadow: none; width: 100%; }
+      .factor-block { break-inside: avoid; }
+      .score-section { break-inside: avoid; }
+      .next-step { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div class="lh-top">
+      <div><div class="firm-name">Horizon <span>M&A</span> Advisors</div></div>
+      <div class="lh-meta">
+        <div class="confidential">Confidential</div>
+        <span class="doc-date">Prepared March 2026</span>
+      </div>
+    </div>
+    <div class="lh-title">
+      <div class="lh-eyebrow">Exit Readiness Assessment &nbsp;·&nbsp; Section 2 of 5</div>
+      <div class="lh-h1">Revenue Quality <span class="accent">Scorecard</span></div>
+      <div class="lh-sub">An assessment of the five revenue factors that determine how sophisticated buyers underwrite your business and the multiple they are prepared to pay. Complete each section honestly — this analysis is for your use only.</div>
+    </div>
+    <div class="section-indicator">
+      <div class="pip"></div>
+      <div class="pip active"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip-label">Section 2 — Revenue Quality</div>
+    </div>
+  </div>
+
+  <!-- METHODOLOGY -->
+  <div class="methodology">
+    <div class="method-label">Scoring Key</div>
+    <div class="method-items">
+      <div class="method-item"><div class="method-swatch g"></div> Green — Buyer-ready &nbsp;<span style="color:var(--text-light);font-size:11px;">(2 pts)</span></div>
+      <div class="method-item"><div class="method-swatch y"></div> Yellow — Needs attention &nbsp;<span style="color:var(--text-light);font-size:11px;">(1 pt)</span></div>
+      <div class="method-item"><div class="method-swatch r"></div> Red — Significant gap &nbsp;<span style="color:var(--text-light);font-size:11px;">(0 pts)</span></div>
+      <div class="method-item" style="margin-left:8px;color:var(--text-light);font-size:11px;">Click a column to record your rating.</div>
+    </div>
+  </div>
+
+  <!-- ASSESSMENT -->
+  <div class="assessment">
+
+    <!-- FACTOR 1 -->
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">1</div>
+        <div class="factor-name">Revenue Mix</div>
+      </div>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+            <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+            <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td onclick="rate('f1',2,this)">50% or more of revenue is recurring in nature — subscriptions, retainers, maintenance agreements, or multi-year service contracts with defined renewal terms. Buyers can underwrite future cash flows with confidence.</td>
+            <td onclick="rate('f1',1,this)">25–50% of revenue is recurring. A meaningful portion is project-based or variable. Buyers will apply some discount for the unpredictability, but a clear recurring foundation exists to build on.</td>
+            <td onclick="rate('f1',0,this)">Revenue is primarily transactional or project-based. Each year requires rebuilding the top line from a near-zero base. Buyers treat this as a materially higher-risk profile and underwrite accordingly.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FACTOR 2 -->
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">2</div>
+        <div class="factor-name">Customer Concentration</div>
+      </div>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+            <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+            <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td onclick="rate('f2',2,this)">No single customer exceeds 10% of revenue. The top three customers collectively represent less than 30% of total revenue. The customer base is diversified and does not present single-point-of-failure risk.</td>
+            <td onclick="rate('f2',1,this)">The top customer represents 10–20% of revenue, or the top three represent 30–45% collectively. Buyers will flag this in diligence but will typically proceed with appropriate structural protections.</td>
+            <td onclick="rate('f2',0,this)">One customer exceeds 20% of revenue, or the top three collectively exceed 45%. This concentration profile triggers significant buyer concern and commonly results in earnouts, escrow requirements, or reduced headline valuation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FACTOR 3 -->
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">3</div>
+        <div class="factor-name">Contract Status</div>
+      </div>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+            <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+            <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td onclick="rate('f3',2,this)">The majority of revenue is governed by written contracts with defined terms, pricing, and renewal provisions. Contracts are assignable to a buyer without requiring customer re-approval or renegotiation.</td>
+            <td onclick="rate('f3',1,this)">Some written contracts exist but coverage is inconsistent. A mix of formal agreements and informal arrangements reduces the certainty of revenue transfer and may require buyer-funded customer re-engagement post-close.</td>
+            <td onclick="rate('f3',0,this)">Revenue relationships are primarily informal or at-will. No written contracts govern the majority of the customer base. Buyers must treat all revenue as potentially at-risk at the time of ownership transfer.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FACTOR 4 -->
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">4</div>
+        <div class="factor-name">Renewal &amp; Retention Rate</div>
+      </div>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+            <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+            <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td onclick="rate('f4',2,this)">Customer retention is 85% or higher on an annual basis, and this history is documented in a form that can be presented and substantiated during buyer due diligence. Retention demonstrates the durability of customer relationships.</td>
+            <td onclick="rate('f4',1,this)">Retention falls in the 70–85% range. Churn exists but is manageable. Buyers will require explanation of customer exits and may apply modest risk adjustments to projected revenue in their underwriting models.</td>
+            <td onclick="rate('f4',0,this)">Retention is below 70%, or customer retention has not been formally tracked. In the absence of data, buyers will assume the most adverse scenario and discount revenue projections to reflect unquantified churn risk.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- FACTOR 5 -->
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">5</div>
+        <div class="factor-name">Revenue Growth Trend</div>
+      </div>
+      <table class="criteria-table">
+        <thead>
+          <tr>
+            <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+            <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+            <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td onclick="rate('f5',2,this)">Revenue has grown organically at 10% or more per year for two or more consecutive years. The growth trend is consistent and is not attributable to one-time events, single customer additions, or acquisitions.</td>
+            <td onclick="rate('f5',1,this)">Revenue growth is flat to modest — in the 0–10% range. The business is stable but does not demonstrate the trajectory that commands premium pricing. Buyers will underwrite conservatively against this profile.</td>
+            <td onclick="rate('f5',0,this)">Revenue is declining or exhibiting significant year-over-year variability. Buyers will require a substantive explanation, apply downside protection in deal structure, and are unlikely to support a premium multiple absent a compelling turnaround narrative.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SCORE SUMMARY -->
+    <div class="score-section">
+      <div class="score-header">
+        <span>Revenue Quality Assessment Score</span>
+        <div class="score-live"><span id="scoreDisplay">—</span><span class="denom"> / 10</span></div>
+      </div>
+      <div class="score-bands-row">
+        <div class="score-band g" id="band-g">
+          <div class="range">8 – 10</div>
+          <div class="interp">Revenue profile is buyer-ready. Structured to support a premium multiple and attract institutional acquirers in a competitive process.</div>
+        </div>
+        <div class="score-band y" id="band-y">
+          <div class="range">5 – 7</div>
+          <div class="interp">Material gaps identified. A 6–18 month effort focused on contracts, concentration, and retention will measurably improve the buyer perception of revenue quality.</div>
+        </div>
+        <div class="score-band r" id="band-r">
+          <div class="range">0 – 4</div>
+          <div class="interp">Significant deficiencies present. A 2–3 year preparation runway is recommended to restructure the revenue base before initiating a formal sale process.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEXT STEP -->
+    <div class="next-step">
+      <p><strong>Discuss your results with an advisor.</strong> A complimentary 30-minute strategy call with Dave Halvorson will provide a professional assessment of your score, identify your highest-priority gaps, and outline a preparation timeline tailored to your target exit window.</p>
+      <a href="https://horizonmaa.com">Schedule a Call</a>
+    </div>
+
+  </div><!-- /assessment -->
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <div class="footer-left">
+      <strong>Horizon M&amp;A Advisors</strong><br>
+      51 East Campbell Avenue, Suite 400-G &nbsp;·&nbsp; Campbell, CA 95008<br>
+      horizonmaa.com &nbsp;·&nbsp; dave@horizonmaa.com &nbsp;·&nbsp; 408-398-5553
+    </div>
+    <div class="footer-right">
+      DRE 01977093 / 02058745<br>
+      IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source
+    </div>
+  </div>
+  <div class="disclaimer">
+    This document is provided for informational purposes only and does not constitute a formal valuation, opinion of value, or engagement to provide advisory services. All assessments are self-reported by the business owner and are not verified by Horizon M&amp;A Advisors. Results are intended to support internal exit planning and should not be shared with prospective buyers or used in connection with any transaction without the written consent of Horizon M&amp;A Advisors.
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  const scores = {};
+
+  function rate(factor, value, cell) {
+    const row = cell.closest('tr');
+    row.querySelectorAll('td').forEach(td => {
+      td.classList.remove('sel-g','sel-y','sel-r');
+    });
+    const cls = value === 2 ? 'sel-g' : value === 1 ? 'sel-y' : 'sel-r';
+    cell.classList.add(cls);
+    scores[factor] = value;
+    updateScore();
+  }
+
+  function updateScore() {
+    const vals = Object.values(scores);
+    const total = vals.reduce((a,b) => a+b, 0);
+    const count = vals.length;
+    const el = document.getElementById('scoreDisplay');
+    el.textContent = count > 0 ? total : '—';
+
+    ['band-g','band-y','band-r'].forEach(id => {
+      document.getElementById(id).classList.remove('active-g','active-y','active-r');
+    });
+
+    if (count === 5) {
+      if (total >= 8) {
+        el.style.color = '#86efac';
+        document.getElementById('band-g').classList.add('active-g');
+      } else if (total >= 5) {
+        el.style.color = '#fde68a';
+        document.getElementById('band-y').classList.add('active-y');
+      } else {
+        el.style.color = '#fca5a5';
+        document.getElementById('band-r').classList.add('active-r');
+      }
+    } else {
+      el.style.color = '#fff';
+    }
+  }
+</script>
+</body>
+</html>

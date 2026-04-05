@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financials & Recordkeeping Scorecard | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Find out if your financial records will support the valuation you expect. Free 5-factor scorecard from Horizon M&A Advisors — 500+ closed transactions." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --gold:#b8912a; --gold-light:#f5e9d0;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg:#f7f8fb; --white:#fff;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+    nav { background:var(--navy); padding:18px 56px; display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--gold); }
+    .nav-logo { color:#fff; font-size:15px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; }
+    .nav-logo span { color:var(--gold); }
+    .nav-cta { color:var(--gold); font-size:13px; font-weight:600; text-decoration:none; border:1px solid var(--gold); padding:7px 18px; letter-spacing:0.04em; text-transform:uppercase; transition:background 0.2s; }
+    .nav-cta:hover { background:rgba(184,145,42,0.1); }
+    .hero { background:var(--navy); padding:80px 56px 72px; }
+    .hero-inner { max-width:740px; margin:0 auto; }
+    .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+    .hero h1 { font-size:clamp(30px,4.5vw,48px); font-weight:800; color:#fff; letter-spacing:-0.025em; line-height:1.12; margin-bottom:20px; }
+    .hero h1 em { font-style:normal; color:#e0b060; }
+    .hero p { font-size:17px; color:rgba(255,255,255,0.7); max-width:580px; margin-bottom:36px; line-height:1.7; }
+    .form-row { display:flex; gap:10px; flex-wrap:wrap; max-width:520px; }
+    .form-row input { flex:1; min-width:200px; padding:13px 16px; border:none; font-size:15px; font-family:inherit; outline:none; }
+    .btn-primary { background:var(--gold); color:#fff; border:none; font-size:14px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:13px 24px; cursor:pointer; white-space:nowrap; transition:background 0.2s; font-family:inherit; }
+    .btn-primary:hover { background:#cfa040; }
+    .hero-fine { margin-top:12px; font-size:12px; color:rgba(255,255,255,0.35); }
+    .proof-strip { background:var(--navy-mid); border-top:1px solid rgba(255,255,255,0.1); border-bottom:1px solid rgba(255,255,255,0.06); padding:14px 56px; display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
+    .proof-item { font-size:12px; font-weight:600; color:rgba(255,255,255,0.55); letter-spacing:0.05em; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+    .proof-item::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    section { padding:72px 56px; }
+    section.alt { background:var(--bg); }
+    .section-inner { max-width:760px; margin:0 auto; }
+    .section-inner-wide { max-width:960px; margin:0 auto; }
+    .section-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    h2 { font-size:clamp(24px,3.2vw,36px); font-weight:800; color:var(--navy); letter-spacing:-0.02em; line-height:1.18; margin-bottom:18px; }
+    p.lead { font-size:17px; color:var(--text-mid); line-height:1.7; margin-bottom:16px; }
+    p.body-text { font-size:15px; color:var(--text-mid); line-height:1.7; margin-bottom:14px; }
+    .divider { border:none; border-top:1px solid var(--border-light); margin:32px 0; }
+    .comparison { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin:32px 0; }
+    .comp-col { background:#fff; padding:24px 28px; }
+    .comp-col.alert { background:#fff8f8; }
+    .comp-col-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-light); }
+    .comp-col-label.g { color:#166534; } .comp-col-label.r { color:#991b1b; }
+    .comp-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .comp-col ul li { font-size:13.5px; color:var(--text-mid); display:flex; gap:8px; align-items:flex-start; }
+    .comp-col ul li::before { content:''; width:6px; height:6px; border-radius:50%; flex-shrink:0; margin-top:6px; }
+    .comp-col ul li.g::before { background:#166534; } .comp-col ul li.r::before { background:#991b1b; }
+    .bullets-list { display:flex; flex-direction:column; gap:0; margin-top:28px; border:1px solid var(--border); }
+    .bullet-item { display:flex; gap:0; border-bottom:1px solid var(--border-light); }
+    .bullet-item:last-child { border-bottom:none; }
+    .bullet-num { width:44px; background:var(--navy); color:var(--gold); font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .bullet-body { padding:16px 20px; }
+    .bullet-body strong { display:block; font-size:14px; color:var(--navy); margin-bottom:4px; }
+    .bullet-body span { font-size:13.5px; color:var(--text-mid); line-height:1.55; }
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:36px; }
+    .step { background:#fff; padding:28px 24px; }
+    .step-num { font-size:28px; font-weight:800; color:var(--gold); line-height:1; margin-bottom:12px; letter-spacing:-0.02em; }
+    .step h3 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+    .step p { font-size:13px; color:var(--text-mid); line-height:1.55; }
+    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:40px; }
+    .testimonial { background:#fff; padding:28px 24px; }
+    .testimonial p { font-size:14px; font-style:italic; color:var(--text-mid); line-height:1.65; margin-bottom:16px; }
+    .testimonial .attr { font-size:12px; font-weight:700; color:var(--navy); letter-spacing:0.02em; }
+    .about-grid { display:grid; grid-template-columns:80px 1fr; gap:32px; align-items:start; margin-top:8px; }
+    .about-avatar { width:80px; height:80px; background:var(--navy); color:var(--gold); font-size:22px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .about-text p { font-size:15px; color:var(--text-mid); line-height:1.7; margin-bottom:12px; }
+    .credentials { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .cred { background:var(--bg); border:1px solid var(--border); font-size:11px; font-weight:600; padding:4px 10px; color:var(--navy); letter-spacing:0.02em; }
+    .faq-list { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); margin-top:36px; }
+    .faq-item { border-bottom:1px solid var(--border-light); padding:20px 24px; }
+    .faq-item:last-child { border-bottom:none; }
+    .faq-item h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:7px; }
+    .faq-item p { font-size:13.5px; color:var(--text-mid); line-height:1.6; }
+    .final-cta { background:var(--navy); padding:80px 56px; text-align:center; border-top:2px solid var(--gold); }
+    .final-cta h2 { color:#fff; max-width:640px; margin:0 auto 16px; }
+    .final-cta p { color:rgba(255,255,255,0.65); font-size:17px; max-width:500px; margin:0 auto 36px; }
+    .final-cta .form-row { justify-content:center; max-width:520px; margin:0 auto; }
+    .final-cta .hero-fine { color:rgba(255,255,255,0.3); }
+    footer { background:#080f1a; padding:20px 56px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    footer p { font-size:11.5px; color:rgba(255,255,255,0.35); line-height:1.6; }
+    footer a { color:rgba(255,255,255,0.45); text-decoration:none; }
+    @media (max-width:640px) { nav,section,.hero,.final-cta,footer,.proof-strip { padding-left:24px; padding-right:24px; } .comparison,.steps-grid,.testimonials-grid { grid-template-columns:1fr; } .about-grid { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Horizon <span>M&A</span> Advisors</div>
+  <a href="#cta" class="nav-cta">Book a Strategy Call</a>
+</nav>
+
+<section class="hero" style="padding-top:80px;padding-bottom:72px;">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Free Exit Readiness Scorecard &nbsp;·&nbsp; Section 1 of 5</div>
+    <h1>Buyers Don't Trust What They Can't Verify.<br><em>Can They Verify Yours?</em></h1>
+    <p>Your financial records are the first thing buyers and their advisors scrutinize. How your books are prepared, normalized, and organized determines whether diligence moves quickly — or stalls with questions you weren't prepared to answer.</p>
+    <div class="form-row">
+      <input type="email" placeholder="Enter your email address" />
+      <button class="btn-primary">Get the Scorecard</button>
+    </div>
+    <p class="hero-fine">No spam. No sales pressure. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<div class="proof-strip">
+  <div class="proof-item">500+ Transactions Closed</div>
+  <div class="proof-item">Multi-Billion in Deal Value</div>
+  <div class="proof-item">IBBA Members</div>
+  <div class="proof-item">30+ Years Combined Experience</div>
+</div>
+
+<section>
+  <div class="section-inner">
+    <div class="section-label">The Problem</div>
+    <h2>The Same Business Can Support Two Very Different Valuations — Depending on the Quality of Its Books</h2>
+    <p class="lead">When buyers engage their financial advisors in diligence, those advisors are not simply verifying the numbers you've provided. They are assessing whether your records meet the standard required to support the valuation in your CIM.</p>
+    <div class="comparison">
+      <div class="comp-col">
+        <div class="comp-col-label g">Business With Clean Financials</div>
+        <ul>
+          <li class="g">CPA-reviewed statements for 3+ years</li>
+          <li class="g">Normalized EBITDA schedule with documented add-backs</li>
+          <li class="g">Consistent accounting treatment year over year</li>
+          <li class="g">Working capital analysis ready for negotiation</li>
+          <li class="g">Clean close process not dependent on the owner</li>
+        </ul>
+      </div>
+      <div class="comp-col alert">
+        <div class="comp-col-label r">Business Without Clean Financials</div>
+        <ul>
+          <li class="r">Internally prepared statements, inconsistently maintained</li>
+          <li class="r">Add-backs embedded in the P&L without documentation</li>
+          <li class="r">Year-over-year variances without explanation</li>
+          <li class="r">Working capital undefined — sets up for a buyer-favorable peg</li>
+          <li class="r">Month-end close requires owner involvement to interpret</li>
+        </ul>
+      </div>
+    </div>
+    <p class="body-text">The first business moves through diligence cleanly. The second spends weeks answering questions — and often loses ground on valuation in the process. The difference is preparation, not performance.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label">What You'll Learn</div>
+    <h2>The 5 Financial Factors Buyers and Their Advisors Examine First</h2>
+    <p class="lead">This scorecard assesses the financial documentation factors that determine whether buyers can underwrite your business with confidence.</p>
+    <div class="bullets-list">
+      <div class="bullet-item">
+        <div class="bullet-num">1</div>
+        <div class="bullet-body">
+          <strong>Whether your financial statements meet institutional buyer standards</strong>
+          <span>The document type that separates "we can proceed" from "we need to restart" — and what it takes to get there before engaging a buyer</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">2</div>
+        <div class="bullet-body">
+          <strong>How to normalize EBITDA the way buyers and their advisors expect</strong>
+          <span>The add-backs that are accepted without question, the ones that require substantiation, and the ones that create diligence friction regardless of how they're presented</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">3</div>
+        <div class="bullet-body">
+          <strong>The working capital gaps that cost sellers money at closing</strong>
+          <span>How buyers set the working capital peg, why underprepared sellers consistently lose on this point, and how to establish a defensible position before LOI negotiations begin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2>Three Steps to Your Score</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Download the Scorecard</h3>
+        <p>Enter your email and receive the scorecard immediately. No phone number, no sales call required.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>Assess Your Financials</h3>
+        <p>Work through 5 financial factors in under 10 minutes. Rate each one against the criteria buyers use in diligence.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Know Where You Stand</h3>
+        <p>Your score identifies whether your records are buyer-ready or which gaps to address before going to market.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#cta" class="btn-primary" style="display:inline-block;text-decoration:none;padding:15px 32px;font-size:14px;">Get the Financials Scorecard</a>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="section-inner-wide">
+    <div class="section-label" style="text-align:center;">Client Results</div>
+    <h2 style="text-align:center;">What Business Owners Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>"The process and the outcome exceeded my expectations."</p>
+        <div class="attr">— Michael Pak</div>
+      </div>
+      <div class="testimonial">
+        <p>"Honesty and professionalism that is truly rare."</p>
+        <div class="attr">— Fernando Alegria, Optimus GPS Trackers</div>
+      </div>
+      <div class="testimonial">
+        <p>"Greg was always there to reassure us... all shareholders are happy."</p>
+        <div class="attr">— Kent Kenning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-inner">
+    <div class="section-label">About the Author</div>
+    <h2>Developed from the Buy Side and the Sell Side</h2>
+    <div class="about-grid">
+      <div class="about-avatar">DH</div>
+      <div class="about-text">
+        <p>This scorecard was developed by <strong>Dave Halvorson</strong>, M&A Advisor at Horizon M&A Advisors. Before advising sellers, Dave spent over a decade in Strategic Partnerships at Intel — evaluating acquisitions, reviewing target company financials, and identifying the record-keeping gaps that caused buyer teams to lose confidence and reprice deals.</p>
+        <p>He has sat on both sides of the diligence table. That perspective is what makes this scorecard different from a generic checklist — it reflects what institutional buyers actually look for, and what they use to negotiate when records aren't in order.</p>
+        <div class="credentials">
+          <span class="cred">MBA, Santa Clara University</span>
+          <span class="cred">IBBA Member</span>
+          <span class="cred">CABB Member</span>
+          <span class="cred">M&A Source</span>
+          <span class="cred">Former Intel Corporate Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label">Common Questions</div>
+    <h2>Frequently Asked</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>My accountant handles the books. Do I still need to worry about this?</h4>
+        <p>Yes. Many accountants prepare books for tax purposes, not transaction purposes. The standard for a sale process — CPA-reviewed statements, normalized EBITDA schedules, working capital analysis — is different from what most small business accountants produce by default. The scorecard will tell you where the gap is.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is this really free?</h4>
+        <p>Yes. No credit card, no trial, no catch. We'd rather demonstrate our expertise with something useful than pitch you before you're ready.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I'm not planning to sell for a few years?</h4>
+        <p>That's exactly who this is for. Financial record-keeping issues — inconsistent statements, undocumented add-backs, disorganized books — take time to correct. Owners who identify and address these gaps early get significantly better outcomes than those who discover them in the middle of a diligence process.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Will I get spam?</h4>
+        <p>No. You'll receive the scorecard and periodic insights on exit preparation from Horizon M&A Advisors. You can unsubscribe at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="cta">
+  <h2>Find Out If Your Financial Records Will Support the Valuation You Expect</h2>
+  <p>Enter your email and receive the scorecard within two minutes.</p>
+  <div class="form-row" style="justify-content:center;max-width:500px;margin:0 auto;">
+    <input type="email" placeholder="Enter your email address" style="min-width:220px;" />
+    <button class="btn-primary">Get the Scorecard</button>
+  </div>
+  <p class="hero-fine" style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">No spam. No sales pressure. Unsubscribe anytime.</p>
+</section>
+
+<footer>
+  <p>© 2026 Horizon M&amp;A Advisors &nbsp;·&nbsp; 51 East Campbell Avenue, Suite 400-G, Campbell, CA 95008<br>
+  <a href="https://horizonmaa.com">horizonmaa.com</a> &nbsp;·&nbsp; DRE 01977093 / 02058745 &nbsp;·&nbsp; IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source</p>
+</footer>
+
+</body>
+</html>

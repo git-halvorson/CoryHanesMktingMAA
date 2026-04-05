@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valuation Reality Check | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --gold:#b8912a; --gold-light:#f2e4c4;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg-row:#f8f9fb;
+      --green-text:#14532d; --green-bg:#f0faf3; --green-border:#166534;
+      --red-text:#7f1d1d; --red-bg:#fff5f5; --red-border:#991b1b;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; padding:40px 20px; font-size:13px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto; box-shadow:0 2px 20px rgba(0,0,0,0.18); }
+
+    /* LETTERHEAD */
+    .letterhead { background:var(--navy); }
+    .lh-top { padding:22px 48px 18px; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--gold); }
+    .firm-name { color:#fff; font-size:16px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .firm-name span { color:var(--gold); }
+    .lh-meta { text-align:right; }
+    .lh-meta .confidential { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:2px 8px; display:inline-block; margin-bottom:4px; }
+    .lh-meta .doc-date { display:block; color:rgba(255,255,255,0.5); font-size:11px; }
+    .lh-title { padding:24px 48px 26px; }
+    .lh-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:8px; }
+    .lh-h1 { font-size:26px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:8px; }
+    .lh-h1 .accent { color:var(--gold); }
+    .lh-sub { font-size:12.5px; color:rgba(255,255,255,0.62); max-width:580px; line-height:1.6; }
+    .lh-disclaimer { margin-top:12px; font-size:10.5px; color:rgba(255,255,255,0.38); font-style:italic; }
+
+    /* BODY */
+    .body { padding:32px 48px 40px; }
+
+    /* SECTION HEADERS */
+    .section-hd { display:flex; align-items:center; gap:12px; padding:8px 0 10px; border-bottom:2px solid var(--navy); margin-bottom:16px; margin-top:28px; }
+    .section-hd:first-child { margin-top:0; }
+    .section-num { width:22px; height:22px; background:var(--navy); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .section-title { font-size:13px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--navy); }
+
+    /* INPUTS */
+    .input-group { margin-bottom:16px; }
+    .input-label { font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-mid); margin-bottom:6px; display:block; }
+    .input-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .input-field { border:1px solid var(--border); padding:10px 14px; font-size:13px; font-family:inherit; color:var(--text); outline:none; width:100%; transition:border-color 0.15s; }
+    .input-field:focus { border-color:var(--navy); }
+    select.input-field { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b7280' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 12px center; padding-right:32px; cursor:pointer; }
+    .input-note { font-size:11px; color:var(--text-light); margin-top:5px; line-height:1.5; }
+
+    /* MULTIPLE TABLE */
+    .multiple-table { width:100%; border-collapse:collapse; border:1px solid var(--border); font-size:12px; margin-bottom:4px; }
+    .multiple-table thead tr { background:var(--navy); }
+    .multiple-table thead th { color:#fff; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:8px 12px; text-align:left; border-right:1px solid rgba(255,255,255,0.12); }
+    .multiple-table thead th:last-child { border-right:none; text-align:center; }
+    .multiple-table tbody td { padding:9px 12px; border-bottom:1px solid var(--border-light); border-right:1px solid var(--border-light); color:var(--text-mid); }
+    .multiple-table tbody td:last-child { border-right:none; text-align:center; }
+    .multiple-table tbody tr:last-child td { border-bottom:none; }
+    .multiple-table tbody tr:nth-child(even) td { background:var(--bg-row); }
+    .multiple-table td.industry { font-weight:600; color:var(--navy); }
+    .multiple-table td.range { font-weight:700; font-size:12px; color:var(--navy); font-variant-numeric:tabular-nums; }
+    .multiple-table tr.active-row td { background:#f0f4fa !important; border-left:3px solid var(--navy); }
+    .multiple-table tr.active-row td:first-child { padding-left:9px; }
+
+    /* FACTORS */
+    .factors-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:4px; }
+    .factor-col-hd { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:7px 12px; margin-bottom:8px; }
+    .factor-col-hd.compress { background:#fff0f0; color:var(--red-border); border-left:3px solid var(--red-border); }
+    .factor-col-hd.expand { background:var(--green-bg); color:var(--green-border); border-left:3px solid var(--green-border); }
+    .factor-check { display:flex; align-items:flex-start; gap:8px; padding:7px 0; border-bottom:1px solid var(--border-light); cursor:pointer; }
+    .factor-check:last-child { border-bottom:none; }
+    .factor-check input[type="checkbox"] { width:13px; height:13px; flex-shrink:0; margin-top:2px; cursor:pointer; accent-color:var(--navy); }
+    .factor-check label { font-size:12px; color:var(--text-mid); line-height:1.45; cursor:pointer; }
+    .factor-check label strong { display:block; color:var(--text); font-size:12px; margin-bottom:1px; }
+
+    /* RESULTS PANEL */
+    .results-panel { border:1px solid var(--border); margin-top:28px; }
+    .results-header { background:var(--navy); padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .results-header span { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+    .results-body { display:grid; grid-template-columns:1fr 1fr 1fr; }
+    .result-col { padding:18px 20px; border-right:1px solid var(--border); }
+    .result-col:last-child { border-right:none; }
+    .result-col-label { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-light); margin-bottom:8px; }
+    .result-value { font-size:26px; font-weight:800; letter-spacing:-0.02em; color:var(--navy); font-variant-numeric:tabular-nums; line-height:1; }
+    .result-value.low { color:#6b7280; }
+    .result-value.mid { color:var(--navy); }
+    .result-value.high { color:var(--green-border); }
+    .result-note { font-size:11px; color:var(--text-light); margin-top:5px; line-height:1.5; }
+    .result-pending { font-size:18px; font-weight:700; color:rgba(100,116,139,0.4); }
+
+    .results-footnote { padding:12px 20px; background:var(--bg-row); border-top:1px solid var(--border); font-size:11px; color:var(--text-light); line-height:1.6; }
+    .results-footnote strong { color:var(--text-mid); }
+
+    /* ADJUSTMENT SUMMARY */
+    .adj-summary { padding:14px 20px; background:#f8f9fb; border-top:1px solid var(--border); display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
+    .adj-tag { font-size:11px; font-weight:600; padding:3px 10px; border:1px solid; }
+    .adj-tag.compress { border-color:var(--red-border); color:var(--red-text); background:var(--red-bg); }
+    .adj-tag.expand { border-color:var(--green-border); color:var(--green-text); background:var(--green-bg); }
+    .adj-label { font-size:11px; color:var(--text-light); }
+
+    /* NEXT STEP */
+    .next-step { margin:24px 0 0; padding:16px 20px; border:1px solid var(--gold); background:#fdf8ee; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .next-step p { font-size:12px; color:var(--text-mid); line-height:1.5; }
+    .next-step p strong { color:var(--text); }
+    .next-step a { white-space:nowrap; background:var(--navy); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:0.04em; padding:10px 20px; text-transform:uppercase; flex-shrink:0; }
+
+    /* FOOTER */
+    .doc-footer { margin-top:28px; border-top:2px solid var(--navy); padding:14px 48px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .doc-footer .footer-left { font-size:10.5px; color:var(--text-light); line-height:1.6; }
+    .doc-footer .footer-left strong { color:var(--text-mid); }
+    .doc-footer .footer-right { text-align:right; font-size:10.5px; color:var(--text-light); line-height:1.6; flex-shrink:0; }
+    .disclaimer { margin:10px 48px 32px; font-size:9.5px; color:var(--text-light); line-height:1.6; border-top:1px solid var(--border-light); padding-top:10px; }
+
+    @media print { body { background:white; padding:0; } .page { box-shadow:none; width:100%; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="letterhead">
+    <div class="lh-top">
+      <div><div class="firm-name">Horizon <span>M&A</span> Advisors</div></div>
+      <div class="lh-meta">
+        <div class="confidential">Confidential</div>
+        <span class="doc-date">Prepared March 2026</span>
+      </div>
+    </div>
+    <div class="lh-title">
+      <div class="lh-eyebrow">Valuation Reference &nbsp;·&nbsp; Lower Middle Market</div>
+      <div class="lh-h1">What Is Your Business Actually Worth <span class="accent">to a Buyer?</span></div>
+      <div class="lh-sub">Enter your normalized EBITDA and select your industry to generate an indicative value range using the EBITDA multiples observed in lower middle market transactions. Then assess the factors that move your business toward the high or low end of that range.</div>
+      <div class="lh-disclaimer">This worksheet produces an indicative range only. It does not constitute a formal valuation or opinion of value. Contact Horizon M&A Advisors for a professional Advisor's Opinion of Most Probable Selling Price.</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- STEP 1: INPUTS -->
+    <div class="section-hd">
+      <div class="section-num">1</div>
+      <div class="section-title">Enter Your Business Information</div>
+    </div>
+
+    <div class="input-row">
+      <div class="input-group">
+        <label class="input-label" for="ebitda">Normalized EBITDA (Annual, USD)</label>
+        <input class="input-field" type="number" id="ebitda" placeholder="e.g. 2500000" min="0" step="100000" oninput="calculate()" />
+        <div class="input-note">Use your normalized EBITDA — owner compensation add-backs included, one-time items removed. If unsure, use your best estimate.</div>
+      </div>
+      <div class="input-group">
+        <label class="input-label" for="industry">Primary Industry</label>
+        <select class="input-field" id="industry" onchange="calculate()">
+          <option value="">— Select your industry —</option>
+          <option value="it" data-low="5.0" data-high="9.0">IT Services / Managed Services</option>
+          <option value="software" data-low="5.5" data-high="10.0">Software / SaaS</option>
+          <option value="healthcare" data-low="5.5" data-high="9.5">Healthcare Services / Health Tech</option>
+          <option value="semi" data-low="5.0" data-high="8.5">Semiconductor / Electronic Testing</option>
+          <option value="mfg" data-low="4.0" data-high="7.0">Manufacturing (Specialty / Precision)</option>
+          <option value="distribution" data-low="3.5" data-high="6.0">Distribution / Logistics</option>
+          <option value="bizsvcs" data-low="4.5" data-high="7.5">Business Services / Professional Services</option>
+          <option value="facility" data-low="4.0" data-high="6.5">Facility Services / Janitorial / Maintenance</option>
+          <option value="contracting" data-low="3.5" data-high="6.5">Specialty / Skilled Trade Contracting</option>
+          <option value="solar" data-low="4.0" data-high="7.0">Solar EPC / Renewable Energy</option>
+        </select>
+        <div class="input-note">Select the category that best describes your primary revenue source.</div>
+      </div>
+    </div>
+
+    <!-- STEP 2: INDUSTRY MULTIPLES -->
+    <div class="section-hd" style="margin-top:24px;">
+      <div class="section-num">2</div>
+      <div class="section-title">Lower Middle Market EBITDA Multiple Reference</div>
+    </div>
+
+    <table class="multiple-table" id="multipleTable">
+      <thead>
+        <tr>
+          <th style="width:42%;">Industry</th>
+          <th>Typical LMM Range</th>
+          <th>Drivers of High End</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr data-industry="it"><td class="industry">IT Services / Managed Services</td><td class="range">5.0x – 9.0x</td><td>Recurring MRR, long-term contracts, low churn</td></tr>
+        <tr data-industry="software"><td class="industry">Software / SaaS</td><td class="range">5.5x – 10.0x</td><td>ARR growth, net revenue retention &gt;100%, IP ownership</td></tr>
+        <tr data-industry="healthcare"><td class="industry">Healthcare Services / Health Tech</td><td class="range">5.5x – 9.5x</td><td>Payor diversification, regulatory compliance, census growth</td></tr>
+        <tr data-industry="semi"><td class="industry">Semiconductor / Electronic Testing</td><td class="range">5.0x – 8.5x</td><td>Proprietary test IP, long-term OEM relationships</td></tr>
+        <tr data-industry="mfg"><td class="industry">Manufacturing (Specialty / Precision)</td><td class="range">4.0x – 7.0x</td><td>Sole-source relationships, defensible IP, long customer tenure</td></tr>
+        <tr data-industry="distribution"><td class="industry">Distribution / Logistics</td><td class="range">3.5x – 6.0x</td><td>Exclusive supplier arrangements, last-mile capability, proprietary tech</td></tr>
+        <tr data-industry="bizsvcs"><td class="industry">Business Services / Professional Services</td><td class="range">4.5x – 7.5x</td><td>Retainer revenue, low customer concentration, scalable model</td></tr>
+        <tr data-industry="facility"><td class="industry">Facility Services</td><td class="range">4.0x – 6.5x</td><td>Multi-year contracts, low churn, geographic density</td></tr>
+        <tr data-industry="contracting"><td class="industry">Specialty / Skilled Trade Contracting</td><td class="range">3.5x – 6.5x</td><td>Licensed workforce, recurring service agreements, diversified backlog</td></tr>
+        <tr data-industry="solar"><td class="industry">Solar EPC / Renewable Energy</td><td class="range">4.0x – 7.0x</td><td>Contracted backlog, C&amp;I focus, self-perform capability</td></tr>
+      </tbody>
+    </table>
+    <div class="input-note" style="margin-top:6px;">Multiples reflect enterprise value / normalized EBITDA for businesses with $2M–$10M EBITDA transacting in 2023–2025. Ranges are illustrative and vary by deal size, market conditions, and individual business characteristics.</div>
+
+    <!-- STEP 3: ADJUSTMENT FACTORS -->
+    <div class="section-hd">
+      <div class="section-num">3</div>
+      <div class="section-title">Assess Your Multiple Adjustment Factors</div>
+    </div>
+    <div class="input-note" style="margin-bottom:14px;">Check each item that applies to your business. Compression factors push your multiple toward the low end of the range. Expansion factors push it toward the high end.</div>
+
+    <div class="factors-grid">
+      <div>
+        <div class="factor-col-hd compress">Multiple Compression Factors</div>
+        <div class="factor-check"><input type="checkbox" id="c1" onchange="calculate()"><label for="c1"><strong>Customer concentration</strong>Top customer &gt;15% of revenue, or top 3 &gt;40%</label></div>
+        <div class="factor-check"><input type="checkbox" id="c2" onchange="calculate()"><label for="c2"><strong>Owner dependency</strong>Business cannot operate 90+ days without the owner</label></div>
+        <div class="factor-check"><input type="checkbox" id="c3" onchange="calculate()"><label for="c3"><strong>Declining or flat revenue</strong>Revenue growth below 5% over trailing 3 years</label></div>
+        <div class="factor-check"><input type="checkbox" id="c4" onchange="calculate()"><label for="c4"><strong>Weak financial documentation</strong>Internally prepared statements, no CPA review</label></div>
+        <div class="factor-check"><input type="checkbox" id="c5" onchange="calculate()"><label for="c5"><strong>Thin management team</strong>No meaningful layer below the owner</label></div>
+      </div>
+      <div>
+        <div class="factor-col-hd expand">Multiple Expansion Factors</div>
+        <div class="factor-check"><input type="checkbox" id="e1" onchange="calculate()"><label for="e1"><strong>Recurring revenue</strong>50%+ of revenue under contract or retainer</label></div>
+        <div class="factor-check"><input type="checkbox" id="e2" onchange="calculate()"><label for="e2"><strong>Strong growth trajectory</strong>10%+ organic revenue growth for 2+ years</label></div>
+        <div class="factor-check"><input type="checkbox" id="e3" onchange="calculate()"><label for="e3"><strong>PE platform fit</strong>Natural add-on for an active private equity platform</label></div>
+        <div class="factor-check"><input type="checkbox" id="e4" onchange="calculate()"><label for="e4"><strong>Proprietary IP or process</strong>Defensible competitive advantage not easily replicated</label></div>
+        <div class="factor-check"><input type="checkbox" id="e5" onchange="calculate()"><label for="e5"><strong>Strong management team</strong>Capable team in place that can operate independently</label></div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="results-panel">
+      <div class="results-header">
+        <span>Indicative Enterprise Value Range</span>
+        <span id="industryLabel" style="color:rgba(255,255,255,0.5);font-size:11px;font-weight:500;"></span>
+      </div>
+      <div class="results-body">
+        <div class="result-col">
+          <div class="result-col-label">Conservative (Low Multiple)</div>
+          <div class="result-value low" id="valLow"><span class="result-pending">—</span></div>
+          <div class="result-note" id="notelow">Enter your EBITDA and select an industry to calculate.</div>
+        </div>
+        <div class="result-col">
+          <div class="result-col-label">Mid-Point Estimate</div>
+          <div class="result-value mid" id="valMid"><span class="result-pending">—</span></div>
+          <div class="result-note" id="notemid">&nbsp;</div>
+        </div>
+        <div class="result-col">
+          <div class="result-col-label">Optimistic (High Multiple)</div>
+          <div class="result-value high" id="valHigh"><span class="result-pending">—</span></div>
+          <div class="result-note" id="notehigh">&nbsp;</div>
+        </div>
+      </div>
+      <div class="adj-summary" id="adjSummary" style="display:none;">
+        <span class="adj-label">Based on your selections, your multiple is likely positioned:</span>
+        <span class="adj-tag compress" id="adjCompress" style="display:none;"></span>
+        <span class="adj-tag expand" id="adjExpand" style="display:none;"></span>
+      </div>
+      <div class="results-footnote">
+        <strong>Important:</strong> These figures represent an indicative enterprise value range only, based on observed LMM transaction multiples. Enterprise value is not the same as proceeds to the seller — adjustments for debt, working capital, transaction costs, taxes, and deal structure will affect net proceeds. A professional Advisor's Opinion of Most Probable Selling Price from Horizon M&A Advisors will provide a more accurate and defensible valuation.
+      </div>
+    </div>
+
+    <div class="next-step">
+      <p><strong>Get a professional valuation for your business.</strong> A complimentary 30-minute strategy call with Dave Halvorson will provide a professional assessment of your business's value, the specific factors most likely to affect your multiple, and a realistic view of what you could expect to net after a transaction.</p>
+      <a href="https://horizonmaa.com">Schedule a Call</a>
+    </div>
+
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-left">
+      <strong>Horizon M&amp;A Advisors</strong><br>
+      51 East Campbell Avenue, Suite 400-G &nbsp;·&nbsp; Campbell, CA 95008<br>
+      horizonmaa.com &nbsp;·&nbsp; dave@horizonmaa.com &nbsp;·&nbsp; 408-398-5553
+    </div>
+    <div class="footer-right">DRE 01977093 / 02058745<br>IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source</div>
+  </div>
+  <div class="disclaimer">
+    This worksheet is provided for informational and educational purposes only. It does not constitute a formal business valuation, fairness opinion, or Advisor's Opinion of Most Probable Selling Price, and should not be relied upon for transaction, tax, legal, or financial planning purposes. Multiple ranges are based on generalized lower middle market transaction data and do not account for the specific characteristics of any individual business. Horizon M&A Advisors makes no representation as to the accuracy of these ranges for any particular business or market condition. Consult a qualified M&A advisor, CPA, and legal counsel before making decisions regarding the sale of a business.
+  </div>
+
+</div>
+
+<script>
+  const multiples = {
+    it:          { low: 5.0, high: 9.0 },
+    software:    { low: 5.5, high: 10.0 },
+    healthcare:  { low: 5.5, high: 9.5 },
+    semi:        { low: 5.0, high: 8.5 },
+    mfg:         { low: 4.0, high: 7.0 },
+    distribution:{ low: 3.5, high: 6.0 },
+    bizsvcs:     { low: 4.5, high: 7.5 },
+    facility:    { low: 4.0, high: 6.5 },
+    contracting: { low: 3.5, high: 6.5 },
+    solar:       { low: 4.0, high: 7.0 }
+  };
+
+  function fmt(n) {
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(1) + 'M';
+    if (n >= 1000) return '$' + (n/1000).toFixed(0) + 'K';
+    return '$' + n.toFixed(0);
+  }
+
+  function calculate() {
+    const ebitda = parseFloat(document.getElementById('ebitda').value) || 0;
+    const sel = document.getElementById('industry');
+    const ind = sel.value;
+
+    // highlight active row
+    document.querySelectorAll('#multipleTable tbody tr').forEach(r => r.classList.remove('active-row'));
+    if (ind) document.querySelector(`#multipleTable tr[data-industry="${ind}"]`)?.classList.add('active-row');
+
+    // count factors
+    const compChecked = ['c1','c2','c3','c4','c5'].filter(id => document.getElementById(id).checked).length;
+    const expChecked  = ['e1','e2','e3','e4','e5'].filter(id => document.getElementById(id).checked).length;
+
+    if (!ebitda || !ind || !multiples[ind]) {
+      document.getElementById('valLow').innerHTML  = '<span class="result-pending">—</span>';
+      document.getElementById('valMid').innerHTML  = '<span class="result-pending">—</span>';
+      document.getElementById('valHigh').innerHTML = '<span class="result-pending">—</span>';
+      document.getElementById('notelow').textContent = 'Enter your EBITDA and select an industry to calculate.';
+      document.getElementById('notemid').innerHTML = '&nbsp;';
+      document.getElementById('notehigh').innerHTML = '&nbsp;';
+      document.getElementById('adjSummary').style.display = 'none';
+      document.getElementById('industryLabel').textContent = '';
+      return;
+    }
+
+    const m = multiples[ind];
+    // adjustment: each compression factor moves multiple 0.3x toward low; each expansion 0.3x toward high
+    let adjLow  = m.low  + (expChecked * 0.25) - (compChecked * 0.15);
+    let adjHigh = m.high + (expChecked * 0.25) - (compChecked * 0.35);
+    adjLow  = Math.max(adjLow,  m.low  * 0.75);
+    adjHigh = Math.min(adjHigh, m.high * 1.10);
+    const mid = (adjLow + adjHigh) / 2;
+
+    document.getElementById('valLow').textContent  = fmt(ebitda * adjLow);
+    document.getElementById('valMid').textContent  = fmt(ebitda * mid);
+    document.getElementById('valHigh').textContent = fmt(ebitda * adjHigh);
+    document.getElementById('notelow').textContent  = adjLow.toFixed(1) + 'x EBITDA';
+    document.getElementById('notemid').textContent  = mid.toFixed(1) + 'x EBITDA (midpoint)';
+    document.getElementById('notehigh').textContent = adjHigh.toFixed(1) + 'x EBITDA';
+
+    // industry label
+    const optText = sel.options[sel.selectedIndex].text;
+    document.getElementById('industryLabel').textContent = optText;
+
+    // adjustment summary
+    const adjDiv = document.getElementById('adjSummary');
+    const cTag = document.getElementById('adjCompress');
+    const eTag = document.getElementById('adjExpand');
+    if (compChecked > 0 || expChecked > 0) {
+      adjDiv.style.display = 'flex';
+      if (compChecked > 0) { cTag.style.display='inline'; cTag.textContent = compChecked + ' compression factor' + (compChecked>1?'s':'') + ' identified'; }
+      else { cTag.style.display='none'; }
+      if (expChecked > 0) { eTag.style.display='inline'; eTag.textContent = expChecked + ' expansion factor' + (expChecked>1?'s':'') + ' identified'; }
+      else { eTag.style.display='none'; }
+    } else {
+      adjDiv.style.display = 'none';
+    }
+  }
+</script>
+</body>
+</html>

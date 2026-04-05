@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Shrinking Buyer Pool | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --navy-light:#1e4080;
+      --gold:#b8912a; --gold-light:#f2e4c4; --gold-pale:#fdf8ee;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg:#f7f8fb;
+      --red-bg:#fff5f5; --red-text:#7f1d1d; --red-border:#991b1b;
+      --green-bg:#f0faf3; --green-text:#14532d; --green-border:#166534;
+      --amber-bg:#fffbeb; --amber-text:#78350f; --amber-border:#d97706;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; font-size:13px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto 40px; box-shadow:0 2px 24px rgba(0,0,0,0.15); position:relative; }
+
+    /* ── COVER ── */
+    .cover { background:var(--navy); min-height:1056px; display:flex; flex-direction:column; justify-content:space-between; page-break-after:always; }
+    .cover-top { padding:44px 56px 24px; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:3px solid var(--gold); }
+    .cover-firm { color:#fff; font-size:12px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; }
+    .cover-firm span { color:var(--gold); }
+    .cover-confid { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:3px 10px; }
+    .cover-body { padding:72px 56px 0; flex:1; }
+    .cover-type { font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-bottom:16px; }
+    .cover-title { font-size:48px; font-weight:800; color:#fff; letter-spacing:-0.03em; line-height:1.06; margin-bottom:20px; }
+    .cover-title .accent { color:var(--gold); }
+    .cover-subtitle { font-size:17px; color:rgba(255,255,255,0.62); line-height:1.58; max-width:560px; margin-bottom:44px; font-weight:400; }
+    .cover-rule { width:56px; height:3px; background:var(--gold); margin-bottom:36px; }
+    .cover-stats { display:flex; gap:0; border:1px solid rgba(255,255,255,0.1); margin-top:56px; }
+    .cover-stat { flex:1; padding:24px 28px; border-right:1px solid rgba(255,255,255,0.08); }
+    .cover-stat:last-child { border-right:none; }
+    .cover-stat-num { font-size:30px; font-weight:800; color:var(--gold); letter-spacing:-0.02em; line-height:1; margin-bottom:6px; }
+    .cover-stat-label { font-size:11px; color:rgba(255,255,255,0.5); line-height:1.45; }
+    .cover-footer { padding:28px 56px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; }
+    .cover-footer-left { font-size:11px; color:rgba(255,255,255,0.3); line-height:1.7; }
+    .cover-footer-right { font-size:11px; color:rgba(255,255,255,0.3); text-align:right; line-height:1.7; }
+
+    /* ── INTERIOR PAGES ── */
+    .interior-page { min-height:1056px; page-break-after:always; display:flex; flex-direction:column; }
+    .interior-page:last-child { page-break-after:auto; }
+
+    .page-header { background:var(--navy); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid var(--gold); flex-shrink:0; }
+    .page-header-left .section-label { font-size:9px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-bottom:3px; }
+    .page-header-left .section-title { font-size:17px; font-weight:800; color:#fff; letter-spacing:-0.01em; }
+    .page-header-left .section-title .accent { color:var(--gold); }
+    .page-header-firm { font-size:10.5px; font-weight:700; color:rgba(255,255,255,0.35); letter-spacing:0.06em; text-transform:uppercase; text-align:right; line-height:1.5; }
+    .page-header-firm span { color:rgba(184,145,42,0.6); }
+
+    .page-body { padding:44px 48px 40px; flex:1; }
+
+    /* ── TYPOGRAPHY ── */
+    h2 { font-size:20px; font-weight:800; color:var(--navy); letter-spacing:-0.02em; margin-bottom:8px; line-height:1.2; }
+    h3 { font-size:14px; font-weight:700; color:var(--navy); letter-spacing:-0.01em; margin:28px 0 10px; }
+    h3:first-child { margin-top:0; }
+    p { font-size:13px; color:var(--text-mid); line-height:1.72; margin-bottom:12px; }
+    p:last-child { margin-bottom:0; }
+    .lede { font-size:14.5px; color:var(--text); line-height:1.68; margin-bottom:24px; font-weight:400; }
+    .section-rule { width:40px; height:3px; background:var(--gold); margin-bottom:20px; }
+    strong { color:var(--text); }
+
+    /* ── DATA TABLE ── */
+    .data-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:12.5px; }
+    .data-table th { background:var(--navy); color:#fff; padding:10px 14px; font-weight:700; font-size:11px; letter-spacing:0.04em; text-align:left; }
+    .data-table th:first-child { width:30%; }
+    .data-table td { padding:10px 14px; border-bottom:1px solid var(--border-light); vertical-align:top; color:var(--text-mid); line-height:1.55; }
+    .data-table tr:last-child td { border-bottom:none; }
+    .data-table tr:nth-child(even) td { background:var(--bg); }
+    .data-table td strong { color:var(--text); font-weight:600; }
+    .data-table td.label { font-weight:600; color:var(--navy); font-size:12px; }
+
+    /* ── STAT ROW ── */
+    .stat-row { display:flex; gap:0; border:1px solid var(--border); margin:20px 0; }
+    .stat-cell { flex:1; padding:20px 24px; border-right:1px solid var(--border-light); text-align:center; }
+    .stat-cell:last-child { border-right:none; }
+    .stat-num { font-size:28px; font-weight:800; color:var(--navy); letter-spacing:-0.02em; line-height:1; margin-bottom:6px; }
+    .stat-num.gold { color:var(--gold); }
+    .stat-num.red { color:#991b1b; }
+    .stat-label { font-size:11.5px; color:var(--text-light); line-height:1.45; font-weight:500; }
+
+    /* ── CALLOUT BOXES ── */
+    .callout { padding:18px 22px; margin:20px 0; }
+    .callout.navy { background:var(--navy); border-left:4px solid var(--gold); }
+    .callout.navy .callout-label { font-size:9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+    .callout.navy p { color:rgba(255,255,255,0.75); font-size:13px; margin-bottom:0; }
+    .callout.amber { background:var(--amber-bg); border-left:4px solid var(--amber-border); }
+    .callout.amber .callout-label { font-size:9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--amber-text); margin-bottom:8px; }
+    .callout.amber p { color:var(--amber-text); font-size:13px; margin-bottom:0; }
+    .callout.red { background:var(--red-bg); border-left:4px solid var(--red-border); }
+    .callout.red .callout-label { font-size:9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--red-text); margin-bottom:8px; }
+    .callout.red p { color:var(--red-text); font-size:13px; margin-bottom:0; }
+    .callout.green { background:var(--green-bg); border-left:4px solid var(--green-border); }
+    .callout.green .callout-label { font-size:9.5px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--green-text); margin-bottom:8px; }
+    .callout.green p { color:var(--green-text); font-size:13px; margin-bottom:0; }
+
+    /* ── TWO COL ── */
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:20px 0; }
+    .col-card { border:1px solid var(--border); padding:20px 22px; }
+    .col-card h4 { font-size:12.5px; font-weight:700; color:var(--navy); margin-bottom:10px; padding-bottom:8px; border-bottom:2px solid var(--gold); letter-spacing:-0.01em; }
+    .col-card ul { padding-left:18px; }
+    .col-card ul li { font-size:12.5px; color:var(--text-mid); line-height:1.65; margin-bottom:6px; }
+    .col-card ul li:last-child { margin-bottom:0; }
+
+    /* ── MECHANIC LIST ── */
+    .mechanic-list { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); margin:20px 0; }
+    .mechanic-item { display:grid; grid-template-columns:36px 1fr; border-bottom:1px solid var(--border-light); }
+    .mechanic-item:last-child { border-bottom:none; }
+    .mechanic-num { background:var(--navy); color:var(--gold); font-size:13px; font-weight:800; display:flex; align-items:flex-start; justify-content:center; padding-top:16px; }
+    .mechanic-body { padding:14px 18px; }
+    .mechanic-body strong { display:block; font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+    .mechanic-body p { font-size:12.5px; color:var(--text-mid); line-height:1.6; margin-bottom:0; }
+
+    /* ── ACTION LIST ── */
+    .action-list { display:flex; flex-direction:column; gap:12px; margin:20px 0; }
+    .action-item { display:grid; grid-template-columns:28px 1fr; gap:14px; align-items:flex-start; padding:14px 18px; border:1px solid var(--border-light); background:var(--bg); }
+    .action-num { width:28px; height:28px; background:var(--navy); color:var(--gold); font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .action-body strong { display:block; font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+    .action-body p { font-size:12.5px; color:var(--text-mid); line-height:1.6; margin-bottom:0; }
+
+    /* ── IMPACT TABLE ── */
+    .impact-table { width:100%; border-collapse:collapse; margin:20px 0; font-size:12.5px; }
+    .impact-table thead th { background:var(--navy); color:#fff; padding:11px 16px; font-weight:700; font-size:11px; letter-spacing:0.04em; text-align:left; }
+    .impact-table tbody td { padding:11px 16px; border-bottom:1px solid var(--border-light); vertical-align:top; color:var(--text-mid); line-height:1.55; }
+    .impact-table tbody tr:last-child td { border-bottom:none; }
+    .impact-table tbody tr:nth-child(even) td { background:var(--bg); }
+    .impact-table td.label { font-weight:700; color:var(--navy); width:26%; }
+    .impact-table .badge { display:inline-block; padding:2px 8px; font-size:10px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .impact-table .badge.red { background:var(--red-bg); color:var(--red-text); border:1px solid var(--red-border); }
+    .impact-table .badge.amber { background:var(--amber-bg); color:var(--amber-text); border:1px solid var(--amber-border); }
+    .impact-table .badge.green { background:var(--green-bg); color:var(--green-text); border:1px solid var(--green-border); }
+
+    /* ── CTA PAGE ── */
+    .cta-page { background:var(--navy); min-height:1056px; display:flex; flex-direction:column; page-break-after:auto; }
+    .cta-top { padding:40px 56px 28px; border-bottom:3px solid var(--gold); display:flex; justify-content:space-between; align-items:flex-start; }
+    .cta-top-firm { color:#fff; font-size:12px; font-weight:700; letter-spacing:0.09em; text-transform:uppercase; }
+    .cta-top-firm span { color:var(--gold); }
+    .cta-body { padding:80px 56px 0; flex:1; }
+    .cta-eyebrow { font-size:11px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; color:rgba(255,255,255,0.38); margin-bottom:16px; }
+    .cta-headline { font-size:38px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.1; margin-bottom:20px; }
+    .cta-headline .accent { color:var(--gold); }
+    .cta-sub { font-size:16px; color:rgba(255,255,255,0.6); line-height:1.6; max-width:520px; margin-bottom:48px; }
+    .cta-rule { width:56px; height:3px; background:var(--gold); margin-bottom:48px; }
+    .cta-block { border:1px solid rgba(255,255,255,0.12); padding:36px 40px; max-width:520px; margin-bottom:40px; }
+    .cta-block-label { font-size:10px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+    .cta-block h3 { font-size:22px; font-weight:800; color:#fff; margin-bottom:12px; letter-spacing:-0.01em; }
+    .cta-block p { font-size:14px; color:rgba(255,255,255,0.62); line-height:1.65; margin-bottom:20px; }
+    .cta-contact { display:flex; flex-direction:column; gap:6px; }
+    .cta-contact-line { font-size:13px; color:rgba(255,255,255,0.75); display:flex; align-items:center; gap:10px; }
+    .cta-contact-line .ci-label { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); width:52px; flex-shrink:0; }
+    .cta-creds { margin-top:32px; }
+    .cta-creds-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:rgba(255,255,255,0.3); margin-bottom:10px; }
+    .cta-creds-row { display:flex; gap:20px; flex-wrap:wrap; }
+    .cta-cred { font-size:11px; color:rgba(255,255,255,0.4); padding:4px 10px; border:1px solid rgba(255,255,255,0.1); }
+    .cta-footer { padding:28px 56px; border-top:1px solid rgba(255,255,255,0.08); }
+    .cta-disclaimer { font-size:10px; color:rgba(255,255,255,0.22); line-height:1.65; }
+
+    /* ── PAGE FOOTER ── */
+    .page-footer { padding:14px 48px; border-top:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:center; flex-shrink:0; }
+    .page-footer-left { font-size:10px; color:var(--text-light); letter-spacing:0.04em; }
+    .page-footer-right { font-size:10px; color:var(--text-light); }
+
+    @media print {
+      body { background:#fff; }
+      .page { box-shadow:none; margin:0; }
+      .interior-page, .cover, .cta-page { page-break-after:always; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     COVER PAGE
+═════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-firm">Horizon <span>M&amp;A</span> Advisors</div>
+      <div class="cover-confid">Market Intelligence Brief</div>
+    </div>
+
+    <div class="cover-body">
+      <div class="cover-type">Lower Middle Market Exit Planning · April 2026</div>
+      <div class="cover-title">The <span class="accent">Shrinking</span><br>Buyer Pool</div>
+      <div class="cover-subtitle">What a proposed ≈67% SBA funding cut means for valuations, deal structures, and the exit window for $5–$50M business owners</div>
+      <div class="cover-rule"></div>
+      <div class="cover-stats">
+        <div class="cover-stat">
+          <div class="cover-stat-num">67%</div>
+          <div class="cover-stat-label">Proposed cut to SBA funding ($1B → $329M)</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">10,000+</div>
+          <div class="cover-stat-label">Business owners delayed from $5B in capital during last shutdown</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">320/day</div>
+          <div class="cover-stat-label">Businesses blocked from SBA loans at peak of prior disruption</div>
+        </div>
+        <div class="cover-stat">
+          <div class="cover-stat-num">+30 days</div>
+          <div class="cover-stat-label">Added to SBA-backed closing timelines after recent rule changes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <div class="cover-footer-left">
+        Dave Halvorson | Horizon M&A Advisors<br>
+        Intel-sponsored graduate engineering coursework, Stanford University<br>
+        MBA, Santa Clara University · BA, UC San Diego
+      </div>
+      <div class="cover-footer-right">
+        dave@horizonmaa.com · 408-398-5553<br>
+        horizonmaa.com · Campbell, CA 95008<br>
+        DRE 01977093 / 02058745
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — THE POLICY CONTEXT
+═════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="section-label">Section One</div>
+        <div class="section-title">The Policy Context: <span class="accent">What the SBA Actually Does</span></div>
+      </div>
+      <div class="page-header-firm">Horizon <span>M&amp;A</span> Advisors<br>Market Intelligence Brief · April 2026</div>
+    </div>
+
+    <div class="page-body">
+      <p class="lede">For most business owners, news about the SBA budget sounds like just another fight in Washington. For anyone planning to sell a business in the next few years, it is considerably more consequential than that.</p>
+
+      <h3>What the SBA Quietly Does for Deal Flow</h3>
+      <p>The Small Business Administration runs two programs that matter most to lower middle market deal-making: the 7(a) loan program and the 504 program. Together, they support roughly <strong>$30 billion of small-business lending per year</strong>. They do not lend money directly — they guarantee a portion of loans made by banks and approved lenders, which is what makes lenders willing to extend credit to business buyers who lack the balance sheet of a large corporation.</p>
+      <p>When those guarantees are strong, a first-time buyer or a lightly capitalized search fund can put 10–15% down and borrow the rest at competitive rates. When those guarantees are weakened — through budget cuts, rule changes, or program disruption — lenders tighten. Advance rates fall, pricing rises, and some buyers simply disappear from the market.</p>
+      <p>This is not theoretical. We have already seen the mechanism play out.</p>
+
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-num red">$5B</div>
+          <div class="stat-label">In guaranteed capital delayed to small business owners during last major SBA shutdown</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num red">320</div>
+          <div class="stat-label">Businesses per day blocked from SBA loans at peak of prior disruption</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num red">$329M</div>
+          <div class="stat-label">Proposed FY2026 SBA budget — down from approximately $1B (≈67% cut)</div>
+        </div>
+      </div>
+
+      <h3>What Has Already Changed</h3>
+      <p>The proposed budget cut is not the only development affecting SBA lending. Recent rule changes have already tightened the program in meaningful ways — including changes that complicated minority-investor structures and added friction to the underwriting process. Industry data shows these changes have already added approximately <strong>30 days to SBA-backed closing timelines</strong>, with valuations and deal volume softening in the sub-$5M revenue range most dependent on SBA financing.</p>
+      <p>A 67% funding cut is not a trim. It is a structural reduction in the program's ability to operate at scale. The full budget has not passed — Congress will negotiate — but the direction of travel is clear: <strong>less government support for small-business credit, not more.</strong></p>
+
+      <div class="callout amber">
+        <div class="callout-label">Important Distinction</div>
+        <p>This is a budget proposal, not a final law. Congress will negotiate. The SBA still operates today. What has changed is the risk profile of an exit plan that assumes future SBA-backed buyers will be as available and aggressive as they have been historically.</p>
+      </div>
+
+      <h3>Why This Brief Exists</h3>
+      <p>Most advisors will not connect federal budget news to the actual mechanics of how your business gets valued and sold. Having spent more than a decade on the buy side at Intel — where we evaluated acquisitions ranging from small technology firms to large strategic deals — I learned that macro policy almost always reaches the deal table eventually. The question is whether you see it coming.</p>
+      <p>This brief is an attempt to translate the policy signal into practical deal-level consequence, and to identify the steps owners in the $5–$50M range can take now rather than after the market has already shifted.</p>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-left">HORIZON M&amp;A ADVISORS · MARKET INTELLIGENCE BRIEF · APRIL 2026</div>
+      <div class="page-footer-right">Page 1 of 4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — DEAL MECHANICS
+═════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="section-label">Section Two</div>
+        <div class="section-title">Deal Mechanics: <span class="accent">How This Shows Up at the Table</span></div>
+      </div>
+      <div class="page-header-firm">Horizon <span>M&amp;A</span> Advisors<br>Market Intelligence Brief · April 2026</div>
+    </div>
+
+    <div class="page-body">
+      <p class="lede">Strip away the politics and look at deal mechanics. A material reduction in SBA lending capacity translates into three specific changes in the buyer pool for businesses in the $1M–$20M enterprise value range.</p>
+
+      <div class="mechanic-list">
+        <div class="mechanic-item">
+          <div class="mechanic-num">1</div>
+          <div class="mechanic-body">
+            <strong>Less leverage available to individual and search-fund buyers</strong>
+            <p>The SBA 7(a) program has enabled buyers to put 10–15% down and borrow the rest. With fewer or weaker guarantees, banks tighten underwriting standards, reduce advance rates, and increase pricing on small-business acquisition loans. Buyers who were previously qualified at a certain offer price can no longer support that number with the same debt structure.</p>
+          </div>
+        </div>
+        <div class="mechanic-item">
+          <div class="mechanic-num">2</div>
+          <div class="mechanic-body">
+            <strong>First-time buyers and lightly capitalized acquirers exit the market</strong>
+            <p>A large portion of the buyer pool for $1M–$5M EBITDA businesses consists of individual buyers, entrepreneurial search funds, and management teams using SBA-backed debt to get deals done. Remove or significantly reduce that financing option, and these buyers either disappear from auctions entirely or arrive with substantially lower offers. The competitive tension that drives prices up weakens at precisely the wrong moment for sellers.</p>
+          </div>
+        </div>
+        <div class="mechanic-item">
+          <div class="mechanic-num">3</div>
+          <div class="mechanic-body">
+            <strong>Market power shifts to PE firms, family offices, and strategic acquirers</strong>
+            <p>Well-capitalized sponsors and strategic buyers with strong balance sheets do not depend on SBA programs. They can still get deals done. But they can also afford to be selective — and without competition from SBA-backed individual buyers, they face less competitive pressure. The natural result: lower offers, more aggressive deal structure demands, and more leverage in negotiation.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout navy">
+        <div class="callout-label">Buy-Side Perspective</div>
+        <p>In acquisition processes I observed at Intel, the presence or absence of competing bidders was the single biggest driver of final price. When multiple qualified buyers competed for the same asset, prices moved up quickly. When the qualified buyer pool was thin — for any reason — offers came in lower and terms were less seller-friendly. A shrinking SBA-backed buyer pool has the same effect as a smaller competitive process: it reduces the competitive tension that sellers depend on to maximize value.</p>
+      </div>
+
+      <h3>Who Is Most Exposed</h3>
+      <div class="two-col">
+        <div class="col-card">
+          <h4>Higher Exposure</h4>
+          <ul>
+            <li>Businesses with <strong>$1M–$3M EBITDA</strong> — most dependent on SBA-financed individual buyers</li>
+            <li>Owners planning to sell in the next <strong>12–24 months</strong> with no process started</li>
+            <li>Businesses with <strong>customer concentration, owner dependency</strong>, or other risk factors that make PE/strategic buyers less enthusiastic</li>
+            <li>Owners expecting a clean, <strong>all-cash close</strong> with no seller paper</li>
+          </ul>
+        </div>
+        <div class="col-card">
+          <h4>Lower Exposure</h4>
+          <ul>
+            <li>Businesses with <strong>$4M+ EBITDA</strong> — more attractive to PE platforms not relying on SBA debt</li>
+            <li>Owners in <strong>sectors with strong strategic buyer interest</strong> (IT services, SaaS, health tech) — these buyers have their own capital</li>
+            <li>Businesses with <strong>clean financials, recurring revenue</strong>, and documented management depth</li>
+            <li>Owners who are <strong>2–3 years out</strong> and can address gaps before going to market</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-left">HORIZON M&amp;A ADVISORS · MARKET INTELLIGENCE BRIEF · APRIL 2026</div>
+      <div class="page-footer-right">Page 2 of 4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — VALUATION & STRUCTURE IMPACT
+═════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="section-label">Section Three</div>
+        <div class="section-title">The Valuation &amp; Structure <span class="accent">Impact</span></div>
+      </div>
+      <div class="page-header-firm">Horizon <span>M&amp;A</span> Advisors<br>Market Intelligence Brief · April 2026</div>
+    </div>
+
+    <div class="page-body">
+      <p class="lede">When buyers lose access to leverage, one of two things happens: they lower their offer, or they ask the seller to carry more of the risk. In a tightening SBA environment, owners in the $5–$20M EV range should expect to see both.</p>
+
+      <h3>How Reduced SBA Capacity Affects Valuation</h3>
+      <p>The relationship between available leverage and enterprise value is direct. When buyers can borrow 80–85% of the purchase price at competitive rates, they can bid more aggressively for a business. When that leverage is unavailable or more expensive, the math on what a buyer can responsibly offer changes — and offers come in lower.</p>
+      <p>We have already seen early signals of this dynamic. Following recent SBA rule changes, industry sources have reported lower valuations and longer closing times in the sub-$5M revenue segment most dependent on SBA financing. A 67% funding cut would extend that pressure upmarket.</p>
+
+      <table class="impact-table">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>What Changes</th>
+            <th>Owner Impact</th>
+            <th>Risk Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">Offer Price</td>
+            <td>Buyers who cannot borrow as much lower their bids to maintain return thresholds</td>
+            <td>Potential 10–20% reduction in offers from SBA-dependent buyers</td>
+            <td><span class="badge red">High</span></td>
+          </tr>
+          <tr>
+            <td class="label">Competitive Tension</td>
+            <td>Fewer qualified individual buyers in the process reduces auction dynamics</td>
+            <td>Weakened leverage in negotiation; less pressure on PE/strategic buyers to compete aggressively</td>
+            <td><span class="badge red">High</span></td>
+          </tr>
+          <tr>
+            <td class="label">Seller Notes</td>
+            <td>Financing gaps get filled with seller-carried paper</td>
+            <td>Clean all-cash closes become harder; sellers may carry 10–20% of purchase price</td>
+            <td><span class="badge amber">Moderate</span></td>
+          </tr>
+          <tr>
+            <td class="label">Earnouts</td>
+            <td>Buyers use earnouts to reduce upfront cash required and shift performance risk</td>
+            <td>More of the "headline price" is contingent on future results the seller no longer controls</td>
+            <td><span class="badge amber">Moderate</span></td>
+          </tr>
+          <tr>
+            <td class="label">Closing Timeline</td>
+            <td>Tighter underwriting, more bank scrutiny, longer approval chains</td>
+            <td>SBA-backed closings already +30 days; deeper cuts unlikely to help</td>
+            <td><span class="badge amber">Moderate</span></td>
+          </tr>
+          <tr>
+            <td class="label">Buyer Pool Depth</td>
+            <td>SBA-dependent individual buyers and search funds exit or downsize offers</td>
+            <td>Fewer competitive bids; more negotiating power shifts to remaining buyers</td>
+            <td><span class="badge red">High</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout red">
+        <div class="callout-label">The Assumption Worth Stress-Testing</div>
+        <p>Many lower middle market owners carry an implicit assumption that is worth examining: "When I'm ready to sell, buyers will just get an SBA loan." If that assumption is embedded in your exit timeline or expected valuation, it is now materially riskier than it was 12 months ago.</p>
+      </div>
+
+      <h3>The Private Credit Offset</h3>
+      <p>Private credit funds and non-bank lenders have been expanding aggressively in the lower middle market, offering flexible capital to fill gaps left by traditional bank lending. This is genuine. But private credit comes at a price: higher spreads, tighter covenants, and terms that generally favor the lender over the business being acquired. For a seller, a buyer financing with expensive private credit may be less able to pay a full price than a buyer using low-cost SBA-backed debt. The pool does not disappear — it reprices.</p>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-left">HORIZON M&amp;A ADVISORS · MARKET INTELLIGENCE BRIEF · APRIL 2026</div>
+      <div class="page-footer-right">Page 3 of 4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 4 — WHAT OWNERS SHOULD DO
+═════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="section-label">Section Four</div>
+        <div class="section-title">What Owners Should <span class="accent">Do Now</span></div>
+      </div>
+      <div class="page-header-firm">Horizon <span>M&amp;A</span> Advisors<br>Market Intelligence Brief · April 2026</div>
+    </div>
+
+    <div class="page-body">
+      <p class="lede">None of us controls federal budgets, interest rates, or the political cycle. What owners do control is how prepared they are when policy changes reach the deal table. These four steps are worth considering regardless of your timeline.</p>
+
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-num">1</div>
+          <div class="action-body">
+            <strong>Re-examine your exit timing with fresh assumptions</strong>
+            <p>If your target window is 2–5 years, the calculus may have shifted. Not because a sale should be rushed — it should not — but because the preparation runway that drives outcome quality takes 12–24 months to run properly. Owners who are 2–3 years out have time. Owners who are 12 months out have less margin for error in a tightening credit environment.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-num">2</div>
+          <div class="action-body">
+            <strong>Broaden your mental model of "the buyer"</strong>
+            <p>If you have been picturing an SBA-financed individual buyer as your likely acquirer, expand that picture. PE platform companies, family offices, strategic acquirers, and regional operators with capital do not depend on SBA programs. These buyers are more selective, but they are also better capitalized and can close. The question is whether your business is positioned to attract them.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-num">3</div>
+          <div class="action-body">
+            <strong>Focus on the fundamentals that survive credit tightening</strong>
+            <p>When lenders tighten, buyers get pickier — and the businesses that still attract competitive offers share specific characteristics: <strong>predictable, recurring revenue; clean, auditable financials; documented management depth; and diversified customer concentration.</strong> These factors matter in any market. In a tighter credit environment, they become the difference between a competitive process and a single-offer negotiation.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-num">4</div>
+          <div class="action-body">
+            <strong>Stress-test your expected valuation</strong>
+            <p>The question worth sitting with: "If buyers face higher borrowing costs and a shallower lending market, what does that do to the number I'm expecting?" It is far better to think through that scenario now — with 18–24 months of runway — than in the middle of a live process, when you have already disclosed financials and lost negotiating leverage.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout green">
+        <div class="callout-label">What This Does Not Mean</div>
+        <p>This brief is not an argument that the market is broken or that now is uniquely bad to sell. It is an argument for preparation. Well-prepared businesses with strong fundamentals and the right advisor access will continue to close excellent transactions in this environment. The gap between prepared and unprepared sellers — in any market — is where outcome quality is determined.</p>
+      </div>
+
+      <h3>A Note on Timing and What We Are Watching</h3>
+      <p>The proposed SBA budget cut remains a proposal, subject to Congressional negotiation. Several outcomes are plausible: a full cut, a partial cut, a maintained budget with program-level rule changes, or a continuation of the status quo. Horizon is monitoring this closely. What is already clear — from rule changes that preceded this proposal — is that the direction of travel for small-business credit is tighter, not looser.</p>
+      <p>For owners in the planning window, that trend is worth understanding regardless of how the specific budget negotiation resolves. The structural shift toward private credit as the dominant non-bank financing source for small business acquisitions is already underway.</p>
+
+      <div class="callout navy">
+        <div class="callout-label">The Horizon Perspective</div>
+        <p>Preparation is the only variable a seller fully controls. Our model — valuation benchmarking, gap analysis, buyer research, and CIM development before approaching a single buyer — was designed precisely for markets where the qualified buyer pool is selective. If you are 1–3 years from a potential exit and want an honest read on how your business looks to the buyers who will actually be competing for it, that conversation is worth having now.</p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <div class="page-footer-left">HORIZON M&amp;A ADVISORS · MARKET INTELLIGENCE BRIEF · APRIL 2026</div>
+      <div class="page-footer-right">Page 4 of 4</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     BACK COVER — CTA
+═════════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cta-page">
+    <div class="cta-top">
+      <div class="cta-top-firm">Horizon <span>M&amp;A</span> Advisors</div>
+      <div style="font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:rgba(255,255,255,0.35);">Market Intelligence Brief · April 2026</div>
+    </div>
+
+    <div class="cta-body">
+      <div class="cta-eyebrow">Next Step</div>
+      <div class="cta-headline">Get a straight answer<br>about your <span class="accent">exit readiness</span></div>
+      <div class="cta-sub">A free 30-minute strategy call. No pitch. No pressure. An honest read on what your business is worth, what gaps exist, and what the current market means for your timing.</div>
+      <div class="cta-rule"></div>
+
+      <div class="cta-block">
+        <div class="cta-block-label">Book a Free Strategy Call</div>
+        <h3>Dave Halvorson<br>Horizon M&amp;A Advisors</h3>
+        <p>Sell-side M&amp;A advisory for lower middle market business owners with $10M–$100M in revenue planning an exit in 1–3 years.</p>
+        <div class="cta-contact">
+          <div class="cta-contact-line"><span class="ci-label">Web</span> horizonmaa.com</div>
+          <div class="cta-contact-line"><span class="ci-label">Email</span> dave@horizonmaa.com</div>
+          <div class="cta-contact-line"><span class="ci-label">Phone</span> 408-398-5553</div>
+          <div class="cta-contact-line"><span class="ci-label">Office</span> 51 East Campbell Ave, Suite 400-G, Campbell CA 95008</div>
+        </div>
+      </div>
+
+      <div class="cta-creds">
+        <div class="cta-creds-label">Credentials &amp; Affiliations</div>
+        <div class="cta-creds-row">
+          <div class="cta-cred">500+ Transactions Closed</div>
+          <div class="cta-cred">30+ Years Combined M&amp;A Experience</div>
+          <div class="cta-cred">DRE 01977093 / 02058745</div>
+          <div class="cta-cred">IBBA Member</div>
+          <div class="cta-cred">CABB Member</div>
+          <div class="cta-cred">M&amp;A Source</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-footer">
+      <div class="cta-disclaimer">
+        This market intelligence brief is prepared by Horizon M&amp;A Advisors for informational purposes only. It does not constitute legal, tax, financial, or investment advice. The analysis reflects publicly available information and the professional judgment of the author as of the date of publication. Market conditions change; information cited from third-party sources is believed to be reliable but is not independently verified. Business owners should consult qualified legal, tax, and financial advisors before making any decisions regarding the sale or transfer of a business. Horizon M&amp;A Advisors is a California licensed business brokerage (DRE 01977093 / 02058745). Past transaction results are not a guarantee of future outcomes.
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

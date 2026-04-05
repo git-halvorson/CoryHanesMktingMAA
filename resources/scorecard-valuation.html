@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valuation Readiness Assessment | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --gold:#b8912a; --gold-light:#f2e4c4;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg-row:#f8f9fb;
+      --green-text:#14532d; --green-bg:#f0faf3; --green-border:#166534;
+      --yellow-text:#78350f; --yellow-bg:#fffbeb; --yellow-border:#92400e;
+      --red-text:#7f1d1d; --red-bg:#fff5f5; --red-border:#991b1b;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; padding:40px 20px; font-size:13px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto; box-shadow:0 2px 20px rgba(0,0,0,0.18); }
+    .letterhead { background:var(--navy); }
+    .lh-top { padding:22px 48px 18px; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--gold); }
+    .firm-name { color:#fff; font-size:16px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .firm-name span { color:var(--gold); }
+    .lh-meta { text-align:right; }
+    .lh-meta .confidential { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:2px 8px; display:inline-block; margin-bottom:4px; }
+    .lh-meta .doc-date { display:block; color:rgba(255,255,255,0.5); font-size:11px; }
+    .lh-title { padding:24px 48px 26px; }
+    .lh-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:8px; }
+    .lh-h1 { font-size:26px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:8px; }
+    .lh-h1 .accent { color:var(--gold); }
+    .lh-sub { font-size:12.5px; color:rgba(255,255,255,0.62); max-width:560px; line-height:1.6; }
+    .section-indicator { padding:11px 48px; background:rgba(255,255,255,0.06); border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:6px; align-items:center; }
+    .section-indicator .pip { width:24px; height:4px; border-radius:2px; background:rgba(255,255,255,0.18); }
+    .section-indicator .pip.active { background:var(--gold); }
+    .section-indicator .pip-label { font-size:10px; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; margin-left:8px; }
+    .methodology { border-bottom:1px solid var(--border); padding:13px 48px; background:var(--bg-row); display:flex; align-items:center; gap:32px; }
+    .method-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); white-space:nowrap; flex-shrink:0; }
+    .method-items { display:flex; gap:24px; flex-wrap:wrap; }
+    .method-item { display:flex; align-items:center; gap:7px; font-size:11.5px; font-weight:500; color:var(--text-mid); }
+    .method-swatch { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+    .method-swatch.g { background:var(--green-border); } .method-swatch.y { background:var(--yellow-border); } .method-swatch.r { background:var(--red-border); }
+    .assessment { padding:0 48px 40px; }
+    .factor-block { margin-top:28px; } .factor-block:first-child { margin-top:32px; }
+    .factor-label-row { display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:2px solid var(--navy); }
+    .factor-index { width:22px; height:22px; background:var(--navy); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .factor-name { font-size:13px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--navy); }
+    .criteria-table { width:100%; border-collapse:collapse; border:1px solid var(--border); border-top:none; }
+    .criteria-table th { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:8px 14px; text-align:left; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .criteria-table th:last-child { border-right:none; }
+    .criteria-table th.g { background:var(--green-bg); color:var(--green-text); } .criteria-table th.y { background:var(--yellow-bg); color:var(--yellow-text); } .criteria-table th.r { background:var(--red-bg); color:var(--red-text); }
+    .criteria-table th .pts { font-weight:400; opacity:0.7; font-size:10px; }
+    .criteria-table td { padding:12px 14px; vertical-align:top; font-size:12px; line-height:1.55; color:var(--text-mid); border-right:1px solid var(--border-light); cursor:pointer; transition:background 0.12s; width:33.33%; }
+    .criteria-table td:last-child { border-right:none; } .criteria-table td:hover { background:#f0f4f8; }
+    .criteria-table td.sel-g { background:var(--green-bg); border-left:3px solid var(--green-border); color:var(--green-text); font-weight:500; padding-left:11px; }
+    .criteria-table td.sel-y { background:var(--yellow-bg); border-left:3px solid var(--yellow-border); color:var(--yellow-text); font-weight:500; padding-left:11px; }
+    .criteria-table td.sel-r { background:var(--red-bg); border-left:3px solid var(--red-border); color:var(--red-text); font-weight:500; padding-left:11px; }
+    .score-section { margin:32px 0 0; border:1px solid var(--border); }
+    .score-header { background:var(--navy); padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .score-header span { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+    .score-header .score-live { font-size:20px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
+    .score-header .score-live .denom { font-size:13px; font-weight:400; color:rgba(255,255,255,0.5); }
+    .score-bands-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--border); }
+    .score-band { padding:14px 16px; border-right:1px solid var(--border); } .score-band:last-child { border-right:none; }
+    .score-band .range { font-size:15px; font-weight:800; margin-bottom:5px; }
+    .score-band.g .range { color:var(--green-border); } .score-band.y .range { color:var(--yellow-border); } .score-band.r .range { color:var(--red-border); }
+    .score-band .interp { font-size:11px; color:var(--text-mid); line-height:1.5; }
+    .score-band.active-g { background:var(--green-bg); } .score-band.active-y { background:var(--yellow-bg); } .score-band.active-r { background:var(--red-bg); }
+    .next-step { margin:24px 0 0; padding:16px 20px; border:1px solid var(--gold); background:#fdf8ee; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .next-step p { font-size:12px; color:var(--text-mid); line-height:1.5; } .next-step p strong { color:var(--text); }
+    .next-step a { white-space:nowrap; background:var(--navy); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:0.04em; padding:10px 20px; text-transform:uppercase; flex-shrink:0; }
+    .doc-footer { margin-top:28px; border-top:2px solid var(--navy); padding:14px 48px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .doc-footer .footer-left { font-size:10.5px; color:var(--text-light); line-height:1.6; } .doc-footer .footer-left strong { color:var(--text-mid); }
+    .doc-footer .footer-right { text-align:right; font-size:10.5px; color:var(--text-light); line-height:1.6; flex-shrink:0; }
+    .disclaimer { margin:10px 48px 32px; font-size:9.5px; color:var(--text-light); line-height:1.6; border-top:1px solid var(--border-light); padding-top:10px; }
+    @media print { body { background:white; padding:0; } .page { box-shadow:none; width:100%; } .factor-block { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="letterhead">
+    <div class="lh-top">
+      <div><div class="firm-name">Horizon <span>M&A</span> Advisors</div></div>
+      <div class="lh-meta">
+        <div class="confidential">Confidential</div>
+        <span class="doc-date">Prepared March 2026</span>
+      </div>
+    </div>
+    <div class="lh-title">
+      <div class="lh-eyebrow">Exit Readiness Assessment &nbsp;·&nbsp; Section 6 of 7</div>
+      <div class="lh-h1">Valuation Readiness <span class="accent">Scorecard</span></div>
+      <div class="lh-sub">An assessment of the five factors that determine whether a buyer's offer will reflect the valuation the owner expects — and where gaps in documentation, financial presentation, or business profile are likely to drive multiple compression.</div>
+    </div>
+    <div class="section-indicator">
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip active"></div>
+      <div class="pip"></div>
+      <div class="pip-label">Section 6 — Valuation Readiness</div>
+    </div>
+  </div>
+
+  <div class="methodology">
+    <div class="method-label">Scoring Key</div>
+    <div class="method-items">
+      <div class="method-item"><div class="method-swatch g"></div> Green — Buyer-ready &nbsp;<span style="color:var(--text-light);font-size:11px;">(2 pts)</span></div>
+      <div class="method-item"><div class="method-swatch y"></div> Yellow — Needs attention &nbsp;<span style="color:var(--text-light);font-size:11px;">(1 pt)</span></div>
+      <div class="method-item"><div class="method-swatch r"></div> Red — Significant gap &nbsp;<span style="color:var(--text-light);font-size:11px;">(0 pts)</span></div>
+      <div class="method-item" style="margin-left:8px;color:var(--text-light);font-size:11px;">Click a column to record your rating.</div>
+    </div>
+  </div>
+
+  <div class="assessment">
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">1</div>
+        <div class="factor-name">EBITDA Normalization &amp; Add-Back Documentation</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f1',2,this)">A documented add-back schedule exists with supporting detail for each adjustment — owner compensation above market rate, non-recurring expenses, personal expenses, and one-time items. Each add-back is supportable and consistent across the trailing three years. Buyers' diligence teams can independently verify the normalized EBITDA figure.</td>
+          <td onclick="rate('f1',1,this)">The owner has a clear sense of the normalized EBITDA and the major add-backs, but they have not been formally documented with supporting schedules. The adjustments are legitimate but will require preparation work before they can withstand buyer scrutiny. Some add-backs may be partially verifiable but lack full documentation.</td>
+          <td onclick="rate('f1',0,this)">No documented normalization exists. The owner's expected EBITDA relies on adjustments that have not been identified, quantified, or prepared for presentation. Buyers will reconstruct EBITDA conservatively from the reported financials, and the resulting figure is likely to be meaningfully below the owner's expectation — compounding directly through the purchase multiple.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">2</div>
+        <div class="factor-name">Revenue Quality &amp; Predictability</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f2',2,this)">The majority of revenue is recurring, contractual, or subscription-based with high renewal rates and documented retention history. Revenue is diversified across customers and product lines. Buyers can underwrite the earnings with confidence that the revenue base will persist through a change of ownership without significant attrition.</td>
+          <td onclick="rate('f2',1,this)">Revenue contains a mix of recurring and transactional components. Some portion is project-based or renewal-dependent but without formal contracts. Buyers will apply a discount to transactional revenue and require evidence of renewal patterns before underwriting the full run rate. Revenue concentration in a few customers exists but is not dominant.</td>
+          <td onclick="rate('f2',0,this)">Revenue is primarily transactional, project-driven, or dependent on a small number of customers without long-term contracts. Buyers cannot reliably underwrite the run-rate earnings because revenue is not contractually committed. The business will be valued on conservative assumptions, with earnouts likely required for any value attributed to near-term revenue expectations.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">3</div>
+        <div class="factor-name">Customer Concentration Risk</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f3',2,this)">No single customer represents more than 10% of total revenue. The top five customers collectively represent less than 35% of revenue. Long-term relationships are broad-based and the business is not dependent on any individual customer or contract for its earnings profile. Buyers will apply no concentration discount to the multiple.</td>
+          <td onclick="rate('f3',1,this)">The largest customer represents 10–25% of revenue, or the top three customers represent 40–60% of total revenue. Concentration is present but not dominant. Buyers will note the concentration and may apply modest multiple compression or require representations regarding customer relationship strength and renewal likelihood.</td>
+          <td onclick="rate('f3',0,this)">One customer represents 25% or more of revenue, or a small number of customers collectively represent the majority of the business. Buyers view this as material transition risk: if the relationship does not survive a change of ownership, the underlying earnings are impaired. This level of concentration typically drives significant multiple compression and earnout requirements.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">4</div>
+        <div class="factor-name">Owner Dependency &amp; Transition Risk</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f4',2,this)">The business operates through systems, documented processes, and a management team that functions independently of the owner's day-to-day involvement. Key customer and vendor relationships are held by the company and have been transitioned to staff where appropriate. Buyers can model the business performing at current levels without the owner's active participation post-close.</td>
+          <td onclick="rate('f4',1,this)">Management has meaningful operational capability, but the owner remains the primary relationship holder for one or more key customers, vendors, or revenue drivers. A transition period will be required and buyers will factor transition risk into their offer — typically through earnout structures or extended consulting requirements that defer a portion of the purchase price.</td>
+          <td onclick="rate('f4',0,this)">The business is operationally dependent on the owner. Key customer relationships, operational knowledge, or technical expertise are concentrated in the founder with no clear succession path. Buyers will model a significant probability of performance degradation post-close, resulting in material multiple compression, long earnout periods, and extended post-close employment or consulting requirements.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">5</div>
+        <div class="factor-name">Revenue Growth Trajectory &amp; Market Position</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f5',2,this)">The business has demonstrated consistent revenue growth over the trailing three years, with a defensible market position and clear levers for continued expansion. Growth is organic and supported by the operating model — not dependent on one-time events, abnormal market conditions, or the owner's personal sales activity. Buyers can construct a credible argument for premium multiple positioning.</td>
+          <td onclick="rate('f5',1,this)">Revenue growth has been positive but inconsistent, or the business has demonstrated strong growth in recent periods that may be difficult to sustain. The market position is solid but growth levers are not well-defined or documented. Buyers will model conservative growth assumptions and apply a midpoint multiple rather than premium positioning.</td>
+          <td onclick="rate('f5',0,this)">Revenue is flat or declining, or recent growth is attributable to non-recurring factors that buyers will discount in their underwriting. Market position is unclear or the business operates in a declining segment. Buyers will underwrite the business on a conservative trailing basis and apply the lower end of the industry range — or decline to proceed if the trajectory raises concerns about the underlying business quality.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="score-section">
+      <div class="score-header">
+        <span>Valuation Readiness Score</span>
+        <div class="score-live"><span id="scoreDisplay">—</span><span class="denom"> / 10</span></div>
+      </div>
+      <div class="score-bands-row">
+        <div class="score-band g" id="band-g">
+          <div class="range">8 – 10</div>
+          <div class="interp">Valuation profile is strong. The business is positioned to support a buyer offer at or near the high end of the industry multiple range. Documentation and business characteristics will hold up under diligence scrutiny.</div>
+        </div>
+        <div class="score-band y" id="band-y">
+          <div class="range">5 – 7</div>
+          <div class="interp">Addressable gaps identified. Multiple compression risk exists in one or more factors. With 12–24 months of focused preparation, the business can be repositioned to support a stronger offer. Specific factors identified above are the priority.</div>
+        </div>
+        <div class="score-band r" id="band-r">
+          <div class="range">0 – 4</div>
+          <div class="interp">Material valuation risk present. The gap between the owner's expected valuation and a buyer's likely offer is significant. Structural and operational changes are needed — these take 18–36 months to implement effectively. Beginning now is the right decision.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-step">
+      <p><strong>Understand your valuation gap before a buyer finds it.</strong> A complimentary 30-minute strategy call with Dave Halvorson covers what your business would realistically trade for today, which factors are driving the gap between your expectation and a buyer's likely offer, and what's worth addressing before you engage the market.</p>
+      <a href="https://horizonmaa.com">Schedule a Call</a>
+    </div>
+
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-left">
+      <strong>Horizon M&amp;A Advisors</strong><br>
+      51 East Campbell Avenue, Suite 400-G &nbsp;·&nbsp; Campbell, CA 95008<br>
+      horizonmaa.com &nbsp;·&nbsp; dave@horizonmaa.com &nbsp;·&nbsp; 408-398-5553
+    </div>
+    <div class="footer-right">DRE 01977093 / 02058745<br>IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source</div>
+  </div>
+  <div class="disclaimer">This document is provided for informational purposes only and does not constitute a formal business valuation, investment advice, or an engagement to provide advisory services. All assessments are self-reported by the business owner and are not verified by Horizon M&amp;A Advisors. Business owners should consult a qualified M&amp;A advisor or certified business appraiser before relying on any valuation estimate. Results should not be shared with prospective buyers or used in connection with any transaction without the written consent of Horizon M&amp;A Advisors.</div>
+</div>
+
+<script>
+  const scores = {};
+  function rate(factor, value, cell) {
+    cell.closest('tr').querySelectorAll('td').forEach(td => td.classList.remove('sel-g','sel-y','sel-r'));
+    cell.classList.add(value===2?'sel-g':value===1?'sel-y':'sel-r');
+    scores[factor] = value; updateScore();
+  }
+  function updateScore() {
+    const vals = Object.values(scores), total = vals.reduce((a,b)=>a+b,0), count = vals.length;
+    const el = document.getElementById('scoreDisplay');
+    el.textContent = count > 0 ? total : '—';
+    ['band-g','band-y','band-r'].forEach(id => document.getElementById(id).classList.remove('active-g','active-y','active-r'));
+    if (count === 5) {
+      if (total >= 8) { el.style.color='#86efac'; document.getElementById('band-g').classList.add('active-g'); }
+      else if (total >= 5) { el.style.color='#fde68a'; document.getElementById('band-y').classList.add('active-y'); }
+      else { el.style.color='#fca5a5'; document.getElementById('band-r').classList.add('active-r'); }
+    } else { el.style.color='#fff'; }
+  }
+</script>
+</body>
+</html>

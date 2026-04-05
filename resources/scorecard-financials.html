@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Financials & Recordkeeping Assessment | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --gold:#b8912a; --gold-light:#f2e4c4;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg-row:#f8f9fb;
+      --green-text:#14532d; --green-bg:#f0faf3; --green-border:#166534;
+      --yellow-text:#78350f; --yellow-bg:#fffbeb; --yellow-border:#92400e;
+      --red-text:#7f1d1d; --red-bg:#fff5f5; --red-border:#991b1b;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; padding:40px 20px; font-size:13px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto; box-shadow:0 2px 20px rgba(0,0,0,0.18); }
+    .letterhead { background:var(--navy); }
+    .lh-top { padding:22px 48px 18px; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--gold); }
+    .firm-name { color:#fff; font-size:16px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .firm-name span { color:var(--gold); }
+    .lh-meta { text-align:right; }
+    .lh-meta .confidential { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:2px 8px; display:inline-block; margin-bottom:4px; }
+    .lh-meta .doc-date { display:block; color:rgba(255,255,255,0.5); font-size:11px; }
+    .lh-title { padding:24px 48px 26px; }
+    .lh-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:8px; }
+    .lh-h1 { font-size:26px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:8px; }
+    .lh-h1 .accent { color:var(--gold); }
+    .lh-sub { font-size:12.5px; color:rgba(255,255,255,0.62); max-width:560px; line-height:1.6; }
+    .section-indicator { padding:11px 48px; background:rgba(255,255,255,0.06); border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:6px; align-items:center; }
+    .section-indicator .pip { width:24px; height:4px; border-radius:2px; background:rgba(255,255,255,0.18); }
+    .section-indicator .pip.active { background:var(--gold); }
+    .section-indicator .pip-label { font-size:10px; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; margin-left:8px; }
+    .methodology { border-bottom:1px solid var(--border); padding:13px 48px; background:var(--bg-row); display:flex; align-items:center; gap:32px; }
+    .method-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); white-space:nowrap; flex-shrink:0; }
+    .method-items { display:flex; gap:24px; flex-wrap:wrap; }
+    .method-item { display:flex; align-items:center; gap:7px; font-size:11.5px; font-weight:500; color:var(--text-mid); }
+    .method-swatch { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+    .method-swatch.g { background:var(--green-border); }
+    .method-swatch.y { background:var(--yellow-border); }
+    .method-swatch.r { background:var(--red-border); }
+    .assessment { padding:0 48px 40px; }
+    .factor-block { margin-top:28px; }
+    .factor-block:first-child { margin-top:32px; }
+    .factor-label-row { display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:2px solid var(--navy); }
+    .factor-index { width:22px; height:22px; background:var(--navy); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .factor-name { font-size:13px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--navy); }
+    .criteria-table { width:100%; border-collapse:collapse; border:1px solid var(--border); border-top:none; }
+    .criteria-table th { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:8px 14px; text-align:left; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .criteria-table th:last-child { border-right:none; }
+    .criteria-table th.g { background:var(--green-bg); color:var(--green-text); }
+    .criteria-table th.y { background:var(--yellow-bg); color:var(--yellow-text); }
+    .criteria-table th.r { background:var(--red-bg); color:var(--red-text); }
+    .criteria-table th .pts { font-weight:400; opacity:0.7; font-size:10px; }
+    .criteria-table td { padding:12px 14px; vertical-align:top; font-size:12px; line-height:1.55; color:var(--text-mid); border-right:1px solid var(--border-light); cursor:pointer; transition:background 0.12s; width:33.33%; }
+    .criteria-table td:last-child { border-right:none; }
+    .criteria-table td:hover { background:#f0f4f8; }
+    .criteria-table td.sel-g { background:var(--green-bg); border-left:3px solid var(--green-border); color:var(--green-text); font-weight:500; padding-left:11px; }
+    .criteria-table td.sel-y { background:var(--yellow-bg); border-left:3px solid var(--yellow-border); color:var(--yellow-text); font-weight:500; padding-left:11px; }
+    .criteria-table td.sel-r { background:var(--red-bg); border-left:3px solid var(--red-border); color:var(--red-text); font-weight:500; padding-left:11px; }
+    .score-section { margin:32px 0 0; border:1px solid var(--border); }
+    .score-header { background:var(--navy); padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .score-header span { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+    .score-header .score-live { font-size:20px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
+    .score-header .score-live .denom { font-size:13px; font-weight:400; color:rgba(255,255,255,0.5); }
+    .score-bands-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--border); }
+    .score-band { padding:14px 16px; border-right:1px solid var(--border); }
+    .score-band:last-child { border-right:none; }
+    .score-band .range { font-size:15px; font-weight:800; margin-bottom:5px; letter-spacing:-0.01em; }
+    .score-band.g .range { color:var(--green-border); }
+    .score-band.y .range { color:var(--yellow-border); }
+    .score-band.r .range { color:var(--red-border); }
+    .score-band .interp { font-size:11px; color:var(--text-mid); line-height:1.5; }
+    .score-band.active-g { background:var(--green-bg); }
+    .score-band.active-y { background:var(--yellow-bg); }
+    .score-band.active-r { background:var(--red-bg); }
+    .next-step { margin:24px 0 0; padding:16px 20px; border:1px solid var(--gold); background:#fdf8ee; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .next-step p { font-size:12px; color:var(--text-mid); line-height:1.5; }
+    .next-step p strong { color:var(--text); }
+    .next-step a { white-space:nowrap; background:var(--navy); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:0.04em; padding:10px 20px; text-transform:uppercase; flex-shrink:0; }
+    .doc-footer { margin-top:28px; border-top:2px solid var(--navy); padding:14px 48px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .doc-footer .footer-left { font-size:10.5px; color:var(--text-light); line-height:1.6; }
+    .doc-footer .footer-left strong { color:var(--text-mid); }
+    .doc-footer .footer-right { text-align:right; font-size:10.5px; color:var(--text-light); line-height:1.6; flex-shrink:0; }
+    .disclaimer { margin:10px 48px 32px; font-size:9.5px; color:var(--text-light); line-height:1.6; border-top:1px solid var(--border-light); padding-top:10px; }
+    @media print { body { background:white; padding:0; } .page { box-shadow:none; width:100%; } .factor-block { break-inside:avoid; } .score-section { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="letterhead">
+    <div class="lh-top">
+      <div><div class="firm-name">Horizon <span>M&A</span> Advisors</div></div>
+      <div class="lh-meta">
+        <div class="confidential">Confidential</div>
+        <span class="doc-date">Prepared March 2026</span>
+      </div>
+    </div>
+    <div class="lh-title">
+      <div class="lh-eyebrow">Exit Readiness Assessment &nbsp;·&nbsp; Section 1 of 5</div>
+      <div class="lh-h1">Financials &amp; Recordkeeping <span class="accent">Scorecard</span></div>
+      <div class="lh-sub">An assessment of the five financial documentation factors that determine whether buyers can underwrite your business with confidence — and whether your records will support the valuation you expect.</div>
+    </div>
+    <div class="section-indicator">
+      <div class="pip active"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip-label">Section 1 — Financials &amp; Recordkeeping</div>
+    </div>
+  </div>
+
+  <div class="methodology">
+    <div class="method-label">Scoring Key</div>
+    <div class="method-items">
+      <div class="method-item"><div class="method-swatch g"></div> Green — Buyer-ready &nbsp;<span style="color:var(--text-light);font-size:11px;">(2 pts)</span></div>
+      <div class="method-item"><div class="method-swatch y"></div> Yellow — Needs attention &nbsp;<span style="color:var(--text-light);font-size:11px;">(1 pt)</span></div>
+      <div class="method-item"><div class="method-swatch r"></div> Red — Significant gap &nbsp;<span style="color:var(--text-light);font-size:11px;">(0 pts)</span></div>
+      <div class="method-item" style="margin-left:8px;color:var(--text-light);font-size:11px;">Click a column to record your rating.</div>
+    </div>
+  </div>
+
+  <div class="assessment">
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">1</div>
+        <div class="factor-name">Financial Statement Quality</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f1',2,this)">Three or more years of CPA-reviewed or audited financial statements are available, prepared on a consistent basis. Statements are free of material errors and will withstand review by a buyer's financial advisors without requiring restatement.</td>
+          <td onclick="rate('f1',1,this)">CPA-prepared statements exist but are compiled rather than reviewed or audited. Some inconsistencies in accounting treatment may be present and will require explanation during diligence. Buyers will proceed but with additional scrutiny.</td>
+          <td onclick="rate('f1',0,this)">Financial statements are internally prepared, incomplete, or inconsistently maintained. Buyers and their advisors will not be able to rely on these records without independent verification, materially extending the diligence timeline and increasing deal risk.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">2</div>
+        <div class="factor-name">EBITDA Normalization</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f2',2,this)">Owner compensation add-backs, personal expenses, and one-time items are fully documented with supporting schedules. A normalized EBITDA bridge is prepared and defensible in buyer conversations. Add-backs are conservative and substantiated.</td>
+          <td onclick="rate('f2',1,this)">Add-backs exist and are directionally accurate but are not formally documented with supporting schedules. Buyers will require additional detail during diligence, and some adjustments may be contested without clear substantiation.</td>
+          <td onclick="rate('f2',0,this)">No formal normalization has been performed. Owner add-backs are embedded in the financials without documentation. Buyers will construct their own view of normalized EBITDA, which will typically be less favorable than the owner's own assessment.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">3</div>
+        <div class="factor-name">Historical Financial Availability</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f3',2,this)">Five years of complete financial history is available — P&L, balance sheet, and cash flow statement — prepared on a consistent basis. The trailing twelve months are current within 60 days. Historical trends are explainable and consistent.</td>
+          <td onclick="rate('f3',1,this)">Three years of financial history are available, but records prior to that are incomplete or unavailable. The TTM may lag by more than 60 days. Some year-over-year variances require explanation that is not yet documented.</td>
+          <td onclick="rate('f3',0,this)">Fewer than three years of reliable financial history exist, or records are in disarray. Buyers will be unable to establish a credible trend line, which directly impairs their ability to underwrite the business and support a defensible valuation.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">4</div>
+        <div class="factor-name">Working Capital Documentation</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f4',2,this)">Working capital requirements are understood and documented. Seasonal patterns are identified and explained. AR aging, AP terms, and inventory levels are tracked and current. A normal working capital peg can be defined and supported for negotiation purposes.</td>
+          <td onclick="rate('f4',1,this)">Working capital is managed operationally but is not formally documented for transaction purposes. The owner understands the cash cycle but has not prepared a working capital analysis that could withstand buyer scrutiny or support a negotiated peg.</td>
+          <td onclick="rate('f4',0,this)">Working capital requirements have not been analyzed in the context of a transaction. AR aging may be stale, inventory may be unvalued, or cash conversion cycles are not understood in sufficient detail to negotiate working capital adjustments at closing.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">5</div>
+        <div class="factor-name">Financial Reporting Systems</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f5',2,this)">The business uses a recognized accounting system with a clean chart of accounts and consistent month-end close procedures. Financial reporting does not depend on the owner and can be maintained by any qualified accounting professional post-close.</td>
+          <td onclick="rate('f5',1,this)">Accounting software is in use but the chart of accounts is disorganized, the close process is inconsistent, or the bookkeeper relies on owner judgment to classify certain items. The system works but would require remediation before a buyer would rely on it.</td>
+          <td onclick="rate('f5',0,this)">Financial reporting is informal — spreadsheets, cash-basis records, or owner-managed accounts. The system is not scalable, not transferable, and will create material friction in any institutional diligence process.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="score-section">
+      <div class="score-header">
+        <span>Financials &amp; Recordkeeping Assessment Score</span>
+        <div class="score-live"><span id="scoreDisplay">—</span><span class="denom"> / 10</span></div>
+      </div>
+      <div class="score-bands-row">
+        <div class="score-band g" id="band-g">
+          <div class="range">8 – 10</div>
+          <div class="interp">Financial records are buyer-ready. Will support a clean diligence process and substantiate the valuation presented in the CIM.</div>
+        </div>
+        <div class="score-band y" id="band-y">
+          <div class="range">5 – 7</div>
+          <div class="interp">Material gaps identified. A 6–18 month preparation effort — including CPA review, normalization schedules, and system cleanup — will significantly improve diligence readiness.</div>
+        </div>
+        <div class="score-band r" id="band-r">
+          <div class="range">0 – 4</div>
+          <div class="interp">Significant deficiencies present. Financial records in their current state will impair buyer confidence and undermine valuation. Begin remediation immediately.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-step">
+      <p><strong>Discuss your results with an advisor.</strong> A complimentary 30-minute strategy call with Dave Halvorson will provide a professional assessment of your financial readiness, identify the highest-priority remediation steps, and outline a preparation timeline before you engage any buyer.</p>
+      <a href="https://horizonmaa.com">Schedule a Call</a>
+    </div>
+
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-left">
+      <strong>Horizon M&amp;A Advisors</strong><br>
+      51 East Campbell Avenue, Suite 400-G &nbsp;·&nbsp; Campbell, CA 95008<br>
+      horizonmaa.com &nbsp;·&nbsp; dave@horizonmaa.com &nbsp;·&nbsp; 408-398-5553
+    </div>
+    <div class="footer-right">
+      DRE 01977093 / 02058745<br>
+      IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source
+    </div>
+  </div>
+  <div class="disclaimer">
+    This document is provided for informational purposes only and does not constitute a formal valuation, opinion of value, or engagement to provide advisory services. All assessments are self-reported by the business owner and are not verified by Horizon M&amp;A Advisors. Results are intended to support internal exit planning and should not be shared with prospective buyers or used in connection with any transaction without the written consent of Horizon M&amp;A Advisors.
+  </div>
+</div>
+
+<script>
+  const scores = {};
+  function rate(factor, value, cell) {
+    cell.closest('tr').querySelectorAll('td').forEach(td => td.classList.remove('sel-g','sel-y','sel-r'));
+    cell.classList.add(value===2?'sel-g':value===1?'sel-y':'sel-r');
+    scores[factor] = value;
+    updateScore();
+  }
+  function updateScore() {
+    const vals = Object.values(scores), total = vals.reduce((a,b)=>a+b,0), count = vals.length;
+    const el = document.getElementById('scoreDisplay');
+    el.textContent = count > 0 ? total : '—';
+    ['band-g','band-y','band-r'].forEach(id => document.getElementById(id).classList.remove('active-g','active-y','active-r'));
+    if (count === 5) {
+      if (total >= 8) { el.style.color='#86efac'; document.getElementById('band-g').classList.add('active-g'); }
+      else if (total >= 5) { el.style.color='#fde68a'; document.getElementById('band-y').classList.add('active-y'); }
+      else { el.style.color='#fca5a5'; document.getElementById('band-r').classList.add('active-r'); }
+    } else { el.style.color='#fff'; }
+  }
+</script>
+</body>
+</html>

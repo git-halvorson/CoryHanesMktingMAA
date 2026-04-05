@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EBITDA Normalization Worksheet | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --gold:#b8912a; --gold-light:#f2e4c4; --gold-pale:#fdf8ee;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg-row:#f8f9fb;
+      --green-text:#14532d; --green-bg:#f0faf3; --green-border:#166534;
+      --red-text:#7f1d1d; --red-bg:#fff5f5; --red-border:#991b1b;
+      --amber-bg:#fffbeb; --amber-text:#78350f; --amber-border:#d97706;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; padding:40px 20px; font-size:13px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto; box-shadow:0 2px 20px rgba(0,0,0,0.18); }
+
+    /* ── LETTERHEAD ── */
+    .letterhead { background:var(--navy); }
+    .lh-top { padding:22px 48px 18px; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--gold); }
+    .firm-name { color:#fff; font-size:16px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .firm-name span { color:var(--gold); }
+    .lh-meta { text-align:right; }
+    .lh-meta .confidential { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:2px 8px; display:inline-block; margin-bottom:4px; }
+    .lh-meta .doc-date { display:block; color:rgba(255,255,255,0.5); font-size:11px; }
+    .lh-title { padding:24px 48px 26px; }
+    .lh-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:8px; }
+    .lh-h1 { font-size:26px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:8px; }
+    .lh-h1 .accent { color:var(--gold); }
+    .lh-sub { font-size:12.5px; color:rgba(255,255,255,0.62); max-width:600px; line-height:1.6; }
+    .lh-disclaimer { margin-top:10px; font-size:10.5px; color:rgba(255,255,255,0.35); font-style:italic; }
+
+    /* ── BODY ── */
+    .body { padding:32px 48px 40px; }
+
+    /* ── SECTION HEADERS ── */
+    .section-hd { display:flex; align-items:center; gap:12px; padding:8px 0 10px; border-bottom:2px solid var(--navy); margin-bottom:18px; margin-top:32px; }
+    .section-hd:first-child { margin-top:0; }
+    .section-num { width:22px; height:22px; background:var(--navy); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .section-title { font-size:12.5px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; color:var(--navy); }
+    .section-sub { font-size:11.5px; color:var(--text-light); font-style:italic; margin-left:auto; }
+
+    /* ── INPUTS ── */
+    .input-field { border:1px solid var(--border); padding:8px 12px; font-size:13px; font-family:inherit; color:var(--text); outline:none; width:100%; transition:border-color 0.15s; background:#fff; }
+    .input-field:focus { border-color:var(--navy); }
+    .input-field.currency { text-align:right; font-variant-numeric:tabular-nums; }
+    select.input-field { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b7280' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; padding-right:28px; cursor:pointer; }
+
+    /* ── OVERVIEW GRID ── */
+    .overview-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
+    .ov-item label { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--text-mid); margin-bottom:5px; }
+    .ov-item .input-note { font-size:11px; color:var(--text-light); margin-top:4px; }
+
+    /* ── 3-YEAR TABLE ── */
+    .yr-table { width:100%; border-collapse:collapse; margin-bottom:6px; }
+    .yr-table th { background:var(--navy); color:#fff; font-size:10.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:9px 14px; text-align:left; border-right:1px solid rgba(255,255,255,0.1); }
+    .yr-table th:not(:first-child) { text-align:right; }
+    .yr-table th:last-child { border-right:none; background:#1e4080; }
+    .yr-table td { padding:0; border-bottom:1px solid var(--border-light); border-right:1px solid var(--border-light); vertical-align:middle; }
+    .yr-table td:last-child { border-right:none; background:#f0f4fa; }
+    .yr-table td:first-child { padding:9px 14px; font-size:12.5px; font-weight:600; color:var(--navy); background:#f8f9fb; border-right:1px solid var(--border); }
+    .yr-table td .input-field { border:none; border-left:none; border-radius:0; background:transparent; padding:9px 14px; }
+    .yr-table td .input-field:focus { background:#eff6ff; }
+    .yr-table tr.calc-row td { background:#f0f4fa; }
+    .yr-table tr.calc-row td:first-child { background:#e8edf5; font-weight:700; color:var(--navy); }
+    .yr-table tr.calc-row td .calc-val { padding:9px 14px; text-align:right; font-size:13px; font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; display:block; }
+    .yr-table tr.total-row td { background:var(--navy); }
+    .yr-table tr.total-row td:first-child { background:var(--navy-mid); color:#fff; font-weight:800; }
+    .yr-table tr.total-row td .calc-val { color:var(--gold); font-size:14px; font-weight:800; }
+    .yr-note { font-size:11px; color:var(--text-light); line-height:1.55; margin-top:6px; }
+
+    /* ── ADD-BACK TABLE ── */
+    .ab-table { width:100%; border-collapse:collapse; margin-bottom:6px; }
+    .ab-table thead th { background:var(--navy); color:#fff; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:8px 14px; text-align:left; border-right:1px solid rgba(255,255,255,0.1); }
+    .ab-table thead th.amt-col { text-align:right; width:160px; border-right:none; }
+    .ab-table tbody td { padding:0; border-bottom:1px solid var(--border-light); vertical-align:middle; }
+    .ab-table tbody td.line-label { padding:10px 14px; font-size:12.5px; color:var(--text-mid); border-right:1px solid var(--border-light); width:55%; }
+    .ab-table tbody td.line-label strong { display:block; font-size:12.5px; font-weight:600; color:var(--navy); margin-bottom:2px; }
+    .ab-table tbody td.line-label .hint { font-size:11px; color:var(--text-light); line-height:1.45; }
+    .ab-table tbody td.amt-input { width:160px; border-right:none; }
+    .ab-table tbody td.amt-input .input-field { border:none; text-align:right; padding:9px 14px; font-variant-numeric:tabular-nums; }
+    .ab-table tbody tr:nth-child(even) td { background:var(--bg-row); }
+    .ab-table tbody tr:nth-child(even) td.amt-input .input-field { background:var(--bg-row); }
+    .ab-table tfoot td { padding:10px 14px; background:var(--navy); color:#fff; font-size:12px; font-weight:700; }
+    .ab-table tfoot td.subtotal-val { text-align:right; font-size:14px; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; }
+
+    /* ── OWNER COMP SPECIAL ── */
+    .owner-comp-card { border:1px solid var(--border); margin-bottom:6px; }
+    .occ-head { background:#f0f4fa; padding:10px 14px; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:var(--navy); border-bottom:1px solid var(--border); }
+    .occ-grid { display:grid; grid-template-columns:1fr 1fr; }
+    .occ-col { padding:14px 16px; border-right:1px solid var(--border-light); }
+    .occ-col:last-child { border-right:none; }
+    .occ-col label { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--text-mid); margin-bottom:6px; }
+    .occ-col .hint { font-size:11px; color:var(--text-light); margin-top:5px; line-height:1.45; }
+    .occ-result { padding:12px 16px; border-top:1px solid var(--border); background:var(--bg-row); display:flex; justify-content:space-between; align-items:center; }
+    .occ-result-label { font-size:12px; font-weight:700; color:var(--navy); }
+    .occ-result-val { font-size:14px; font-weight:800; color:var(--navy); font-variant-numeric:tabular-nums; }
+    .occ-note { padding:10px 16px 12px; border-top:1px solid var(--border-light); font-size:11px; color:var(--text-light); line-height:1.55; background:#fff; }
+
+    /* ── RELATED-PARTY RENT ── */
+    .rp-card { border:1px solid var(--border); margin-bottom:6px; }
+    .rp-grid { display:grid; grid-template-columns:1fr 1fr 1fr; }
+    .rp-col { padding:12px 14px; border-right:1px solid var(--border-light); }
+    .rp-col:last-child { border-right:none; background:#f0f4fa; }
+    .rp-col label { display:block; font-size:10.5px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; color:var(--text-mid); margin-bottom:6px; }
+    .rp-col .hint { font-size:11px; color:var(--text-light); margin-top:4px; }
+    .rp-col .calc-val { font-size:14px; font-weight:800; color:var(--navy); font-variant-numeric:tabular-nums; padding-top:4px; }
+
+    /* ── RUNNING TOTAL BANNER ── */
+    .running-total { background:var(--navy); border:none; padding:12px 20px; display:flex; align-items:center; justify-content:space-between; margin:24px 0 4px; }
+    .rt-label { font-size:10.5px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.55); }
+    .rt-value { font-size:20px; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; letter-spacing:-0.01em; }
+
+    /* ── EBITDA BRIDGE ── */
+    .bridge-table { width:100%; border-collapse:collapse; margin:20px 0; }
+    .bridge-table td { padding:9px 16px; border-bottom:1px solid var(--border-light); font-size:13px; font-variant-numeric:tabular-nums; }
+    .bridge-table td:first-child { color:var(--text-mid); width:70%; }
+    .bridge-table td:last-child { text-align:right; font-weight:600; color:var(--navy); }
+    .bridge-table tr.addbk td { background:var(--green-bg); }
+    .bridge-table tr.addbk td:first-child { color:var(--green-text); padding-left:28px; }
+    .bridge-table tr.addbk td:last-child { color:var(--green-text); }
+    .bridge-table tr.subtotal td { background:#f0f4fa; font-weight:700; border-top:2px solid var(--border); border-bottom:2px solid var(--border); }
+    .bridge-table tr.subtotal td:first-child { color:var(--navy); font-weight:700; }
+    .bridge-table tr.grand-total td { background:var(--navy); font-weight:800; font-size:14px; }
+    .bridge-table tr.grand-total td:first-child { color:#fff; }
+    .bridge-table tr.grand-total td:last-child { color:var(--gold); font-size:16px; }
+    .bridge-table tr.metric td { background:var(--bg-row); }
+    .bridge-table tr.metric td:first-child { color:var(--text-light); font-style:italic; padding-left:28px; font-size:12px; }
+    .bridge-table tr.metric td:last-child { color:var(--text-mid); font-size:12px; font-weight:500; }
+
+    /* ── MULTIPLE / EV SECTION ── */
+    .multiple-table { width:100%; border-collapse:collapse; border:1px solid var(--border); font-size:12px; margin-bottom:4px; }
+    .multiple-table thead tr { background:var(--navy); }
+    .multiple-table thead th { color:#fff; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:8px 12px; text-align:left; border-right:1px solid rgba(255,255,255,0.12); }
+    .multiple-table thead th:last-child { border-right:none; text-align:center; }
+    .multiple-table tbody td { padding:9px 12px; border-bottom:1px solid var(--border-light); border-right:1px solid var(--border-light); color:var(--text-mid); }
+    .multiple-table tbody td:last-child { border-right:none; text-align:center; }
+    .multiple-table tbody tr:last-child td { border-bottom:none; }
+    .multiple-table tbody tr:nth-child(even) td { background:var(--bg-row); }
+    .multiple-table td.industry { font-weight:600; color:var(--navy); }
+    .multiple-table td.range { font-weight:700; color:var(--navy); font-variant-numeric:tabular-nums; }
+    .multiple-table tr.active-row td { background:#f0f4fa !important; border-left:3px solid var(--navy); }
+    .multiple-table tr.active-row td:first-child { padding-left:9px; }
+
+    /* ── RESULTS PANEL ── */
+    .results-panel { border:1px solid var(--border); margin-top:20px; }
+    .results-header { background:var(--navy); padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .results-header span { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+    .results-body { display:grid; grid-template-columns:1fr 1fr 1fr; }
+    .result-col { padding:18px 20px; border-right:1px solid var(--border); }
+    .result-col:last-child { border-right:none; }
+    .result-col-label { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-light); margin-bottom:8px; }
+    .result-value { font-size:26px; font-weight:800; letter-spacing:-0.02em; color:var(--navy); font-variant-numeric:tabular-nums; line-height:1; }
+    .result-value.low { color:#6b7280; }
+    .result-value.high { color:var(--green-border); }
+    .result-note { font-size:11px; color:var(--text-light); margin-top:5px; line-height:1.5; }
+    .result-pending { font-size:18px; font-weight:700; color:rgba(100,116,139,0.35); }
+    .results-footnote { padding:12px 20px; background:var(--bg-row); border-top:1px solid var(--border); font-size:11px; color:var(--text-light); line-height:1.6; }
+
+    /* ── CALLOUT ── */
+    .callout { padding:14px 18px; margin:16px 0; }
+    .callout.amber { background:var(--amber-bg); border-left:4px solid var(--amber-border); }
+    .callout.amber .cl-label { font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--amber-text); margin-bottom:6px; }
+    .callout.amber p { font-size:12px; color:var(--amber-text); line-height:1.6; margin-bottom:0; }
+    .callout.navy { background:var(--navy); border-left:4px solid var(--gold); }
+    .callout.navy .cl-label { font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .callout.navy p { font-size:12px; color:rgba(255,255,255,0.72); line-height:1.6; margin-bottom:0; }
+    .callout.green { background:var(--green-bg); border-left:4px solid var(--green-border); }
+    .callout.green .cl-label { font-size:9.5px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--green-text); margin-bottom:6px; }
+    .callout.green p { font-size:12px; color:var(--green-text); line-height:1.6; margin-bottom:0; }
+
+    /* ── NEXT STEP ── */
+    .next-step { margin:24px 0 0; padding:16px 20px; border:1px solid var(--gold); background:var(--gold-pale); display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .next-step p { font-size:12px; color:var(--text-mid); line-height:1.5; }
+    .next-step p strong { color:var(--text); }
+    .next-step a { white-space:nowrap; background:var(--navy); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:0.04em; padding:10px 20px; text-transform:uppercase; flex-shrink:0; }
+
+    /* ── FOOTER ── */
+    .doc-footer { margin-top:28px; border-top:2px solid var(--navy); padding:14px 48px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .doc-footer .footer-left { font-size:10.5px; color:var(--text-light); line-height:1.6; }
+    .doc-footer .footer-right { text-align:right; font-size:10.5px; color:var(--text-light); line-height:1.6; flex-shrink:0; }
+    .disclaimer { margin:10px 48px 32px; font-size:9.5px; color:var(--text-light); line-height:1.6; border-top:1px solid var(--border-light); padding-top:10px; }
+
+    @media print { body { background:white; padding:0; } .page { box-shadow:none; width:100%; } }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- LETTERHEAD -->
+  <div class="letterhead">
+    <div class="lh-top">
+      <div class="firm-name">Horizon <span>M&amp;A</span> Advisors</div>
+      <div class="lh-meta">
+        <div class="confidential">Working Document</div>
+        <span class="doc-date">Not for distribution · For owner use only</span>
+      </div>
+    </div>
+    <div class="lh-title">
+      <div class="lh-eyebrow">Exit Preparation Series · Lower Middle Market</div>
+      <div class="lh-h1">EBITDA <span class="accent">Normalization</span> Worksheet</div>
+      <div class="lh-sub">Walk through every add-back category — owner compensation, personal expenses, one-time items, and related-party adjustments — to arrive at the normalized EBITDA number buyers will actually underwrite.</div>
+      <div class="lh-disclaimer">This worksheet produces an estimate for planning purposes. Buyers and their advisors will conduct their own Quality of Earnings analysis. A financial advisor or CPA should review your final figures before any deal process.</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ═══════════════════════════════════════
+         SECTION 1 — BUSINESS OVERVIEW
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">1</div>
+      <div class="section-title">Business Overview</div>
+    </div>
+
+    <div class="overview-grid" style="margin-bottom:18px;">
+      <div class="ov-item">
+        <label for="co-name">Company Name <span style="font-weight:400;color:var(--text-light)">(optional)</span></label>
+        <input type="text" id="co-name" class="input-field" placeholder="Your business name">
+      </div>
+      <div class="ov-item">
+        <label for="industry-select">Industry</label>
+        <select id="industry-select" class="input-field" onchange="calcEV()">
+          <option value="">— Select industry —</option>
+          <option value="saas">SaaS / Software</option>
+          <option value="it">IT Services / MSP</option>
+          <option value="healthtech">Health Tech / Digital Health</option>
+          <option value="mfg">Manufacturing / Industrial</option>
+          <option value="distrib">Distribution / Wholesale</option>
+          <option value="bizsvcs">Business Services</option>
+          <option value="healthcare">Healthcare Services</option>
+          <option value="construction">Specialty Contracting / Construction</option>
+          <option value="solar">Solar EPC / Clean Energy</option>
+          <option value="other">Other / General Business</option>
+        </select>
+      </div>
+      <div class="ov-item">
+        <label for="fiscal-yr">Most Recent Fiscal Year End</label>
+        <input type="text" id="fiscal-yr" class="input-field" placeholder="e.g., Dec 31, 2025">
+      </div>
+    </div>
+
+    <!-- 3-Year Revenue -->
+    <table class="yr-table">
+      <thead>
+        <tr>
+          <th style="width:34%">Line Item</th>
+          <th>Year −2</th>
+          <th>Year −1</th>
+          <th>LTM / Most Recent</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Revenue</td>
+          <td><input type="text" class="input-field currency" id="rev-2" placeholder="$0" oninput="calcAll()"></td>
+          <td><input type="text" class="input-field currency" id="rev-1" placeholder="$0" oninput="calcAll()"></td>
+          <td><input type="text" class="input-field currency" id="rev-0" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td>Stated Net Income (after tax)</td>
+          <td><input type="text" class="input-field currency" id="ni-2" placeholder="$0" oninput="calcAll()"></td>
+          <td><input type="text" class="input-field currency" id="ni-1" placeholder="$0" oninput="calcAll()"></td>
+          <td><input type="text" class="input-field currency" id="ni-0" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="yr-note">Enter figures from your P&amp;L or tax returns. Use your most recent 12-month period as "LTM." Year −1 and Year −2 provide the trend buyers will examine.</p>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 2 — STEP TO EBITDA
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">2</div>
+      <div class="section-title">Step 1 — From Net Income to Stated EBITDA <span style="font-weight:400;text-transform:none;font-size:11px;letter-spacing:0">(LTM only)</span></div>
+      <div class="section-sub">Skip if you already know your EBITDA</div>
+    </div>
+
+    <div class="callout amber">
+      <div class="cl-label">What Is EBITDA?</div>
+      <p>EBITDA stands for Earnings Before Interest, Taxes, Depreciation, and Amortization. It is the starting point for M&amp;A valuation because it approximates operating cash flow before financing and accounting decisions. If your CPA has already given you an EBITDA figure, enter it directly in Section 3 and skip this section.</p>
+    </div>
+
+    <table class="ab-table" style="margin-bottom:18px;">
+      <thead>
+        <tr>
+          <th>Add-Back</th>
+          <th class="amt-col">LTM Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="line-label">
+            <strong>Interest Expense</strong>
+            <span class="hint">Net interest paid on business debt (from P&amp;L or Schedule C)</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-interest" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Income Tax Expense</strong>
+            <span class="hint">State and federal income taxes shown on P&amp;L (not payroll taxes)</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-tax" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Depreciation</strong>
+            <span class="hint">From your depreciation schedule or tax return (Form 4562)</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-depr" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Amortization</strong>
+            <span class="hint">Amortization of intangibles, customer lists, non-competes, etc.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-amort" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Stated EBITDA (Net Income + ITDA add-backs)</td>
+          <td class="subtotal-val" id="stated-ebitda-display">—</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p class="yr-note" style="margin-bottom:4px;">Or enter your EBITDA directly if known:</p>
+    <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;align-items:center;margin-bottom:8px;">
+      <div>
+        <label style="display:block;font-size:10.5px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-mid);margin-bottom:5px;">Override: Enter EBITDA Directly</label>
+        <input type="text" id="ebitda-override" class="input-field currency" placeholder="$0 — overrides calculated value above" oninput="calcAll()">
+      </div>
+      <p style="font-size:11px;color:var(--text-light);line-height:1.5;">If you enter a value here, it replaces the Net Income + ITDA calculation above as the starting point for normalization add-backs. Leave blank to use the calculated figure.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 3 — OWNER COMPENSATION
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">3</div>
+      <div class="section-title">Owner &amp; Related-Party Compensation Add-Backs</div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;">The most significant and most commonly misunderstood normalization adjustment. Buyers add back the difference between what you actually pay yourself and what a market-rate replacement CEO/GM would cost. If you underpay yourself, there may be no add-back — or even a negative adjustment.</p>
+
+    <div class="owner-comp-card">
+      <div class="occ-head">Owner #1 — Primary Owner / Operating Principal</div>
+      <div class="occ-grid">
+        <div class="occ-col">
+          <label for="owner-actual">Owner's Total Annual Compensation</label>
+          <input type="text" id="owner-actual" class="input-field currency" placeholder="$0" oninput="calcOwnerComp()">
+          <div class="hint">Include: W-2 salary + owner distributions taken as compensation + auto allowance + health insurance premiums paid by the business + any other personal benefits. Do <em>not</em> include returns on investment or rent paid to you separately.</div>
+        </div>
+        <div class="occ-col">
+          <label for="owner-market">Market-Rate Replacement Salary</label>
+          <input type="text" id="owner-market" class="input-field currency" placeholder="$0" oninput="calcOwnerComp()">
+          <div class="hint">What would a hired CEO, President, or General Manager cost to perform your operational role? For businesses under $20M revenue, typically $150K–$300K. Use industry salary data or ask your advisor.</div>
+        </div>
+      </div>
+      <div class="occ-result">
+        <span class="occ-result-label">Owner #1 Compensation Add-Back (Actual − Market Replacement)</span>
+        <span class="occ-result-val" id="owner-comp-ab">—</span>
+      </div>
+      <div class="occ-note">If this number is negative, your stated compensation is <em>below</em> market rate. Buyers will treat this as an expense they would need to fund post-close — a multiple compression factor, not an add-back.</div>
+    </div>
+
+    <div class="owner-comp-card" style="margin-top:10px;">
+      <div class="occ-head">Owner #2 / Additional Owner (if applicable)</div>
+      <div class="occ-grid">
+        <div class="occ-col">
+          <label for="owner2-actual">Owner #2 Total Annual Compensation</label>
+          <input type="text" id="owner2-actual" class="input-field currency" placeholder="$0" oninput="calcOwnerComp()">
+          <div class="hint">Same methodology — total all-in comp including distributions and benefits.</div>
+        </div>
+        <div class="occ-col">
+          <label for="owner2-market">Market-Rate Replacement Salary</label>
+          <input type="text" id="owner2-market" class="input-field currency" placeholder="$0" oninput="calcOwnerComp()">
+          <div class="hint">What role does Owner #2 perform? What would that role cost on the open market?</div>
+        </div>
+      </div>
+      <div class="occ-result">
+        <span class="occ-result-label">Owner #2 Compensation Add-Back</span>
+        <span class="occ-result-val" id="owner2-comp-ab">—</span>
+      </div>
+    </div>
+
+    <!-- Family member compensation -->
+    <table class="ab-table" style="margin-top:10px;">
+      <thead>
+        <tr>
+          <th>Family / Related-Party Employee Compensation Add-Backs</th>
+          <th class="amt-col">Add-Back Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="line-label">
+            <strong>Family Member #1 on Payroll</strong>
+            <span class="hint">Enter the amount by which their actual compensation exceeds what you'd pay an unrelated employee in that role. If at market rate, enter $0.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-fam1" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Family Member #2 on Payroll</strong>
+            <span class="hint">Same methodology — above-market compensation amount only.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-fam2" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 4 — PERSONAL EXPENSES
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">4</div>
+      <div class="section-title">Personal Expenses Run Through the Business</div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;">Expenses that benefit you personally but are recorded as business expenses. These are legitimate add-backs — but be honest. Buyers' Quality of Earnings teams will scrutinize these line items carefully. Only include expenses that would not continue under a new owner.</p>
+
+    <table class="ab-table">
+      <thead>
+        <tr>
+          <th>Personal Expense Category</th>
+          <th class="amt-col">Annual Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="line-label">
+            <strong>Personal Vehicle</strong>
+            <span class="hint">Auto lease payments, depreciation on owner's personal vehicle, fuel, insurance — amounts attributable to personal use</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-auto" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Owner Health, Life &amp; Disability Insurance</strong>
+            <span class="hint">Premiums paid by the business for owner's personal insurance policies (not employee group health plan)</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-ins" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Personal Travel &amp; Entertainment</strong>
+            <span class="hint">Vacations, personal meals, sporting events, entertainment charged to the business that are not genuinely business-development related</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-travel" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Club Memberships &amp; Dues</strong>
+            <span class="hint">Country club, golf club, professional associations the owner would personally retain. Include the full amount if non-business-essential.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-club" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Personal Cell Phone &amp; Devices</strong>
+            <span class="hint">Personal mobile plans, tablets, home tech equipment paid through the business</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-phone" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Home Office / Personal Real Estate Expenses</strong>
+            <span class="hint">Utilities, internet, or home expenses allocated to the business beyond a legitimate pro-rata office use allocation</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-homeoffice" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Other Personal Expenses</strong>
+            <span class="hint">Any other personal expenses not captured above — charitable contributions, personal subscriptions, non-business gifts</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-personal-other" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Subtotal — Personal Expenses</td>
+          <td class="subtotal-val" id="personal-subtotal">—</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 5 — ONE-TIME ITEMS
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">5</div>
+      <div class="section-title">One-Time &amp; Non-Recurring Items</div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;">Expenses that hit the P&amp;L in the period but are genuinely non-recurring — they would not occur in a normalized year of operations. Buyers are skeptical of this category and will probe each item. Document every add-back with invoices or clear explanations.</p>
+
+    <div class="callout amber">
+      <div class="cl-label">Buyer Scrutiny Warning</div>
+      <p>One-time add-backs are the most frequently challenged category in a Quality of Earnings. Buyers and their QoE advisors will ask for backup documentation on every item. Avoid overstating this category — overly aggressive one-time add-backs destroy credibility at exactly the wrong moment in a process.</p>
+    </div>
+
+    <table class="ab-table">
+      <thead>
+        <tr>
+          <th>One-Time Item</th>
+          <th class="amt-col">Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="line-label">
+            <strong>Legal Fees — Non-Recurring Litigation or Transactions</strong>
+            <span class="hint">Attorney fees for a one-time dispute, settlement, or corporate restructuring. Ongoing legal expenses are NOT addable.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-legal" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Severance &amp; Restructuring Costs</strong>
+            <span class="hint">One-time severance payments, workforce restructuring, or plant/office closures not expected to recur</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-severance" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Lease Termination / Relocation Expenses</strong>
+            <span class="hint">Penalties, moving costs, or write-offs associated with a specific lease termination or office relocation</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-lease" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Non-Recurring Consulting / Advisory Fees</strong>
+            <span class="hint">Special project consultants, one-time advisory engagements, or M&amp;A preparation costs not part of normal operations</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-consulting" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Capital Expenditures Expensed (not capitalized)</strong>
+            <span class="hint">Equipment or improvements that were immediately expensed under Section 179 or bonus depreciation rather than capitalized. Add back if truly non-recurring infrastructure investment.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-capex" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>COVID / Pandemic-Related One-Time Costs</strong>
+            <span class="hint">PPE purchases, sanitation, temporary facility changes. Note: PPP loan forgiveness income should be excluded from revenue, not added back here.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-covid" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Litigation Settlement / Damages Paid</strong>
+            <span class="hint">One-time settlement payment or damages award. Only add back if clearly non-recurring and fully resolved.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-litigation" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Other One-Time Items</strong>
+            <span class="hint">Any other non-recurring expense with clear documentation and rationale</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-onetime-other" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Subtotal — One-Time Items</td>
+          <td class="subtotal-val" id="onetime-subtotal">—</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 6 — RELATED-PARTY ADJUSTMENTS
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">6</div>
+      <div class="section-title">Related-Party &amp; Rent Adjustments</div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;">If the business leases space from an entity you own, or transacts with vendors where you have a personal relationship, buyers will normalize these to market rates. This can be an add-back <em>or</em> an expense increase, depending on whether you charge above or below market.</p>
+
+    <!-- Related-party rent -->
+    <div class="rp-card" style="margin-bottom:10px;">
+      <div style="background:#f0f4fa;padding:9px 14px;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--navy);border-bottom:1px solid var(--border);">Real Estate — Rent Paid to Owner-Owned Entity</div>
+      <div class="rp-grid">
+        <div class="rp-col">
+          <label for="rent-actual">Actual Annual Rent Paid</label>
+          <input type="text" id="rent-actual" class="input-field currency" placeholder="$0" oninput="calcRent()">
+          <div class="hint">Total rent paid to the landlord entity you own</div>
+        </div>
+        <div class="rp-col">
+          <label for="rent-market">Market-Rate Annual Rent</label>
+          <input type="text" id="rent-market" class="input-field currency" placeholder="$0" oninput="calcRent()">
+          <div class="hint">What would a comparable space lease for at arm's length? Get a market comp if uncertain.</div>
+        </div>
+        <div class="rp-col">
+          <label>Rent Adjustment (Actual − Market)</label>
+          <div class="calc-val" id="rent-adj">—</div>
+          <div class="hint">Positive = you charge above market (add-back). Negative = you charge below market (expense increase buyers will apply).</div>
+        </div>
+      </div>
+    </div>
+
+    <table class="ab-table">
+      <thead>
+        <tr>
+          <th>Other Related-Party Adjustments</th>
+          <th class="amt-col">Adjustment Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="line-label">
+            <strong>Related-Party Vendor Pricing (Above Market)</strong>
+            <span class="hint">If you purchase from a vendor where you or a family member has an ownership interest, and the pricing is above market, buyers will normalize this downward. Enter the above-market premium as a positive number.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-rp-vendor" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Pro-Forma: New Contracts / Revenue Not in Full-Year Run Rate</strong>
+            <span class="hint">Revenue from contracts signed mid-year that will contribute full-year in the forward period. Buyers will heavily scrutinize — include only if signed, not projected.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-proforma-rev" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Pro-Forma: Eliminated Expenses (Confirmed)</strong>
+            <span class="hint">Expenses that have already been eliminated (role eliminated, contract terminated) but were in the LTM period. Must be already actioned — not planned.</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-proforma-exp" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+        <tr>
+          <td class="line-label">
+            <strong>Other Adjustments</strong>
+            <span class="hint">Any other normalization adjustment not captured above</span>
+          </td>
+          <td class="amt-input"><input type="text" class="input-field currency" id="ab-other" placeholder="$0" oninput="calcAll()"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Subtotal — Related-Party &amp; Other Adjustments</td>
+          <td class="subtotal-val" id="other-subtotal">—</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- ═══════════════════════════════════════
+         RUNNING TOTAL
+    ════════════════════════════════════════════ -->
+    <div class="running-total">
+      <span class="rt-label">Total Add-Backs (All Categories)</span>
+      <span class="rt-value" id="total-addbacks-display">—</span>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 7 — NORMALIZED EBITDA BRIDGE
+    ════════════════════════════════════════════ -->
+    <div class="section-hd" style="margin-top:20px;">
+      <div class="section-num">7</div>
+      <div class="section-title">Normalized EBITDA Bridge Summary</div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;">This table shows the full walk from your stated financials to normalized EBITDA — the number a buyer's deal team will start with when building their valuation model.</p>
+
+    <table class="bridge-table">
+      <tbody>
+        <tr>
+          <td>Stated Net Income (LTM)</td>
+          <td id="br-ni">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ Interest Expense</td>
+          <td id="br-interest">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ Income Tax Expense</td>
+          <td id="br-tax">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ Depreciation &amp; Amortization</td>
+          <td id="br-da">—</td>
+        </tr>
+        <tr class="subtotal">
+          <td>= Stated EBITDA</td>
+          <td id="br-stated-ebitda">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ Owner Compensation Add-Back (net of replacement cost)</td>
+          <td id="br-owner-comp">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ Personal Expenses</td>
+          <td id="br-personal">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ One-Time &amp; Non-Recurring Items</td>
+          <td id="br-onetime">—</td>
+        </tr>
+        <tr class="addbk">
+          <td>+ Related-Party &amp; Other Adjustments</td>
+          <td id="br-other">—</td>
+        </tr>
+        <tr class="grand-total">
+          <td>= Normalized EBITDA</td>
+          <td id="br-normalized">—</td>
+        </tr>
+        <tr class="metric">
+          <td>Total Add-Backs</td>
+          <td id="br-total-addbacks">—</td>
+        </tr>
+        <tr class="metric">
+          <td>Add-Backs as % of Stated EBITDA</td>
+          <td id="br-addback-pct">—</td>
+        </tr>
+        <tr class="metric">
+          <td>EBITDA Margin (Normalized / Revenue)</td>
+          <td id="br-margin">—</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout navy">
+      <div class="cl-label">What Buyers Will Do With This Number</div>
+      <p>A buyer's Quality of Earnings advisor will conduct their own analysis of your add-backs. Items with clean documentation — invoices, payroll records, tax returns — survive scrutiny. Items without backup tend to be partially or fully disallowed. The goal of this worksheet is to help you identify and document your add-backs before a buyer's team does it for you — when you have less leverage to defend them.</p>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         SECTION 8 — ENTERPRISE VALUE RANGE
+    ════════════════════════════════════════════ -->
+    <div class="section-hd">
+      <div class="section-num">8</div>
+      <div class="section-title">Enterprise Value Range</div>
+      <div class="section-sub">Select your industry above to activate</div>
+    </div>
+
+    <p style="font-size:12.5px;color:var(--text-mid);line-height:1.65;margin-bottom:14px;">EBITDA multiples vary significantly by industry, size, growth rate, and business-specific risk factors. The ranges below reflect lower middle market transactions ($2M–$15M EBITDA). Your specific multiple will depend on revenue quality, customer concentration, owner dependency, and growth trajectory.</p>
+
+    <table class="multiple-table">
+      <thead>
+        <tr>
+          <th>Industry</th>
+          <th>Typical Multiple Range (LMM)</th>
+          <th>Key Multiple Drivers</th>
+          <th style="width:80px">Select</th>
+        </tr>
+      </thead>
+      <tbody id="multiple-tbody">
+        <tr data-ind="saas" data-low="6" data-mid="8" data-high="11">
+          <td class="industry">SaaS / Software</td>
+          <td class="range">6x – 11x</td>
+          <td>ARR quality, churn rate, NRR, growth rate</td>
+          <td></td>
+        </tr>
+        <tr data-ind="it" data-low="5" data-mid="7" data-high="9">
+          <td class="industry">IT Services / MSP</td>
+          <td class="range">5x – 9x</td>
+          <td>MRR vs. project revenue mix, customer tenure, technician depth</td>
+          <td></td>
+        </tr>
+        <tr data-ind="healthtech" data-low="6" data-mid="8.5" data-high="12">
+          <td class="industry">Health Tech / Digital Health</td>
+          <td class="range">6x – 12x</td>
+          <td>Regulatory positioning, payer relationships, clinical validation</td>
+          <td></td>
+        </tr>
+        <tr data-ind="mfg" data-low="4" data-mid="5.5" data-high="7">
+          <td class="industry">Manufacturing / Industrial</td>
+          <td class="range">4x – 7x</td>
+          <td>Proprietary product vs. contract, customer concentration, capex needs</td>
+          <td></td>
+        </tr>
+        <tr data-ind="distrib" data-low="3.5" data-mid="5" data-high="6.5">
+          <td class="industry">Distribution / Wholesale</td>
+          <td class="range">3.5x – 6.5x</td>
+          <td>Exclusive supplier relationships, private label mix, margin profile</td>
+          <td></td>
+        </tr>
+        <tr data-ind="bizsvcs" data-low="4" data-mid="6" data-high="8">
+          <td class="industry">Business Services</td>
+          <td class="range">4x – 8x</td>
+          <td>Recurring vs. transactional revenue, contract length, owner dependency</td>
+          <td></td>
+        </tr>
+        <tr data-ind="healthcare" data-low="5" data-mid="7" data-high="10">
+          <td class="industry">Healthcare Services</td>
+          <td class="range">5x – 10x</td>
+          <td>Payer mix, licensure, census/volume trends, compliance posture</td>
+          <td></td>
+        </tr>
+        <tr data-ind="construction" data-low="3" data-mid="4.5" data-high="6">
+          <td class="industry">Specialty Contracting</td>
+          <td class="range">3x – 6x</td>
+          <td>Backlog, license portability, key person risk, bonding capacity</td>
+          <td></td>
+        </tr>
+        <tr data-ind="solar" data-low="4" data-mid="6" data-high="8">
+          <td class="industry">Solar EPC / Clean Energy</td>
+          <td class="range">4x – 8x</td>
+          <td>Pipeline visibility, ITC/IRA exposure, project type mix, crew depth</td>
+          <td></td>
+        </tr>
+        <tr data-ind="other" data-low="3.5" data-mid="5" data-high="7">
+          <td class="industry">Other / General Business</td>
+          <td class="range">3.5x – 7x</td>
+          <td>Varies widely by business model, customer mix, and growth profile</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- RESULTS PANEL -->
+    <div class="results-panel">
+      <div class="results-header">
+        <span>Estimated Enterprise Value Range — Based on Normalized EBITDA</span>
+        <span id="ev-industry-label" style="color:rgba(255,255,255,0.5);font-size:11px;">Select industry and complete worksheet to calculate</span>
+      </div>
+      <div class="results-body">
+        <div class="result-col">
+          <div class="result-col-label">Low Estimate</div>
+          <div class="result-value low" id="ev-low"><span class="result-pending">—</span></div>
+          <div class="result-note" id="ev-low-note">Low end of multiple range</div>
+        </div>
+        <div class="result-col">
+          <div class="result-col-label">Mid Estimate</div>
+          <div class="result-value" id="ev-mid"><span class="result-pending">—</span></div>
+          <div class="result-note" id="ev-mid-note">Midpoint multiple</div>
+        </div>
+        <div class="result-col">
+          <div class="result-col-label">High Estimate</div>
+          <div class="result-value high" id="ev-high"><span class="result-pending">—</span></div>
+          <div class="result-note" id="ev-high-note">Top of range — strong fundamentals required</div>
+        </div>
+      </div>
+      <div class="results-footnote">
+        <strong>Important:</strong> These ranges represent enterprise value — the total value of the business before deducting debt and adding excess cash. Your personal proceeds at closing will also be affected by working capital adjustments, escrow holdbacks, transaction fees, and deal structure terms (seller notes, earnouts). See <em>The Deal Behind the Deal</em> guide for more on how enterprise value translates to the check you receive at close.
+      </div>
+    </div>
+
+    <div class="callout green" style="margin-top:16px;">
+      <div class="cl-label">The Gap That Matters Most</div>
+      <p>The difference between the Low and High estimates is almost always larger than owners expect — often $1M–$5M or more on a typical lower middle market business. That gap is not random. It is determined by specific, addressable factors: revenue quality, customer concentration, owner dependency, growth trajectory, and financial documentation. These are precisely the gaps Horizon identifies in a pre-market preparation engagement — before a buyer's team finds them in diligence.</p>
+    </div>
+
+    <!-- NEXT STEP -->
+    <div class="next-step">
+      <p><strong>Ready to see what your number actually looks like to a buyer?</strong><br>
+      Book a free 30-minute strategy call. We will walk through your specific situation — what your normalized EBITDA looks like, which factors affect your multiple, and what preparation steps would move you toward the high end of the range.</p>
+      <a href="https://horizonmaa.com">Book a Free Call →</a>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+      <div class="footer-left">
+        <strong>Dave Halvorson · Horizon M&amp;A Advisors</strong><br>
+        Intel-sponsored graduate engineering coursework, Stanford University · MBA, Santa Clara University<br>
+        51 East Campbell Ave, Suite 400-G, Campbell CA 95008 · DRE 01977093 / 02058745
+      </div>
+      <div class="footer-right">
+        dave@horizonmaa.com<br>
+        408-398-5553<br>
+        horizonmaa.com
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    This worksheet is provided by Horizon M&amp;A Advisors for planning and educational purposes only. It does not constitute financial, legal, tax, or investment advice, and does not represent a formal valuation of your business. Normalized EBITDA figures and enterprise value estimates are based on information you provide and general industry benchmarks; actual buyer valuations will differ based on diligence findings, market conditions, and deal-specific factors. Buyers and their Quality of Earnings advisors will conduct independent analysis. Consult qualified financial and legal advisors before making any decisions regarding the sale of your business. Past transaction results are not a guarantee of future outcomes. Horizon M&amp;A Advisors is a licensed California business brokerage (DRE 01977093 / 02058745). IBBA · CABB · M&amp;A Source.
+  </div>
+
+</div><!-- /page -->
+
+<script>
+  // ── UTILITIES ──────────────────────────────────────────
+  function parseVal(id) {
+    const el = document.getElementById(id);
+    if (!el) return 0;
+    const v = el.value.replace(/[$,\s]/g,'');
+    const n = parseFloat(v);
+    return isNaN(n) ? 0 : n;
+  }
+
+  function fmt(n) {
+    if (n === 0 || isNaN(n)) return '—';
+    const abs = Math.abs(n);
+    let s;
+    if (abs >= 1000000) s = '$' + (abs / 1000000).toFixed(2).replace(/\.?0+$/, '') + 'M';
+    else if (abs >= 1000) s = '$' + abs.toLocaleString('en-US', {maximumFractionDigits: 0});
+    else s = '$' + abs.toFixed(0);
+    return n < 0 ? '(' + s + ')' : s;
+  }
+
+  function fmtLarge(n) {
+    if (!n || isNaN(n) || n === 0) return '<span class="result-pending">—</span>';
+    const abs = Math.abs(n);
+    let s;
+    if (abs >= 1000000) s = '$' + (abs / 1000000).toFixed(1).replace(/\.?0+$/, '') + 'M';
+    else s = '$' + abs.toLocaleString('en-US', {maximumFractionDigits: 0});
+    return n < 0 ? '(' + s + ')' : s;
+  }
+
+  function setText(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = val;
+  }
+
+  // ── OWNER COMP ─────────────────────────────────────────
+  function calcOwnerComp() {
+    const act1  = parseVal('owner-actual');
+    const mkt1  = parseVal('owner-market');
+    const ab1   = Math.max(0, act1 - mkt1);
+    setText('owner-comp-ab', act1 === 0 ? '—' : fmt(ab1));
+
+    const act2  = parseVal('owner2-actual');
+    const mkt2  = parseVal('owner2-market');
+    const ab2   = Math.max(0, act2 - mkt2);
+    setText('owner2-comp-ab', act2 === 0 ? '—' : fmt(ab2));
+
+    calcAll();
+  }
+
+  // ── RENT ADJUSTMENT ───────────────────────────────────
+  function calcRent() {
+    const actual = parseVal('rent-actual');
+    const market = parseVal('rent-market');
+    const adj = actual - market;
+    const el = document.getElementById('rent-adj');
+    if (!el) return;
+    if (actual === 0 && market === 0) { el.textContent = '—'; el.style.color = ''; }
+    else if (adj > 0)  { el.textContent = fmt(adj) + ' (add-back)';   el.style.color = 'var(--green-text)'; }
+    else if (adj < 0)  { el.textContent = fmt(Math.abs(adj)) + ' (below market — expense increase)'; el.style.color = 'var(--red-text)'; }
+    else               { el.textContent = '$0 — at market rate'; el.style.color = 'var(--text-light)'; }
+    calcAll();
+  }
+
+  // ── MAIN CALC ─────────────────────────────────────────
+  function calcAll() {
+    // === STATED EBITDA ===
+    const ni      = parseVal('ni-0');
+    const interest= parseVal('ab-interest');
+    const tax     = parseVal('ab-tax');
+    const depr    = parseVal('ab-depr');
+    const amort   = parseVal('ab-amort');
+    const itdaSum = interest + tax + depr + amort;
+    const calcEbitda = ni + itdaSum;
+
+    const override = parseVal('ebitda-override');
+    const statedEbitda = override !== 0 ? override : (ni !== 0 || itdaSum !== 0 ? calcEbitda : 0);
+
+    setText('stated-ebitda-display', ni !== 0 || itdaSum !== 0 || override !== 0 ? fmt(statedEbitda) : '—');
+
+    // === OWNER COMP ===
+    const act1 = parseVal('owner-actual');
+    const mkt1 = parseVal('owner-market');
+    const ownerAb1 = Math.max(0, act1 - mkt1);
+    const act2 = parseVal('owner2-actual');
+    const mkt2 = parseVal('owner2-market');
+    const ownerAb2 = Math.max(0, act2 - mkt2);
+    const fam1 = parseVal('ab-fam1');
+    const fam2 = parseVal('ab-fam2');
+    const totalOwnerComp = ownerAb1 + ownerAb2 + fam1 + fam2;
+
+    // === PERSONAL EXPENSES ===
+    const personalIds = ['ab-auto','ab-ins','ab-travel','ab-club','ab-phone','ab-homeoffice','ab-personal-other'];
+    const personalSum = personalIds.reduce((s, id) => s + parseVal(id), 0);
+    setText('personal-subtotal', personalSum > 0 ? fmt(personalSum) : '—');
+
+    // === ONE-TIME ===
+    const onetimeIds = ['ab-legal','ab-severance','ab-lease','ab-consulting','ab-capex','ab-covid','ab-litigation','ab-onetime-other'];
+    const onetimeSum = onetimeIds.reduce((s, id) => s + parseVal(id), 0);
+    setText('onetime-subtotal', onetimeSum > 0 ? fmt(onetimeSum) : '—');
+
+    // === OTHER / RELATED-PARTY ===
+    const rentActual = parseVal('rent-actual');
+    const rentMarket = parseVal('rent-market');
+    const rentAdj    = (rentActual !== 0 || rentMarket !== 0) ? (rentActual - rentMarket) : 0;
+    const otherIds   = ['ab-rp-vendor','ab-proforma-rev','ab-proforma-exp','ab-other'];
+    const otherSum   = otherIds.reduce((s, id) => s + parseVal(id), 0) + rentAdj;
+    setText('other-subtotal', otherSum !== 0 ? fmt(otherSum) : '—');
+
+    // === TOTALS ===
+    const totalAddbacks = totalOwnerComp + personalSum + onetimeSum + otherSum;
+    const normalizedEbitda = statedEbitda + totalAddbacks;
+
+    setText('total-addbacks-display', totalAddbacks !== 0 ? fmt(totalAddbacks) : '—');
+
+    // === BRIDGE ===
+    const rev0 = parseVal('rev-0');
+    setText('br-ni',            ni !== 0 ? fmt(ni) : '—');
+    setText('br-interest',      interest !== 0 ? fmt(interest) : '—');
+    setText('br-tax',           tax !== 0 ? fmt(tax) : '—');
+    setText('br-da',            (depr + amort) !== 0 ? fmt(depr + amort) : '—');
+    setText('br-stated-ebitda', statedEbitda !== 0 ? fmt(statedEbitda) : '—');
+    setText('br-owner-comp',    totalOwnerComp !== 0 ? fmt(totalOwnerComp) : '—');
+    setText('br-personal',      personalSum !== 0 ? fmt(personalSum) : '—');
+    setText('br-onetime',       onetimeSum !== 0 ? fmt(onetimeSum) : '—');
+    setText('br-other',         otherSum !== 0 ? fmt(otherSum) : '—');
+    setText('br-normalized',    normalizedEbitda !== 0 ? fmt(normalizedEbitda) : '—');
+    setText('br-total-addbacks',totalAddbacks !== 0 ? fmt(totalAddbacks) : '—');
+
+    if (statedEbitda !== 0 && totalAddbacks !== 0) {
+      const pct = (totalAddbacks / statedEbitda * 100).toFixed(1);
+      setText('br-addback-pct', pct + '%');
+    } else {
+      setText('br-addback-pct', '—');
+    }
+
+    if (normalizedEbitda !== 0 && rev0 !== 0) {
+      const margin = (normalizedEbitda / rev0 * 100).toFixed(1);
+      setText('br-margin', margin + '%');
+    } else {
+      setText('br-margin', '—');
+    }
+
+    // === EV CALC ===
+    calcEV(normalizedEbitda);
+  }
+
+  // ── EV CALCULATION ────────────────────────────────────
+  const MULTIPLES = {
+    saas:        { low: 6,   mid: 8,    high: 11,  label: 'SaaS / Software' },
+    it:          { low: 5,   mid: 7,    high: 9,   label: 'IT Services / MSP' },
+    healthtech:  { low: 6,   mid: 8.5,  high: 12,  label: 'Health Tech / Digital Health' },
+    mfg:         { low: 4,   mid: 5.5,  high: 7,   label: 'Manufacturing / Industrial' },
+    distrib:     { low: 3.5, mid: 5,    high: 6.5, label: 'Distribution / Wholesale' },
+    bizsvcs:     { low: 4,   mid: 6,    high: 8,   label: 'Business Services' },
+    healthcare:  { low: 5,   mid: 7,    high: 10,  label: 'Healthcare Services' },
+    construction:{ low: 3,   mid: 4.5,  high: 6,   label: 'Specialty Contracting' },
+    solar:       { low: 4,   mid: 6,    high: 8,   label: 'Solar EPC / Clean Energy' },
+    other:       { low: 3.5, mid: 5,    high: 7,   label: 'Other / General Business' }
+  };
+
+  function calcEV(normalizedOverride) {
+    const ind = document.getElementById('industry-select').value;
+    const ni0 = parseVal('ni-0');
+    const statedEbitda = parseVal('ebitda-override') || (ni0 + parseVal('ab-interest') + parseVal('ab-tax') + parseVal('ab-depr') + parseVal('ab-amort'));
+
+    const personalSum = ['ab-auto','ab-ins','ab-travel','ab-club','ab-phone','ab-homeoffice','ab-personal-other'].reduce((s,id)=>s+parseVal(id),0);
+    const onetimeSum  = ['ab-legal','ab-severance','ab-lease','ab-consulting','ab-capex','ab-covid','ab-litigation','ab-onetime-other'].reduce((s,id)=>s+parseVal(id),0);
+    const otherSum    = ['ab-rp-vendor','ab-proforma-rev','ab-proforma-exp','ab-other'].reduce((s,id)=>s+parseVal(id),0)
+                        + (parseVal('rent-actual') - parseVal('rent-market'));
+    const ownerAb     = Math.max(0, parseVal('owner-actual') - parseVal('owner-market'))
+                        + Math.max(0, parseVal('owner2-actual') - parseVal('owner2-market'))
+                        + parseVal('ab-fam1') + parseVal('ab-fam2');
+    const totalAb = ownerAb + personalSum + onetimeSum + otherSum;
+    const normEbitda = typeof normalizedOverride === 'number' ? normalizedOverride : statedEbitda + totalAb;
+
+    // highlight active row
+    document.querySelectorAll('#multiple-tbody tr').forEach(tr => {
+      tr.classList.toggle('active-row', tr.dataset.ind === ind);
+    });
+
+    if (!ind || normEbitda <= 0) {
+      setText('ev-low',  '<span class="result-pending">—</span>');
+      setText('ev-mid',  '<span class="result-pending">—</span>');
+      setText('ev-high', '<span class="result-pending">—</span>');
+      setText('ev-low-note',  'Low end of multiple range');
+      setText('ev-mid-note',  'Midpoint multiple');
+      setText('ev-high-note', 'Top of range — strong fundamentals required');
+      setText('ev-industry-label', 'Select industry and complete worksheet to calculate');
+      return;
+    }
+
+    const m = MULTIPLES[ind];
+    const evLow  = normEbitda * m.low;
+    const evMid  = normEbitda * m.mid;
+    const evHigh = normEbitda * m.high;
+
+    setText('ev-low',  fmtLarge(evLow));
+    setText('ev-mid',  fmtLarge(evMid));
+    setText('ev-high', fmtLarge(evHigh));
+    setText('ev-low-note',  m.low + 'x Normalized EBITDA of ' + fmt(normEbitda));
+    setText('ev-mid-note',  m.mid + 'x Normalized EBITDA of ' + fmt(normEbitda));
+    setText('ev-high-note', m.high + 'x Normalized EBITDA of ' + fmt(normEbitda));
+    setText('ev-industry-label', m.label + ' · Normalized EBITDA: ' + fmt(normEbitda));
+  }
+
+  // init
+  document.getElementById('industry-select').addEventListener('change', calcAll);
+</script>
+</body>
+</html>

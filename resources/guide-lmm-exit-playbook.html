@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The LMM Exit Playbook | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --navy-light:#1e4080;
+      --gold:#b8912a; --gold-light:#f2e4c4; --gold-pale:#fdf8ee;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg:#f7f8fb;
+      --red-bg:#fff5f5; --red-text:#7f1d1d; --red-border:#991b1b;
+      --green-bg:#f0faf3; --green-text:#14532d; --green-border:#166534;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; font-size:13px; line-height:1.6; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto 40px; box-shadow:0 2px 24px rgba(0,0,0,0.15); position:relative; }
+
+    /* ── COVER PAGE ── */
+    .cover { background:var(--navy); min-height:1056px; display:flex; flex-direction:column; justify-content:space-between; page-break-after:always; }
+    .cover-top { padding:48px 56px 0; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:3px solid var(--gold); padding-bottom:24px; }
+    .cover-firm { color:#fff; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; }
+    .cover-firm span { color:var(--gold); }
+    .cover-confid { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:3px 10px; }
+    .cover-body { padding:80px 56px 0; flex:1; }
+    .cover-eyebrow { font-size:11px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:20px; }
+    .cover-title { font-size:52px; font-weight:800; color:#fff; letter-spacing:-0.03em; line-height:1.05; margin-bottom:24px; }
+    .cover-title .accent { color:var(--gold); }
+    .cover-subtitle { font-size:18px; color:rgba(255,255,255,0.65); line-height:1.55; max-width:560px; margin-bottom:48px; font-weight:400; }
+    .cover-rule { width:64px; height:3px; background:var(--gold); margin-bottom:40px; }
+    .cover-desc { font-size:14px; color:rgba(255,255,255,0.55); line-height:1.7; max-width:540px; }
+    .cover-timeline { display:flex; gap:0; margin-top:56px; border-top:1px solid rgba(255,255,255,0.1); padding-top:36px; }
+    .cover-stage { flex:1; padding:0 20px 0 0; border-right:1px solid rgba(255,255,255,0.08); }
+    .cover-stage:last-child { border-right:none; padding-right:0; }
+    .cover-stage-label { font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .cover-stage-name { font-size:13px; font-weight:600; color:rgba(255,255,255,0.8); line-height:1.3; }
+    .cover-footer { padding:32px 56px; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; }
+    .cover-footer-left { font-size:11px; color:rgba(255,255,255,0.35); line-height:1.7; }
+    .cover-footer-right { font-size:11px; color:rgba(255,255,255,0.35); text-align:right; }
+
+    /* ── TOC PAGE ── */
+    .toc-page { padding:56px; min-height:1056px; page-break-after:always; }
+    .toc-header { border-bottom:2px solid var(--navy); padding-bottom:16px; margin-bottom:36px; display:flex; justify-content:space-between; align-items:baseline; }
+    .toc-header h2 { font-size:22px; font-weight:800; color:var(--navy); letter-spacing:-0.02em; }
+    .toc-header span { font-size:11px; color:var(--text-light); font-weight:600; letter-spacing:0.06em; text-transform:uppercase; }
+    .toc-intro { font-size:14px; color:var(--text-mid); line-height:1.7; max-width:620px; margin-bottom:40px; }
+    .toc-list { display:flex; flex-direction:column; gap:0; border:1px solid var(--border); }
+    .toc-item { display:grid; grid-template-columns:48px 1fr auto; align-items:center; border-bottom:1px solid var(--border-light); }
+    .toc-item:last-child { border-bottom:none; }
+    .toc-item.section-header { background:var(--navy); }
+    .toc-num { background:var(--navy); color:var(--gold); font-size:13px; font-weight:800; padding:16px 0; text-align:center; display:flex; align-items:center; justify-content:center; align-self:stretch; }
+    .toc-item.section-header .toc-num { background:rgba(255,255,255,0.08); }
+    .toc-content { padding:14px 18px; }
+    .toc-content strong { display:block; font-size:13.5px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+    .toc-item.section-header .toc-content strong { color:#fff; }
+    .toc-content span { font-size:12px; color:var(--text-light); line-height:1.4; }
+    .toc-item.section-header .toc-content span { color:rgba(255,255,255,0.5); }
+    .toc-page-num { padding:14px 18px; font-size:12px; font-weight:700; color:var(--text-light); white-space:nowrap; }
+    .toc-item.section-header .toc-page-num { color:rgba(255,255,255,0.4); }
+    .toc-note { margin-top:36px; padding:16px 20px; background:var(--gold-pale); border:1px solid var(--gold-light); }
+    .toc-note p { font-size:12.5px; color:var(--text-mid); line-height:1.65; }
+    .toc-note strong { color:var(--text); }
+
+    /* ── INTERIOR PAGES ── */
+    .interior-page { min-height:1056px; page-break-after:always; display:flex; flex-direction:column; }
+    .interior-page:last-child { page-break-after:auto; }
+
+    /* page header */
+    .page-header { background:var(--navy); padding:20px 48px; display:flex; justify-content:space-between; align-items:center; border-bottom:3px solid var(--gold); flex-shrink:0; }
+    .page-header-left .stage-label { font-size:9px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:4px; }
+    .page-header-left .stage-title { font-size:18px; font-weight:800; color:#fff; letter-spacing:-0.01em; }
+    .page-header-left .stage-title .accent { color:var(--gold); }
+    .timeline-dots { display:flex; gap:6px; align-items:center; }
+    .timeline-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.2); }
+    .timeline-dot.active { background:var(--gold); width:28px; border-radius:5px; }
+    .timeline-dot.done { background:rgba(184,145,42,0.4); }
+
+    /* page body */
+    .page-body { padding:36px 48px 40px; flex:1; }
+
+    /* section opener */
+    .section-lede { font-size:15px; color:var(--text-mid); line-height:1.75; margin-bottom:28px; padding-bottom:24px; border-bottom:1px solid var(--border-light); }
+    .section-lede strong { color:var(--text); }
+
+    /* headings */
+    h3.block-title { font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); margin-bottom:12px; padding-bottom:6px; border-bottom:2px solid var(--navy); }
+
+    /* action checklist */
+    .action-list { display:flex; flex-direction:column; border:1px solid var(--border); margin-bottom:24px; }
+    .action-item { display:flex; gap:0; border-bottom:1px solid var(--border-light); }
+    .action-item:last-child { border-bottom:none; }
+    .action-check { width:36px; background:var(--bg); display:flex; align-items:center; justify-content:center; flex-shrink:0; border-right:1px solid var(--border-light); }
+    .action-check .box { width:14px; height:14px; border:2px solid var(--border); background:#fff; }
+    .action-body { padding:11px 16px; }
+    .action-body strong { display:block; font-size:13px; font-weight:700; color:var(--navy); margin-bottom:3px; }
+    .action-body p { font-size:12px; color:var(--text-mid); line-height:1.55; }
+
+    /* buyer callout */
+    .buyer-callout { background:var(--navy); padding:18px 22px; margin-bottom:24px; }
+    .buyer-callout-label { font-size:9px; font-weight:700; letter-spacing:0.16em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+    .buyer-callout-body { font-size:13px; color:rgba(255,255,255,0.8); line-height:1.65; }
+    .buyer-callout-body strong { color:#fff; }
+
+    /* mistake box */
+    .mistake-box { background:var(--red-bg); border:1px solid #fca5a5; border-left:4px solid var(--red-border); padding:14px 18px; margin-bottom:24px; }
+    .mistake-label { font-size:9px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--red-border); margin-bottom:8px; }
+    .mistake-body { font-size:12.5px; color:var(--red-text); line-height:1.6; }
+
+    /* stat row */
+    .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:24px; }
+    .stat-cell { background:#fff; padding:16px 18px; }
+    .stat-num { font-size:26px; font-weight:800; color:var(--navy); letter-spacing:-0.02em; line-height:1; margin-bottom:6px; }
+    .stat-num .unit { font-size:14px; font-weight:600; }
+    .stat-label { font-size:11px; color:var(--text-light); line-height:1.45; }
+
+    /* two-col layout */
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:24px; }
+
+    /* insight block */
+    .insight-block { background:var(--bg); border:1px solid var(--border); padding:16px 20px; margin-bottom:24px; }
+    .insight-block p { font-size:13px; color:var(--text-mid); line-height:1.65; }
+    .insight-block p + p { margin-top:8px; }
+    .insight-block strong { color:var(--navy); }
+
+    /* definition list */
+    .def-list { display:flex; flex-direction:column; border:1px solid var(--border); margin-bottom:24px; }
+    .def-item { display:grid; grid-template-columns:180px 1fr; border-bottom:1px solid var(--border-light); }
+    .def-item:last-child { border-bottom:none; }
+    .def-term { padding:12px 16px; background:var(--bg); font-size:12.5px; font-weight:700; color:var(--navy); border-right:1px solid var(--border-light); line-height:1.4; }
+    .def-desc { padding:12px 16px; font-size:12.5px; color:var(--text-mid); line-height:1.55; }
+
+    /* negotiation table */
+    .neg-table { width:100%; border-collapse:collapse; border:1px solid var(--border); margin-bottom:24px; }
+    .neg-table th { background:var(--navy); color:#fff; font-size:10px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:9px 14px; text-align:left; border-right:1px solid rgba(255,255,255,0.08); }
+    .neg-table th:last-child { border-right:none; }
+    .neg-table td { padding:11px 14px; font-size:12px; color:var(--text-mid); border-bottom:1px solid var(--border-light); border-right:1px solid var(--border-light); vertical-align:top; line-height:1.5; }
+    .neg-table td:last-child { border-right:none; }
+    .neg-table tr:last-child td { border-bottom:none; }
+    .neg-table tr:nth-child(even) td { background:var(--bg); }
+    .neg-table td.term-col { font-weight:700; color:var(--navy); }
+    .neg-table td.good { color:var(--green-border); font-weight:600; }
+    .neg-table td.watch { color:#92400e; font-weight:600; }
+
+    /* page footer */
+    .page-footer { border-top:1px solid var(--border-light); padding:10px 48px; display:flex; justify-content:space-between; align-items:center; flex-shrink:0; }
+    .page-footer span { font-size:10px; color:var(--text-light); }
+    .page-footer .footer-firm { font-weight:700; color:var(--text-mid); }
+
+    /* back cover */
+    .back-cover { background:var(--navy); min-height:1056px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:80px 56px; }
+    .back-cover h2 { font-size:36px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:20px; }
+    .back-cover h2 .accent { color:var(--gold); }
+    .back-cover p { font-size:16px; color:rgba(255,255,255,0.6); line-height:1.7; max-width:500px; margin-bottom:48px; }
+    .back-cover-contact { border:1px solid rgba(255,255,255,0.15); padding:32px 48px; margin-bottom:48px; }
+    .back-cover-contact .name { font-size:18px; font-weight:700; color:#fff; margin-bottom:4px; }
+    .back-cover-contact .title { font-size:13px; color:rgba(255,255,255,0.5); margin-bottom:20px; }
+    .back-cover-contact .contact-line { font-size:14px; color:rgba(255,255,255,0.7); margin-bottom:6px; }
+    .back-cover-contact .contact-line a { color:var(--gold); text-decoration:none; }
+    .back-cover-cta { background:var(--gold); color:#fff; font-size:13px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:16px 40px; display:inline-block; text-decoration:none; margin-bottom:40px; }
+    .back-cover-creds { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    .back-cover-cred { font-size:11px; font-weight:600; color:rgba(255,255,255,0.4); letter-spacing:0.06em; text-transform:uppercase; }
+    .back-cover-cred::before { content:'·'; margin-right:16px; }
+    .back-cover-cred:first-child::before { display:none; }
+
+    /* disclaimer */
+    .back-disclaimer { margin-top:40px; font-size:10px; color:rgba(255,255,255,0.2); line-height:1.6; max-width:560px; }
+
+    /* print */
+    @media print {
+      body { background:white; }
+      .page { box-shadow:none; width:100%; margin:0; }
+      .cover { min-height:100vh; }
+      .interior-page { min-height:100vh; }
+      .toc-page { min-height:100vh; }
+      .back-cover { min-height:100vh; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ══════════════════════════════════════════════
+       COVER PAGE
+  ══════════════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-firm">Horizon <span>M&amp;A</span> Advisors</div>
+      <div class="cover-confid">Confidential</div>
+    </div>
+    <div class="cover-body">
+      <div class="cover-eyebrow">Seller's Guide &mdash; Lower Middle Market</div>
+      <div class="cover-title">The LMM<br>Exit <span class="accent">Playbook</span></div>
+      <div class="cover-rule"></div>
+      <div class="cover-subtitle">What Sophisticated Acquirers Actually Look For &mdash; and How to Prepare Before They Look</div>
+      <div class="cover-desc">A practical timeline for business owners planning a sale in the next 12–24 months. Built on 500+ lower middle market transactions and a decade of buy-side acquisition experience at Intel, one of the world's most active strategic acquirers.</div>
+      <div class="cover-timeline">
+        <div class="cover-stage">
+          <div class="cover-stage-label">Stage 1</div>
+          <div class="cover-stage-name">18 Months Out</div>
+        </div>
+        <div class="cover-stage">
+          <div class="cover-stage-label">Stage 2</div>
+          <div class="cover-stage-name">12 Months Out</div>
+        </div>
+        <div class="cover-stage">
+          <div class="cover-stage-label">Stage 3</div>
+          <div class="cover-stage-name">6 Months Out</div>
+        </div>
+        <div class="cover-stage">
+          <div class="cover-stage-label">Stage 4</div>
+          <div class="cover-stage-name">LOI &amp; Negotiation</div>
+        </div>
+        <div class="cover-stage">
+          <div class="cover-stage-label">Stage 5</div>
+          <div class="cover-stage-name">Due Diligence</div>
+        </div>
+        <div class="cover-stage">
+          <div class="cover-stage-label">Stage 6</div>
+          <div class="cover-stage-name">Close</div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-footer">
+      <div class="cover-footer-left">
+        Dave Halvorson &nbsp;·&nbsp; M&amp;A Advisor<br>
+        dave@horizonmaa.com &nbsp;·&nbsp; 408-398-5553 &nbsp;·&nbsp; horizonmaa.com
+      </div>
+      <div class="cover-footer-right">
+        DRE 01977093 / 02058745<br>
+        IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       TABLE OF CONTENTS
+  ══════════════════════════════════════════════ -->
+  <div class="toc-page">
+    <div class="toc-header">
+      <h2>Table of Contents</h2>
+      <span>The LMM Exit Playbook &mdash; Horizon M&amp;A Advisors</span>
+    </div>
+    <p class="toc-intro">This guide follows the sell-side timeline in sequence — from 18 months before a planned sale through closing. Each section covers what you should be doing, what buyers are evaluating at that stage, and the mistakes that most commonly cost sellers time and money. Read it in order the first time. Use it as a reference as your process unfolds.</p>
+    <div class="toc-list">
+      <div class="toc-item section-header">
+        <div class="toc-num">&mdash;</div>
+        <div class="toc-content"><strong>Introduction: What This Playbook Is — and Isn't</strong><span>How to use this guide and what to expect from a lower middle market sale process</span></div>
+        <div class="toc-page-num">3</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">01</div>
+        <div class="toc-content"><strong>18 Months Out: Building the Foundation</strong><span>Valuation, financials, legal cleanup, customer concentration, and why the work starts now</span></div>
+        <div class="toc-page-num">4–5</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">02</div>
+        <div class="toc-content"><strong>12 Months Out: Getting Market-Ready</strong><span>Engaging an advisor, CIM preparation, management depth, process documentation, data room</span></div>
+        <div class="toc-page-num">6–7</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">03</div>
+        <div class="toc-content"><strong>6 Months Out: Running the Process</strong><span>Buyer outreach, NDAs, management presentations, and maintaining confidentiality</span></div>
+        <div class="toc-page-num">8–9</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">04</div>
+        <div class="toc-content"><strong>The LOI: What It Means and What to Negotiate</strong><span>Working capital, earnouts, exclusivity, and the terms most sellers get wrong</span></div>
+        <div class="toc-page-num">10–11</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">05</div>
+        <div class="toc-content"><strong>Due Diligence: What Buyers Are Really Looking For</strong><span>QofE, legal diligence, management presentations, and how to run the business while under diligence</span></div>
+        <div class="toc-page-num">12–13</div>
+      </div>
+      <div class="toc-item">
+        <div class="toc-num">06</div>
+        <div class="toc-content"><strong>Closing: The Final 30–60 Days</strong><span>Purchase agreement, rep &amp; warranty, post-close obligations, and transition planning</span></div>
+        <div class="toc-page-num">14–15</div>
+      </div>
+    </div>
+    <div class="toc-note">
+      <p><strong>A note on timing:</strong> The stages in this guide are approximations. A well-run lower middle market sale process — from engagement to close — typically takes 5–8 months once preparation is complete. The 18-month and 12-month stages refer to pre-engagement preparation, not the active process itself. Owners who compress this preparation consistently achieve worse outcomes than those who do the work ahead of time.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       INTRODUCTION
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Introduction</div>
+        <div class="stage-title">What This Playbook Is — <span class="accent">and Isn't</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot active"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">Most guides about selling a business are written from the perspective of someone who wants to reassure you. This one is written from the perspective of someone who has sat on the other side of the table — evaluating businesses for acquisition at Intel — and has spent years advising owners on how to prepare for exactly that scrutiny. <strong>The goal is not to make you feel good about your business. It's to make sure buyers feel good about your business.</strong></p>
+
+      <h3 class="block-title">What Sophisticated Acquirers Actually Do</h3>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:16px;">When a private equity firm or strategic acquirer evaluates a lower middle market business, they are not reading your materials at face value. They are running a structured process designed to answer one question: <em>Is this business worth what the seller thinks it's worth — and will it continue to perform after a change of ownership?</em></p>
+      <p style="font-size:13px;color:var(--text-mid);line-height:1.7;margin-bottom:24px;">Every document you provide, every management conversation you have, every number in your financial model is being evaluated against that question. Buyers are not passive. They are professional, well-resourced, and they do this every day. You are doing it once.</p>
+
+      <div class="buyer-callout">
+        <div class="buyer-callout-label">From the Buy Side — Intel Strategic Partnerships</div>
+        <div class="buyer-callout-body">When I was evaluating acquisition targets at Intel, we had a standard we applied to every deal: <strong>could we underwrite this business with confidence, or were we accepting uncertainty?</strong> Uncertainty got priced in — always. Clean businesses with well-documented financials, defensible competitive positions, and management teams that didn't require the founder to function commanded better terms, faster timelines, and less adversarial negotiations. The sellers who had done the preparation work knew it. The ones who hadn't could feel it the moment diligence started.</div>
+      </div>
+
+      <h3 class="block-title">What This Playbook Covers</h3>
+      <div class="two-col">
+        <div class="insight-block" style="margin-bottom:0">
+          <p><strong>What it is:</strong> A practical, sequential guide to preparing for and executing a lower middle market sale process. Each stage covers what you should be doing, what buyers are evaluating, and the specific mistakes that cost sellers money at that stage.</p>
+        </div>
+        <div class="insight-block" style="margin-bottom:0">
+          <p><strong>What it isn't:</strong> A guarantee of any particular outcome, a substitute for qualified legal or financial counsel, or a document you should share with prospective buyers. This guide is for your planning — not for your data room.</p>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-cell">
+          <div class="stat-num">5<span class="unit">–8 mo</span></div>
+          <div class="stat-label">Typical active process duration from engagement to close in the lower middle market</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">18<span class="unit"> mo</span></div>
+          <div class="stat-label">Minimum preparation runway recommended before engaging buyers — most issues take this long to fix</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-num">3<span class="unit">–5×</span></div>
+          <div class="stat-cell">
+          </div>
+          <div class="stat-label">Cost differential between resolving a legal or financial issue proactively vs. under deal pressure</div>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>3</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STAGE 1 — 18 MONTHS OUT
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Stage 01 &mdash; 18 Months Out</div>
+        <div class="stage-title">Building the <span class="accent">Foundation</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot active"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">Eighteen months is not an arbitrary number. It's the minimum runway required to meaningfully address the issues that most commonly reduce valuations in lower middle market transactions — customer concentration, owner dependency, financial documentation gaps, and legal structural issues. <strong>None of these can be fixed in 90 days under deal pressure.</strong> All of them can be addressed with 18 months of deliberate work.</p>
+
+      <h3 class="block-title">Priority Actions at 18 Months</h3>
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Get a realistic, third-party valuation</strong>
+            <p>Not from a broker trying to win a listing. An honest assessment of what your business would trade for today — and why. Understand the EBITDA a buyer will accept, not just the one you calculate. The gap between those two numbers is what drives preparation decisions.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Build your EBITDA normalization schedule</strong>
+            <p>Document every add-back: owner compensation above market rate, personal expenses run through the business, non-recurring items, one-time costs. Each adjustment needs supporting documentation. Start building this now — buyers will ask for source materials on every line.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Analyze and begin addressing customer concentration</strong>
+            <p>If any single customer represents more than 15% of revenue, you have a concentration issue that buyers will discount. Two to three years of deliberate diversification is the only real fix. Start now. Document your diversification progress annually.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Begin legal cleanup: cap table, IP, contracts</strong>
+            <p>Engage qualified counsel to review corporate structure, confirm IP is held by the entity (not personally), identify anti-assignment provisions in key contracts, and verify licenses are current and entity-held. Issues resolved now cost a fraction of what they cost mid-diligence.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Move toward reviewed or audited financial statements</strong>
+            <p>Tax-basis financials are not diligence-ready. Buyers expect GAAP-basis statements, ideally CPA-reviewed or audited, for at least three trailing fiscal years. If you're on cash basis, begin the conversion now. This takes time to do correctly.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Ask the 90-day question — honestly</strong>
+            <p>If you were unreachable for 90 consecutive days, what would happen to your business? Buyers are asking this question. Your answer tells them everything about transition risk — and transition risk drives earnouts, equity rollover requirements, and multiple compression.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="buyer-callout">
+        <div class="buyer-callout-label">Buyer's Perspective — What Acquirers See at First Look</div>
+        <div class="buyer-callout-body">At Intel, the first filter on any acquisition target was simple: <strong>does this business run, or does this person run a business?</strong> If the answer was the latter — if the owner was the primary relationship holder, the technical authority, the sales force, and the operational manager — the risk premium was significant. We either passed, or structured the deal to reflect the uncertainty. Owners who had systematically reduced their own dependency — even partially — were in a fundamentally different conversation.</div>
+      </div>
+
+      <div class="mistake-box">
+        <div class="mistake-label">Common Mistake — The Inflated Valuation Trap</div>
+        <div class="mistake-body">Many owners receive an initial valuation from a broker that significantly exceeds what the market will pay. The broker wins the listing. The owner mentally locks in a number. When buyers come in lower — as they inevitably do, based on documented earnings and observed risk factors — the owner feels cheated rather than prepared. An honest valuation at 18 months gives you the information you need to either fix the gaps or calibrate expectations. A flattering valuation gives you false confidence and wastes runway.</div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>4</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STAGE 2 — 12 MONTHS OUT
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Stage 02 &mdash; 12 Months Out</div>
+        <div class="stage-title">Getting <span class="accent">Market-Ready</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot active"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">Twelve months out is when the preparation becomes concrete. By this point, the foundation work is underway — financials are being cleaned up, legal issues are being addressed, concentration is being reduced. Now the focus shifts to the materials, the team, and the process that will represent your business to buyers.</p>
+
+      <h3 class="block-title">Priority Actions at 12 Months</h3>
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Engage your M&amp;A advisor — do not wait until 6 months</strong>
+            <p>The advisor's most valuable work happens before the process starts: refining the valuation, shaping the narrative, identifying the right buyer universe, and preparing materials. Advisors engaged 12 months out produce materially better outcomes than those engaged 60 days before a planned go-to-market date.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Begin Confidential Information Memorandum (CIM) development</strong>
+            <p>The CIM is the primary marketing document buyers use to evaluate your business and build their offer. It covers business overview, financial history, growth story, competitive position, and management team. A weak CIM signals an unprepared seller. A strong CIM frames the narrative before buyers can impose their own.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Build management depth — deliberately</strong>
+            <p>Identify who on your team can present the business to a buyer with confidence. Define their roles clearly. Begin transitioning key customer relationships where possible. Coach them on the business's competitive position, financial model, and growth story. Buyers will meet with your team — twice, in increasing depth. How your team performs in those meetings directly affects offer terms.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Document processes and institutional knowledge</strong>
+            <p>Anything that lives only in the owner's head is a liability in a sale process. Standard operating procedures, pricing models, customer onboarding processes, technical documentation, vendor relationships — document them. Not because buyers will read every page, but because documented processes demonstrate that the business runs on systems, not on a person.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Calculate your working capital baseline</strong>
+            <p>Working capital is negotiated at LOI — before formal diligence, when buyers have maximum information advantage. Calculate your trailing 12-month average now. Understand which items buyers will include or exclude in the working capital definition. Arriving at the LOI table with your own analysis is the difference between anchoring and accepting.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Begin building the data room</strong>
+            <p>A data room is the organized repository of documents buyers access during diligence: three years of financials, tax returns, customer contracts, employment agreements, IP documentation, corporate records, licenses, insurance certificates. Building it over 12 months is professional. Scrambling to build it during an active process is a red flag.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-block">
+        <p><strong>On the CIM:</strong> PE firms and strategic acquirers receive dozens of opportunity packages per month. The quality of your CIM tells them immediately whether the seller advisor is professional. A well-structured CIM with clean financials, a compelling growth narrative, and specific, defensible claims about competitive position gets read carefully. A poorly organized one with inconsistent numbers and vague language gets passed over — or repriced to reflect the uncertainty it signals.</p>
+      </div>
+
+      <div class="mistake-box">
+        <div class="mistake-label">Common Mistake — Waiting to Engage an Advisor</div>
+        <div class="mistake-body">Owners consistently underestimate how much preparation work precedes the first buyer conversation. Advisors who are brought in 30–60 days before a planned go-to-market date spend those days in triage — fixing financial presentation, identifying legal issues, and building materials that should have been developed over months. The process starts before buyers are contacted. The preparation is not a formality.</div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>6</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STAGE 3 — 6 MONTHS OUT
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Stage 03 &mdash; 6 Months Out</div>
+        <div class="stage-title">Running the <span class="accent">Process</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot active"></div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">This is when the active process begins. Your materials are ready, your advisor is engaged, your data room is populated. The next 60–90 days involve controlled outreach to a qualified buyer universe — generating interest, executing NDAs, distributing the CIM, and running initial buyer conversations in parallel. <strong>The goal at this stage is competitive tension.</strong> One interested buyer is a negotiation. Three interested buyers is a process.</p>
+
+      <h3 class="block-title">How a Professional Sale Process Works</h3>
+      <div class="def-list">
+        <div class="def-item">
+          <div class="def-term">Buyer Universe Development</div>
+          <div class="def-desc">Your advisor builds a targeted list of qualified buyers — PE firms with relevant portfolio theses, strategic acquirers in adjacent markets, family offices with applicable sector experience. Broad-based listings on broker platforms are not how institutional buyers source deals.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Teaser &amp; NDA Phase</div>
+          <div class="def-desc">A one-page anonymous teaser goes to the target buyer list. Interested parties execute a non-disclosure agreement before receiving identifying information. This controls confidentiality and creates a record of who has received materials.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">CIM Distribution</div>
+          <div class="def-desc">Qualified buyers receive the Confidential Information Memorandum. They begin their preliminary analysis. Your advisor fields questions, manages communication, and monitors engagement across the buyer universe simultaneously — creating competition without revealing it.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Management Presentations</div>
+          <div class="def-desc">Serious buyers request management meetings — typically two rounds. First round: overview presentation, business model, financials, growth story. Second round: deeper operational and financial Q&amp;A. How you and your team perform here directly influences offer terms.</div>
+        </div>
+        <div class="def-item">
+          <div class="def-term">Indications of Interest (IOI)</div>
+          <div class="def-desc">Buyers who remain engaged submit non-binding indications of interest — a preliminary view of valuation, structure, and key assumptions. Your advisor uses these to identify the strongest candidates and move toward a Letter of Intent with the most qualified buyer.</div>
+        </div>
+      </div>
+
+      <h3 class="block-title">Confidentiality Protocol</h3>
+      <div class="insight-block">
+        <p>Confidentiality failures are among the most damaging events in a sale process. Employees who learn of a pending sale before the owner is ready to disclose may leave. Customers may become uncertain. Competitors may use the information strategically. A well-run process controls information tightly: <strong>NDAs before materials, materials through a controlled data room, no identifying information in teasers, and a disclosure plan ready for employees and customers before closing.</strong></p>
+        <p>When to tell employees: typically at or very near closing, once deal terms are final and the transition plan is in place. Earlier disclosure serves the buyer's interests, not yours.</p>
+      </div>
+
+      <div class="buyer-callout">
+        <div class="buyer-callout-label">Buyer's Perspective — What the Management Presentation Reveals</div>
+        <div class="buyer-callout-body">Management presentations are not formalities. At Intel, we used them to assess one thing above all: <strong>is there a team here that can run this business without the founder?</strong> We watched for who answered which questions. We noticed when the owner redirected every technical question back to himself. We paid close attention to whether the CFO knew the numbers independently or deferred to the owner. A management team that presents with confidence, owns their domain, and handles hard questions without looking at the owner first is a significant positive signal.</div>
+      </div>
+
+      <div class="mistake-box">
+        <div class="mistake-label">Common Mistake — Going to Market Too Early</div>
+        <div class="mistake-body">Owners sometimes push to start the process before materials are ready, driven by impatience or an inbound inquiry. A process launched with incomplete financials, an unfinished CIM, or an unresolved legal issue gives buyers the wrong signal at the most critical moment — first impression. First impressions in M&A are priced in. A clean, professional, fully-prepared go-to-market creates momentum. An incomplete one creates skepticism that follows the process through closing.</div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>8</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STAGE 4 — LOI
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Stage 04 &mdash; LOI &amp; Negotiation</div>
+        <div class="stage-title">The Letter of Intent: <span class="accent">What to Negotiate</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot active"></div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">The Letter of Intent is non-binding on price — but signing it begins the exclusivity period and creates significant deal momentum. Changes after signing are possible but create friction and can damage buyer relationships. <strong>Everything in the LOI is negotiable before you sign it. Much less is negotiable after.</strong> Treat the LOI negotiation with the same rigor you would the final purchase agreement.</p>
+
+      <h3 class="block-title">Key LOI Terms — What to Watch and What to Negotiate</h3>
+      <table class="neg-table">
+        <thead>
+          <tr>
+            <th style="width:160px">Term</th>
+            <th>What It Means</th>
+            <th style="width:130px">Seller-Favorable</th>
+            <th style="width:130px">Watch For</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="term-col">Purchase Price &amp; Structure</td>
+            <td>Total enterprise value and how it's split between cash at closing, earnout, and equity rollover</td>
+            <td class="good">80%+ cash at close; minimal deferred consideration</td>
+            <td class="watch">Large earnout or equity rollover without governance rights</td>
+          </tr>
+          <tr>
+            <td class="term-col">Working Capital Target</td>
+            <td>The level of working capital that must be in the business at closing; shortfall reduces the price dollar-for-dollar</td>
+            <td class="good">Trailing 12-month average; seller-defined methodology</td>
+            <td class="watch">Target set above historical average; buyer's accountant as arbiter</td>
+          </tr>
+          <tr>
+            <td class="term-col">Earnout Structure</td>
+            <td>Deferred consideration contingent on post-close performance</td>
+            <td class="good">Revenue-based metric; 12-month duration; low threshold; buyer covenants to fund operations</td>
+            <td class="watch">EBITDA metric buyer controls; 3-year duration; targets above historical performance</td>
+          </tr>
+          <tr>
+            <td class="term-col">Exclusivity Period</td>
+            <td>Period during which you cannot negotiate with other buyers</td>
+            <td class="good">45–60 days; defined milestones; automatic termination if buyer fails to perform</td>
+            <td class="watch">90+ days with no milestones; no termination mechanism</td>
+          </tr>
+          <tr>
+            <td class="term-col">Escrow / Holdback</td>
+            <td>Portion of proceeds held post-close against indemnification claims</td>
+            <td class="good">8–10%; 12–18 months; claims basket at 0.75%+ of purchase price</td>
+            <td class="watch">15%+; 24 months; first-dollar indemnification; broad definition of covered claims</td>
+          </tr>
+          <tr>
+            <td class="term-col">Conditions to Closing</td>
+            <td>Requirements that must be met before the deal closes</td>
+            <td class="good">Narrow, specific, achievable within the diligence timeline</td>
+            <td class="watch">Broad MAC provisions; third-party consent conditions with no timeline</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="buyer-callout">
+        <div class="buyer-callout-label">The Working Capital Trap — How Sellers Lose Money Before Diligence Starts</div>
+        <div class="buyer-callout-body">The working capital target is set at LOI — before formal diligence, when the buyer has modeled it carefully and the seller typically hasn't. At Intel and in dozens of sell-side engagements since, <strong>sellers who have not run their own working capital analysis before LOI negotiations consistently accept targets set in the buyer's favor.</strong> A target set 15% above your trailing average requires you to fund the difference out of closing proceeds — dollar for dollar. Run the analysis before you receive the first LOI. Know your number before they propose theirs.</div>
+      </div>
+
+      <h3 class="block-title">On Earnouts: When They're Appropriate and When They're Not</h3>
+      <div class="insight-block">
+        <p><strong>Appropriate:</strong> The business has signed contracts not yet generating revenue, or near-term growth events (product launch, new market entry) that the historical financials don't yet reflect. The earnout bridges the gap between what history shows and what the near-term trajectory supports.</p>
+        <p><strong>Not appropriate:</strong> The buyer is using the earnout to avoid underwriting earnings they could verify from the historical record. If a buyer proposes a large earnout for a business with 5 years of consistent, documented EBITDA, they are not bridging a valuation gap — they are shifting risk to you for a business they can underwrite. Recognize the difference before accepting.</p>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>10</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STAGE 5 — DUE DILIGENCE
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Stage 05 &mdash; Due Diligence</div>
+        <div class="stage-title">What Buyers Are <span class="accent">Really Looking For</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot active"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">Due diligence is not a box-checking exercise. It is a structured process designed to either confirm a buyer's offer thesis or surface reasons to reprice, retrade, or walk. <strong>Issues discovered in diligence are almost always used as leverage — because the seller is now exclusively committed and the buyer knows it.</strong> The goal of preparation is to ensure that what buyers find in diligence matches what you've told them. Surprises in diligence go in one direction only.</p>
+
+      <h3 class="block-title">The Four Diligence Workstreams</h3>
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-check" style="background:var(--navy);"><span style="color:var(--gold);font-weight:800;font-size:11px;">F</span></div>
+          <div class="action-body">
+            <strong>Financial Diligence — Quality of Earnings (QofE)</strong>
+            <p>A QofE report is prepared by the buyer's accounting firm to independently reconstruct and verify your EBITDA. They will test every add-back, review revenue recognition, assess working capital trends, and identify any financial presentation issues. A seller-prepared QofE (commissioned before the process) dramatically accelerates diligence and removes the buyer's ability to use financial uncertainty as a repricing lever.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check" style="background:var(--navy);"><span style="color:var(--gold);font-weight:800;font-size:11px;">L</span></div>
+          <div class="action-body">
+            <strong>Legal Diligence</strong>
+            <p>Buyers' counsel reviews corporate structure, IP ownership, material contracts (especially for anti-assignment and change-of-control provisions), litigation history, employment agreements, licenses and permits, and any pending regulatory matters. Issues here — particularly IP held outside the entity or contracts requiring consent — become closing conditions that shift timeline leverage to the buyer.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check" style="background:var(--navy);"><span style="color:var(--gold);font-weight:800;font-size:11px;">O</span></div>
+          <div class="action-body">
+            <strong>Operational Diligence</strong>
+            <p>Buyers assess whether the business can perform post-close without the current owner. Management team evaluation, customer relationship mapping, technology and systems review, vendor concentration analysis, and key employee retention risk. This workstream is where management presentations matter most — buyers are building their post-close operational thesis from what they observe.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check" style="background:var(--navy);"><span style="color:var(--gold);font-weight:800;font-size:11px;">C</span></div>
+          <div class="action-body">
+            <strong>Commercial Diligence</strong>
+            <p>PE buyers in particular will validate the market thesis: How large is the addressable market? Is it growing or contracting? What is the competitive landscape? How defensible is the company's position? For IT services, SaaS, and health tech businesses, buyers often commission independent market analysis. The claims in your CIM will be tested.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="buyer-callout">
+        <div class="buyer-callout-label">Buyer's Perspective — What Diligence Actually Tests</div>
+        <div class="buyer-callout-body">At Intel, we treated diligence as hypothesis testing, not documentation review. The hypothesis was the offer we'd made. Every document, every management conversation, every financial model was evaluated against one question: <strong>does this confirm or contradict what we believed when we made the offer?</strong> Confirmations created momentum. Contradictions created repricing conversations. The sellers who navigated diligence smoothly were not the ones who had the cleanest businesses — they were the ones whose materials matched their narrative, whose teams performed consistently with their CIM, and who had no surprises in the data room.</div>
+      </div>
+
+      <h3 class="block-title">Running the Business While Under Diligence</h3>
+      <div class="insight-block">
+        <p>Diligence takes 60–90 days in the lower middle market. During that time, you are simultaneously running your business and responding to a constant stream of buyer requests. This is where owner bandwidth becomes a real constraint. <strong>Assign a dedicated internal point of contact for diligence requests</strong> — ideally your CFO or COO. Build the data room completely before diligence starts. Anticipate repeat-request categories (additional periods, alternative cuts of financial data, HR records) and pre-populate them. A disorganized diligence process signals a disorganized business.</p>
+      </div>
+
+      <div class="mistake-box">
+        <div class="mistake-label">Common Mistake — Letting Diligence Distract the Business</div>
+        <div class="mistake-body">Performance degradation during diligence is a seller's nightmare — and a buyer's leverage. If revenue softens, a key employee leaves, or a customer churns during the diligence period, buyers have both the contractual right (MAC provision) and the practical justification to reprice or restructure. Keep running the business. Assign diligence management to a point person. Do not let the process consume you at the expense of the operations buyers are paying for.</div>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>12</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       STAGE 6 — CLOSE
+  ══════════════════════════════════════════════ -->
+  <div class="interior-page">
+    <div class="page-header">
+      <div class="page-header-left">
+        <div class="stage-label">Stage 06 &mdash; The Final 30–60 Days</div>
+        <div class="stage-title">Closing the <span class="accent">Transaction</span></div>
+      </div>
+      <div class="timeline-dots">
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot done"></div>
+        <div class="timeline-dot active"></div>
+      </div>
+    </div>
+    <div class="page-body">
+      <p class="section-lede">Diligence is complete. The buyer's position is confirmed. The final 30–60 days are consumed by purchase agreement negotiation, regulatory and third-party consents, closing condition satisfaction, and transition planning. This stage feels like the finish line — and it is. But <strong>deals have failed in the final 30 days more often than owners expect</strong>, almost always due to issues that should have been identified and resolved earlier. Finish strong.</p>
+
+      <h3 class="block-title">Purchase Agreement Negotiation</h3>
+      <div class="insight-block">
+        <p>The purchase agreement is the definitive legal document governing the transaction. It expands on the LOI terms in full legal detail: representations and warranties, indemnification scope and caps, closing conditions, post-close covenants, and transition obligations. <strong>This document requires experienced M&A transaction counsel</strong> — not a generalist business attorney. The specific language in representations and warranties, survival periods, and indemnification baskets has material economic consequences.</p>
+        <p>Key negotiation points at this stage: narrowing the scope of seller representations (knowledge qualifiers, materiality thresholds), limiting survival periods for general reps, reducing the indemnification basket, and — where the seller's legal profile supports it — exploring rep and warranty insurance to replace or reduce the escrow holdback obligation.</p>
+      </div>
+
+      <h3 class="block-title">Closing Checklist — Final 30 Days</h3>
+      <div class="action-list">
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Satisfy all closing conditions</strong>
+            <p>Confirm all conditions in the LOI and purchase agreement are met: third-party consents obtained, regulatory approvals received, financing confirmed, material contracts assigned. Unresolved conditions at closing are leverage for buyers to seek price adjustments or delay.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Execute the employee communication plan</strong>
+            <p>Prepare a clear, honest communication for employees — timed for as close to closing as confidentiality allows. The message should address who the new owner is, what is and isn't changing, and what it means for the team. First impressions from the acquirer matter to employee retention.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Finalize the transition plan</strong>
+            <p>Define what the seller's post-close obligations are, the duration and terms of any consulting arrangement, and how knowledge transfer will be structured. Agree on customer communication messaging. Ensure the new owner is introduced to key relationships in a managed, confidence-inspiring way.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Confirm closing statement and proceeds calculation</strong>
+            <p>Review the closing statement carefully: enterprise value, debt payoffs, working capital adjustment, escrow amounts, transaction fees, and net proceeds to seller. This document should have no surprises — any adjustments should have been agreed in advance. Verify the wire instructions and confirm the timeline for escrow release.</p>
+          </div>
+        </div>
+        <div class="action-item">
+          <div class="action-check"><div class="box"></div></div>
+          <div class="action-body">
+            <strong>Engage tax counsel before closing</strong>
+            <p>The structure of the transaction — asset sale vs. stock sale, allocation of purchase price, installment sale treatment for earnouts — has significant tax implications. These decisions need to be made before closing, not after. A qualified CPA with M&A transaction experience should be involved well before the closing date.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="buyer-callout">
+        <div class="buyer-callout-label">After the Close — What Happens to the Business</div>
+        <div class="buyer-callout-body">For PE buyers: the business typically enters a 100-day integration plan. The buyer will implement their reporting and financial controls, potentially restructure the leadership team, and begin executing their investment thesis. For strategic acquirers: integration depth varies significantly — from light-touch operational independence to full absorption into the acquirer's systems and culture. <strong>Understanding what happens post-close before you sign the LOI is legitimate diligence on your own transaction.</strong> Ask buyers how they manage portfolio companies. Their answer tells you something important about what you're selling your business into.</div>
+      </div>
+
+      <h3 class="block-title">A Final Note on What This Process Requires</h3>
+      <div class="insight-block">
+        <p>Selling a lower middle market business is the most consequential financial transaction most owners will ever execute. It rewards preparation more than any other factor — more than timing, more than market conditions, more than negotiating skill. The owners who achieve the best outcomes are not necessarily the ones with the best businesses. They are the ones who understood the process, did the work ahead of time, and showed up to every buyer conversation as the most prepared party in the room.</p>
+        <p><strong>That is what this playbook is designed to help you do.</strong></p>
+      </div>
+    </div>
+    <div class="page-footer">
+      <span class="footer-firm">Horizon M&amp;A Advisors</span>
+      <span>The LMM Exit Playbook &mdash; Confidential</span>
+      <span>14</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       BACK COVER
+  ══════════════════════════════════════════════ -->
+  <div class="back-cover">
+    <h2>Ready for an Honest<br>Read on Where You Stand?</h2>
+    <p>A free 30-minute strategy call with Dave Halvorson covers what your business would realistically look like in a transaction today, what's worth addressing before you engage buyers, and what a realistic preparation timeline looks like for your situation.</p>
+    <div class="back-cover-contact">
+      <div class="name">Dave Halvorson</div>
+      <div class="title">M&amp;A Advisor &mdash; Horizon M&amp;A Advisors &mdash; Campbell, CA</div>
+      <div class="contact-line"><a href="mailto:dave@horizonmaa.com">dave@horizonmaa.com</a></div>
+      <div class="contact-line">408-398-5553</div>
+      <div class="contact-line"><a href="https://horizonmaa.com">horizonmaa.com</a></div>
+    </div>
+    <a href="https://horizonmaa.com" class="back-cover-cta">Book a Free Strategy Call</a>
+    <div class="back-cover-creds">
+      <span class="back-cover-cred">DRE 01977093 / 02058745</span>
+      <span class="back-cover-cred">IBBA Member</span>
+      <span class="back-cover-cred">CABB Member</span>
+      <span class="back-cover-cred">M&amp;A Source</span>
+      <span class="back-cover-cred">500+ Transactions Closed</span>
+    </div>
+    <div class="back-disclaimer">This guide is prepared by Horizon M&amp;A Advisors for informational purposes only. It does not constitute legal advice, financial advice, a formal business valuation, or an engagement to provide advisory services. Business owners should consult qualified legal counsel, a certified public accountant, and an experienced M&amp;A advisor before taking any action in connection with a potential transaction. &copy; 2026 Horizon M&amp;A Advisors. All rights reserved. Not for distribution without written consent.</div>
+  </div>
+
+</div><!-- /page -->
+</body>
+</html>

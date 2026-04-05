@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legal & Compliance Assessment | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --gold:#b8912a; --gold-light:#f2e4c4;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg-row:#f8f9fb;
+      --green-text:#14532d; --green-bg:#f0faf3; --green-border:#166534;
+      --yellow-text:#78350f; --yellow-bg:#fffbeb; --yellow-border:#92400e;
+      --red-text:#7f1d1d; --red-bg:#fff5f5; --red-border:#991b1b;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); background:#e8eaed; padding:40px 20px; font-size:13px; line-height:1.55; -webkit-font-smoothing:antialiased; }
+    .page { background:#fff; width:816px; margin:0 auto; box-shadow:0 2px 20px rgba(0,0,0,0.18); }
+    .letterhead { background:var(--navy); }
+    .lh-top { padding:22px 48px 18px; display:flex; justify-content:space-between; align-items:flex-start; border-bottom:2px solid var(--gold); }
+    .firm-name { color:#fff; font-size:16px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; }
+    .firm-name span { color:var(--gold); }
+    .lh-meta { text-align:right; }
+    .lh-meta .confidential { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); border:1px solid var(--gold); padding:2px 8px; display:inline-block; margin-bottom:4px; }
+    .lh-meta .doc-date { display:block; color:rgba(255,255,255,0.5); font-size:11px; }
+    .lh-title { padding:24px 48px 26px; }
+    .lh-eyebrow { font-size:10px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(255,255,255,0.45); margin-bottom:8px; }
+    .lh-h1 { font-size:26px; font-weight:800; color:#fff; letter-spacing:-0.02em; line-height:1.15; margin-bottom:8px; }
+    .lh-h1 .accent { color:var(--gold); }
+    .lh-sub { font-size:12.5px; color:rgba(255,255,255,0.62); max-width:560px; line-height:1.6; }
+    .section-indicator { padding:11px 48px; background:rgba(255,255,255,0.06); border-top:1px solid rgba(255,255,255,0.08); display:flex; gap:6px; align-items:center; }
+    .section-indicator .pip { width:24px; height:4px; border-radius:2px; background:rgba(255,255,255,0.18); }
+    .section-indicator .pip.active { background:var(--gold); }
+    .section-indicator .pip-label { font-size:10px; color:rgba(255,255,255,0.38); letter-spacing:0.1em; text-transform:uppercase; margin-left:8px; }
+    .methodology { border-bottom:1px solid var(--border); padding:13px 48px; background:var(--bg-row); display:flex; align-items:center; gap:32px; }
+    .method-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); white-space:nowrap; flex-shrink:0; }
+    .method-items { display:flex; gap:24px; flex-wrap:wrap; }
+    .method-item { display:flex; align-items:center; gap:7px; font-size:11.5px; font-weight:500; color:var(--text-mid); }
+    .method-swatch { width:10px; height:10px; border-radius:2px; flex-shrink:0; }
+    .method-swatch.g { background:var(--green-border); } .method-swatch.y { background:var(--yellow-border); } .method-swatch.r { background:var(--red-border); }
+    .assessment { padding:0 48px 40px; }
+    .factor-block { margin-top:28px; } .factor-block:first-child { margin-top:32px; }
+    .factor-label-row { display:flex; align-items:center; gap:12px; padding:9px 0; border-bottom:2px solid var(--navy); }
+    .factor-index { width:22px; height:22px; background:var(--navy); color:#fff; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .factor-name { font-size:13px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--navy); }
+    .criteria-table { width:100%; border-collapse:collapse; border:1px solid var(--border); border-top:none; }
+    .criteria-table th { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:8px 14px; text-align:left; border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .criteria-table th:last-child { border-right:none; }
+    .criteria-table th.g { background:var(--green-bg); color:var(--green-text); } .criteria-table th.y { background:var(--yellow-bg); color:var(--yellow-text); } .criteria-table th.r { background:var(--red-bg); color:var(--red-text); }
+    .criteria-table th .pts { font-weight:400; opacity:0.7; font-size:10px; }
+    .criteria-table td { padding:12px 14px; vertical-align:top; font-size:12px; line-height:1.55; color:var(--text-mid); border-right:1px solid var(--border-light); cursor:pointer; transition:background 0.12s; width:33.33%; }
+    .criteria-table td:last-child { border-right:none; } .criteria-table td:hover { background:#f0f4f8; }
+    .criteria-table td.sel-g { background:var(--green-bg); border-left:3px solid var(--green-border); color:var(--green-text); font-weight:500; padding-left:11px; }
+    .criteria-table td.sel-y { background:var(--yellow-bg); border-left:3px solid var(--yellow-border); color:var(--yellow-text); font-weight:500; padding-left:11px; }
+    .criteria-table td.sel-r { background:var(--red-bg); border-left:3px solid var(--red-border); color:var(--red-text); font-weight:500; padding-left:11px; }
+    .score-section { margin:32px 0 0; border:1px solid var(--border); }
+    .score-header { background:var(--navy); padding:12px 20px; display:flex; justify-content:space-between; align-items:center; }
+    .score-header span { font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:rgba(255,255,255,0.7); }
+    .score-header .score-live { font-size:20px; font-weight:800; color:#fff; letter-spacing:-0.02em; }
+    .score-header .score-live .denom { font-size:13px; font-weight:400; color:rgba(255,255,255,0.5); }
+    .score-bands-row { display:grid; grid-template-columns:1fr 1fr 1fr; border-top:1px solid var(--border); }
+    .score-band { padding:14px 16px; border-right:1px solid var(--border); } .score-band:last-child { border-right:none; }
+    .score-band .range { font-size:15px; font-weight:800; margin-bottom:5px; }
+    .score-band.g .range { color:var(--green-border); } .score-band.y .range { color:var(--yellow-border); } .score-band.r .range { color:var(--red-border); }
+    .score-band .interp { font-size:11px; color:var(--text-mid); line-height:1.5; }
+    .score-band.active-g { background:var(--green-bg); } .score-band.active-y { background:var(--yellow-bg); } .score-band.active-r { background:var(--red-bg); }
+    .next-step { margin:24px 0 0; padding:16px 20px; border:1px solid var(--gold); background:#fdf8ee; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .next-step p { font-size:12px; color:var(--text-mid); line-height:1.5; } .next-step p strong { color:var(--text); }
+    .next-step a { white-space:nowrap; background:var(--navy); color:#fff; text-decoration:none; font-size:11.5px; font-weight:700; letter-spacing:0.04em; padding:10px 20px; text-transform:uppercase; flex-shrink:0; }
+    .doc-footer { margin-top:28px; border-top:2px solid var(--navy); padding:14px 48px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .doc-footer .footer-left { font-size:10.5px; color:var(--text-light); line-height:1.6; } .doc-footer .footer-left strong { color:var(--text-mid); }
+    .doc-footer .footer-right { text-align:right; font-size:10.5px; color:var(--text-light); line-height:1.6; flex-shrink:0; }
+    .disclaimer { margin:10px 48px 32px; font-size:9.5px; color:var(--text-light); line-height:1.6; border-top:1px solid var(--border-light); padding-top:10px; }
+    @media print { body { background:white; padding:0; } .page { box-shadow:none; width:100%; } .factor-block { break-inside:avoid; } }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="letterhead">
+    <div class="lh-top">
+      <div><div class="firm-name">Horizon <span>M&A</span> Advisors</div></div>
+      <div class="lh-meta">
+        <div class="confidential">Confidential</div>
+        <span class="doc-date">Prepared March 2026</span>
+      </div>
+    </div>
+    <div class="lh-title">
+      <div class="lh-eyebrow">Exit Readiness Assessment &nbsp;·&nbsp; Section 5 of 5</div>
+      <div class="lh-h1">Legal &amp; Compliance <span class="accent">Scorecard</span></div>
+      <div class="lh-sub">An assessment of the five legal and compliance factors that buyers' counsel examines in diligence. Issues discovered after a letter of intent is signed are among the most common causes of deal retrades, price reductions, and failed closings.</div>
+    </div>
+    <div class="section-indicator">
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip"></div>
+      <div class="pip active"></div>
+      <div class="pip-label">Section 5 — Legal &amp; Compliance</div>
+    </div>
+  </div>
+
+  <div class="methodology">
+    <div class="method-label">Scoring Key</div>
+    <div class="method-items">
+      <div class="method-item"><div class="method-swatch g"></div> Green — Buyer-ready &nbsp;<span style="color:var(--text-light);font-size:11px;">(2 pts)</span></div>
+      <div class="method-item"><div class="method-swatch y"></div> Yellow — Needs attention &nbsp;<span style="color:var(--text-light);font-size:11px;">(1 pt)</span></div>
+      <div class="method-item"><div class="method-swatch r"></div> Red — Significant gap &nbsp;<span style="color:var(--text-light);font-size:11px;">(0 pts)</span></div>
+      <div class="method-item" style="margin-left:8px;color:var(--text-light);font-size:11px;">Click a column to record your rating.</div>
+    </div>
+  </div>
+
+  <div class="assessment">
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">1</div>
+        <div class="factor-name">Corporate Structure &amp; Cap Table</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f1',2,this)">Ownership structure is clean and fully documented. The cap table is accurate, current, and free of phantom equity, undocumented minority interests, or side agreements. Entity formation documents, operating agreements, and any shareholder agreements are complete and current.</td>
+          <td onclick="rate('f1',1,this)">Corporate structure is generally in order but minor gaps exist — outdated operating agreements, informal equity arrangements, or undocumented transfers that will require legal cleanup before closing. These are resolvable but will require counsel engagement.</td>
+          <td onclick="rate('f1',0,this)">Material structural issues exist — disputed ownership, undocumented equity grants, multiple entities with unclear intercompany arrangements, or a cap table that does not reflect actual economic ownership. Buyers will not proceed to LOI without resolution.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">2</div>
+        <div class="factor-name">Intellectual Property Ownership</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f2',2,this)">All material intellectual property — proprietary software, trade secrets, brand assets, patents, and domain names — is owned by the operating entity, not by the owner personally. IP assignments from founders and contractors are documented and executed.</td>
+          <td onclick="rate('f2',1,this)">Core IP is owned by the company, but some assets — legacy software, domain names, or brand elements — may be held personally or through a related entity. These require formal assignment prior to closing and may require third-party consent.</td>
+          <td onclick="rate('f2',0,this)">Material IP is held in the owner's personal name, has not been formally assigned to the company, or was developed by contractors without proper work-for-hire agreements. Buyers' counsel will flag this as a condition precedent to closing.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">3</div>
+        <div class="factor-name">Litigation &amp; Contingent Liabilities</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f3',2,this)">No pending, threatened, or reasonably anticipated litigation, regulatory actions, or material contingent liabilities exist. The business has a clean legal history and no undisclosed indemnification obligations or unresolved disputes with customers, employees, or vendors.</td>
+          <td onclick="rate('f3',1,this)">Minor disputes or resolved matters exist that will need to be disclosed. The matters are immaterial in size and have clear paths to resolution, but they will require disclosure in the reps and warranties and may result in limited escrow requirements at closing.</td>
+          <td onclick="rate('f3',0,this)">Material pending litigation, regulatory investigations, or contingent liabilities exist that have not been disclosed or resolved. These will surface in diligence, will be treated as indemnified liabilities by any buyer, and may prevent closing entirely depending on the severity.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">4</div>
+        <div class="factor-name">Licenses, Permits &amp; Regulatory Compliance</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f4',2,this)">All required licenses, permits, and regulatory certifications are current, properly maintained, and documented. The business is in material compliance with applicable federal, state, and local regulations. Licenses are held by the entity and are transferable or re-issuable upon change of ownership.</td>
+          <td onclick="rate('f4',1,this)">Most licenses and permits are current but some are held personally by the owner or a key employee, requiring re-application or transfer approval upon close. Compliance is generally in order but minor gaps have not been formally remediated.</td>
+          <td onclick="rate('f4',0,this)">Licenses are expired, held improperly, or the business is operating without required permits. Regulatory compliance gaps exist that have not been addressed. Buyers face legal exposure upon acquisition and will not close without resolution — or will require significant price adjustments to absorb the remediation cost.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="factor-block">
+      <div class="factor-label-row">
+        <div class="factor-index">5</div>
+        <div class="factor-name">Contract Assignability</div>
+      </div>
+      <table class="criteria-table">
+        <thead><tr>
+          <th class="g">Green &nbsp;<span class="pts">/ 2 pts</span></th>
+          <th class="y">Yellow &nbsp;<span class="pts">/ 1 pt</span></th>
+          <th class="r">Red &nbsp;<span class="pts">/ 0 pts</span></th>
+        </tr></thead>
+        <tbody><tr>
+          <td onclick="rate('f5',2,this)">Key customer contracts, vendor agreements, and the operating lease are reviewed and confirmed to be assignable to a buyer without requiring customer or third-party consent. Change-of-control provisions, if any, have been identified and are manageable.</td>
+          <td onclick="rate('f5',1,this)">Most contracts are likely assignable, but a formal review has not been completed. Some agreements may contain change-of-control provisions or anti-assignment clauses that will require customer consent prior to closing — introducing timing risk in the transaction process.</td>
+          <td onclick="rate('f5',0,this)">Key contracts have not been reviewed for assignability. Material customer or vendor agreements likely contain anti-assignment provisions. A buyer's ability to assume the revenue base at close is uncertain, which directly impairs their ability to underwrite and finance the acquisition.</td>
+        </tr></tbody>
+      </table>
+    </div>
+
+    <div class="score-section">
+      <div class="score-header">
+        <span>Legal &amp; Compliance Assessment Score</span>
+        <div class="score-live"><span id="scoreDisplay">—</span><span class="denom"> / 10</span></div>
+      </div>
+      <div class="score-bands-row">
+        <div class="score-band g" id="band-g">
+          <div class="range">8 – 10</div>
+          <div class="interp">Legal profile is clean. Buyers' counsel will move through diligence efficiently and is unlikely to surface issues that create retrade risk or closing delays.</div>
+        </div>
+        <div class="score-band y" id="band-y">
+          <div class="range">5 – 7</div>
+          <div class="interp">Addressable issues identified. Engaging transaction counsel 12–18 months before a planned process allows time to remediate structural, IP, and contract issues without time pressure.</div>
+        </div>
+        <div class="score-band r" id="band-r">
+          <div class="range">0 – 4</div>
+          <div class="interp">Material legal risk present. Issues of this severity discovered in diligence frequently result in price reductions, earnouts, or failed closings. Immediate legal counsel engagement is recommended.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next-step">
+      <p><strong>Discuss your results with an advisor.</strong> A complimentary 30-minute strategy call with Dave Halvorson will help prioritize legal remediation steps, identify the right transaction counsel for your situation, and establish a realistic timeline for resolving structural issues before a sale process begins.</p>
+      <a href="https://horizonmaa.com">Schedule a Call</a>
+    </div>
+
+  </div>
+
+  <div class="doc-footer">
+    <div class="footer-left">
+      <strong>Horizon M&amp;A Advisors</strong><br>
+      51 East Campbell Avenue, Suite 400-G &nbsp;·&nbsp; Campbell, CA 95008<br>
+      horizonmaa.com &nbsp;·&nbsp; dave@horizonmaa.com &nbsp;·&nbsp; 408-398-5553
+    </div>
+    <div class="footer-right">DRE 01977093 / 02058745<br>IBBA &nbsp;·&nbsp; CABB &nbsp;·&nbsp; M&amp;A Source</div>
+  </div>
+  <div class="disclaimer">This document is provided for informational purposes only and does not constitute legal advice, a formal valuation, or an engagement to provide advisory services. All assessments are self-reported by the business owner and are not verified by Horizon M&amp;A Advisors. Business owners should consult qualified legal counsel regarding any matters identified in this assessment. Results should not be shared with prospective buyers or used in connection with any transaction without the written consent of Horizon M&amp;A Advisors.</div>
+</div>
+
+<script>
+  const scores = {};
+  function rate(factor, value, cell) {
+    cell.closest('tr').querySelectorAll('td').forEach(td => td.classList.remove('sel-g','sel-y','sel-r'));
+    cell.classList.add(value===2?'sel-g':value===1?'sel-y':'sel-r');
+    scores[factor] = value; updateScore();
+  }
+  function updateScore() {
+    const vals = Object.values(scores), total = vals.reduce((a,b)=>a+b,0), count = vals.length;
+    const el = document.getElementById('scoreDisplay');
+    el.textContent = count > 0 ? total : '—';
+    ['band-g','band-y','band-r'].forEach(id => document.getElementById(id).classList.remove('active-g','active-y','active-r'));
+    if (count === 5) {
+      if (total >= 8) { el.style.color='#86efac'; document.getElementById('band-g').classList.add('active-g'); }
+      else if (total >= 5) { el.style.color='#fde68a'; document.getElementById('band-y').classList.add('active-y'); }
+      else { el.style.color='#fca5a5'; document.getElementById('band-r').classList.add('active-r'); }
+    } else { el.style.color='#fff'; }
+  }
+</script>
+</body>
+</html>

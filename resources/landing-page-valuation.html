@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Valuation Reality Check | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="What is your business actually worth to a buyer? The number most owners expect and the number buyers underwrite are not the same. Free interactive worksheet from Horizon M&A Advisors." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --gold:#b8912a;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg:#f7f8fb;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+    nav { background:var(--navy); padding:18px 56px; display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid var(--gold); }
+    .nav-logo { color:#fff; font-size:15px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; }
+    .nav-logo span { color:var(--gold); }
+    .nav-cta { color:var(--gold); font-size:13px; font-weight:600; text-decoration:none; border:1px solid var(--gold); padding:7px 18px; letter-spacing:0.04em; text-transform:uppercase; }
+    .nav-cta:hover { background:rgba(184,145,42,0.1); }
+    .hero { background:var(--navy); padding:80px 56px 72px; border-bottom:2px solid var(--gold); }
+    .hero-inner { max-width:740px; margin:0 auto; }
+    .hero-eyebrow { font-size:11px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:20px; }
+    .hero h1 { font-size:clamp(30px,4.5vw,48px); font-weight:800; color:#fff; letter-spacing:-0.025em; line-height:1.12; margin-bottom:20px; }
+    .hero h1 em { font-style:normal; color:#e0b060; }
+    .hero p { font-size:17px; color:rgba(255,255,255,0.7); max-width:580px; margin-bottom:36px; line-height:1.7; }
+    .form-row { display:flex; gap:10px; flex-wrap:wrap; max-width:520px; }
+    .form-row input { flex:1; min-width:200px; padding:13px 16px; border:none; font-size:15px; font-family:inherit; outline:none; }
+    .btn-primary { background:var(--gold); color:#fff; border:none; font-size:14px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; padding:13px 24px; cursor:pointer; white-space:nowrap; font-family:inherit; }
+    .btn-primary:hover { background:#cfa040; }
+    .hero-fine { margin-top:12px; font-size:12px; color:rgba(255,255,255,0.35); }
+    .proof-strip { background:var(--navy-mid); border-bottom:1px solid rgba(255,255,255,0.06); padding:14px 56px; display:flex; justify-content:center; gap:40px; flex-wrap:wrap; }
+    .proof-item { font-size:12px; font-weight:600; color:rgba(255,255,255,0.55); letter-spacing:0.05em; text-transform:uppercase; display:flex; align-items:center; gap:8px; }
+    .proof-item::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    section { padding:72px 56px; }
+    section.alt { background:var(--bg); }
+    .section-inner { max-width:760px; margin:0 auto; }
+    .section-inner-wide { max-width:960px; margin:0 auto; }
+    .section-label { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    h2 { font-size:clamp(24px,3.2vw,36px); font-weight:800; color:var(--navy); letter-spacing:-0.02em; line-height:1.18; margin-bottom:18px; }
+    p.lead { font-size:17px; color:var(--text-mid); line-height:1.7; margin-bottom:16px; }
+    p.body-text { font-size:15px; color:var(--text-mid); line-height:1.7; margin-bottom:14px; }
+    .val-compare { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin:32px 0; }
+    .val-col { background:#fff; padding:28px 24px; }
+    .val-col.buyer { background:var(--bg); }
+    .val-col-label { font-size:10px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-light); margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border-light); }
+    .val-col-label strong { color:var(--navy); }
+    .val-row { display:flex; justify-content:space-between; align-items:baseline; padding:8px 0; border-bottom:1px solid var(--border-light); font-size:14px; }
+    .val-row:last-child { border-bottom:none; }
+    .val-row .label { color:var(--text-mid); }
+    .val-row .value { font-weight:700; color:var(--navy); }
+    .val-row .value.down { color:#991b1b; }
+    .val-row .value.up { color:#166534; }
+    .val-gap-banner { background:var(--navy); color:#fff; text-align:center; padding:16px 24px; border-top:2px solid var(--gold); }
+    .val-gap-banner p { font-size:14px; font-weight:600; color:rgba(255,255,255,0.7); margin-bottom:4px; }
+    .val-gap-banner .gap-num { font-size:28px; font-weight:800; color:#fde68a; }
+    .bullets-list { display:flex; flex-direction:column; border:1px solid var(--border); margin-top:28px; }
+    .bullet-item { display:flex; border-bottom:1px solid var(--border-light); }
+    .bullet-item:last-child { border-bottom:none; }
+    .bullet-num { width:44px; background:var(--navy); color:var(--gold); font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .bullet-body { padding:16px 20px; }
+    .bullet-body strong { display:block; font-size:14px; color:var(--navy); margin-bottom:4px; }
+    .bullet-body span { font-size:13.5px; color:var(--text-mid); line-height:1.55; }
+    .steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:36px; }
+    .step { background:#fff; padding:28px 24px; }
+    .step-num { font-size:28px; font-weight:800; color:var(--gold); line-height:1; margin-bottom:12px; }
+    .step h3 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:8px; }
+    .step p { font-size:13px; color:var(--text-mid); line-height:1.55; }
+    .factors-table { width:100%; border-collapse:collapse; border:1px solid var(--border); margin:28px 0; }
+    .factors-table th { background:var(--navy); color:#fff; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:10px 16px; text-align:left; border-right:1px solid rgba(255,255,255,0.1); }
+    .factors-table th:last-child { border-right:none; }
+    .factors-table td { padding:11px 16px; font-size:13.5px; color:var(--text-mid); border-bottom:1px solid var(--border-light); border-right:1px solid var(--border-light); vertical-align:top; line-height:1.5; }
+    .factors-table td:last-child { border-right:none; }
+    .factors-table tr:last-child td { border-bottom:none; }
+    .factors-table tr:nth-child(even) td { background:var(--bg); }
+    .factors-table td.factor-name { font-weight:600; color:var(--navy); }
+    .badge-up { display:inline-block; background:#dcfce7; color:#166534; font-size:11px; font-weight:700; padding:2px 8px; }
+    .badge-dn { display:inline-block; background:#fee2e2; color:#991b1b; font-size:11px; font-weight:700; padding:2px 8px; }
+    .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin-top:40px; }
+    .testimonial { background:#fff; padding:28px 24px; }
+    .testimonial p { font-size:14px; font-style:italic; color:var(--text-mid); line-height:1.65; margin-bottom:16px; }
+    .testimonial .attr { font-size:12px; font-weight:700; color:var(--navy); }
+    .about-grid { display:grid; grid-template-columns:80px 1fr; gap:32px; align-items:start; margin-top:8px; }
+    .about-avatar { width:80px; height:80px; background:var(--navy); color:var(--gold); font-size:22px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .about-text p { font-size:15px; color:var(--text-mid); line-height:1.7; margin-bottom:12px; }
+    .credentials { display:flex; flex-wrap:wrap; gap:8px; margin-top:14px; }
+    .cred { background:var(--bg); border:1px solid var(--border); font-size:11px; font-weight:600; padding:4px 10px; color:var(--navy); }
+    .faq-list { display:flex; flex-direction:column; border:1px solid var(--border); margin-top:36px; }
+    .faq-item { border-bottom:1px solid var(--border-light); padding:20px 24px; }
+    .faq-item:last-child { border-bottom:none; }
+    .faq-item h4 { font-size:14px; font-weight:700; color:var(--navy); margin-bottom:7px; }
+    .faq-item p { font-size:13.5px; color:var(--text-mid); line-height:1.6; }
+    .final-cta { background:var(--navy); padding:80px 56px; text-align:center; border-top:2px solid var(--gold); }
+    .final-cta h2 { color:#fff; margin-bottom:16px; }
+    .final-cta p { font-size:16px; color:rgba(255,255,255,0.65); max-width:500px; margin:0 auto 36px; line-height:1.7; }
+    .final-form { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+    .final-form input { padding:13px 16px; font-size:15px; font-family:inherit; border:none; outline:none; min-width:220px; }
+    footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.06); padding:24px 56px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    footer p { font-size:12px; color:rgba(255,255,255,0.35); }
+    footer a { color:rgba(255,255,255,0.35); text-decoration:none; }
+    @media(max-width:700px){
+      nav,section,.hero,footer{ padding-left:24px; padding-right:24px; }
+      .proof-strip{ padding:14px 24px; gap:20px; }
+      .steps-grid,.testimonials-grid{ grid-template-columns:1fr; }
+      .val-compare{ grid-template-columns:1fr; }
+      .about-grid{ grid-template-columns:1fr; }
+      .factors-table{ font-size:12px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Horizon <span>M&amp;A</span> Advisors</div>
+  <a href="https://horizonmaa.com" class="nav-cta">Schedule a Call</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Free Resource &mdash; Horizon M&amp;A Advisors</div>
+    <h1>What Is Your Business <em>Actually Worth</em> to a Buyer?</h1>
+    <p>The number most owners expect and the number buyers underwrite are not the same. This interactive worksheet helps you stress-test your valuation before a buyer does — using the same factors buyers apply to determine where within an industry range your business should trade.</p>
+    <div class="form-row">
+      <input type="email" placeholder="Enter your email address" />
+      <button class="btn-primary">Get the Worksheet</button>
+    </div>
+    <p class="hero-fine">Immediate access. No pitch. Unsubscribe at any time.</p>
+  </div>
+</div>
+
+<!-- PROOF STRIP -->
+<div class="proof-strip">
+  <div class="proof-item">10 industry benchmarks</div>
+  <div class="proof-item">Multiple compression analysis</div>
+  <div class="proof-item">Live enterprise value calculation</div>
+  <div class="proof-item">No registration required</div>
+</div>
+
+<!-- SECTION: THE GAP -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">The Valuation Problem</div>
+    <h2>The Number You Have in Mind. The Number a Buyer Will Offer.</h2>
+    <p class="lead">Most owners approaching an exit have done mental math. They know the industry multiple. They know their earnings. The gap between that estimate and the offer they receive in a formal process is almost never the result of dishonesty — it's the result of information asymmetry.</p>
+    <p class="body-text">Buyers enter diligence with a detailed methodology. They reconstruct EBITDA from source records using their own normalization criteria. They identify risk factors that move the multiple within the industry range. They set working capital targets that may differ significantly from what the seller assumed. By the time a formal offer is made, the buyer has run a detailed analysis. The seller, often, has not.</p>
+    <p class="body-text">The worksheet gives you a buyer's lens before you need one.</p>
+
+    <!-- Side by side comparison -->
+    <div class="val-compare">
+      <div class="val-col">
+        <div class="val-col-label"><strong>What the owner expects</strong></div>
+        <div class="val-row"><span class="label">EBITDA (owner-normalized)</span><span class="value">$2,400,000</span></div>
+        <div class="val-row"><span class="label">Industry multiple (midpoint)</span><span class="value">6.0x</span></div>
+        <div class="val-row"><span class="label">Enterprise value</span><span class="value">$14,400,000</span></div>
+        <div class="val-row"><span class="label">Working capital assumption</span><span class="value">Included</span></div>
+        <div class="val-row"><span class="label">Estimated net proceeds</span><span class="value">~$14,000,000</span></div>
+      </div>
+      <div class="val-col buyer">
+        <div class="val-col-label"><strong>What a buyer underwrites</strong></div>
+        <div class="val-row"><span class="label">EBITDA (buyer-reconstructed)</span><span class="value down">$2,050,000</span></div>
+        <div class="val-row"><span class="label">Multiple (risk-adjusted)</span><span class="value down">5.2x</span></div>
+        <div class="val-row"><span class="label">Enterprise value</span><span class="value down">$10,660,000</span></div>
+        <div class="val-row"><span class="label">Working capital adjustment</span><span class="value down">&minus;$310,000</span></div>
+        <div class="val-row"><span class="label">Escrow / holdback</span><span class="value down">&minus;$750,000</span></div>
+      </div>
+    </div>
+    <div class="val-gap-banner">
+      <p>Illustrative gap between owner expectation and buyer offer</p>
+      <div class="gap-num">$3,900,000</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: WHAT'S IN THE WORKSHEET -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label">What You'll Work Through</div>
+    <h2>A Structured Framework for Stress-Testing Your Valuation</h2>
+    <p class="lead">The worksheet walks through four interconnected inputs that determine what a buyer is actually likely to pay — not the headline number, but the check.</p>
+    <div class="bullets-list">
+      <div class="bullet-item">
+        <div class="bullet-num">1</div>
+        <div class="bullet-body">
+          <strong>EBITDA Normalization</strong>
+          <span>Start with your reported earnings and identify the adjustments — owner compensation above market rate, non-recurring expenses, personal expenses run through the business — that should be added back to arrive at a defensible normalized EBITDA. The worksheet prompts the most common categories.</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">2</div>
+        <div class="bullet-body">
+          <strong>Industry Multiple Range</strong>
+          <span>Select your industry from a benchmark reference table showing current lower middle market transaction multiples by sector. The worksheet uses the industry range as the baseline for your calculation.</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">3</div>
+        <div class="bullet-body">
+          <strong>Multiple Compression &amp; Expansion Factors</strong>
+          <span>Identify the specific characteristics of your business that would move a buyer's offer toward the high or low end of your industry range — or outside it. Revenue concentration, owner dependency, contract quality, management depth, and growth trajectory are each assessed.</span>
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">4</div>
+        <div class="bullet-body">
+          <strong>Enterprise Value Range</strong>
+          <span>The worksheet calculates a low, mid, and high enterprise value range based on your inputs — giving you a realistic picture of where a buyer is likely to land before you engage the market.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION: MULTIPLE FACTORS TABLE -->
+<section>
+  <div class="section-inner-wide">
+    <div class="section-label">Multiple Drivers</div>
+    <h2>What Moves Your Multiple Within the Industry Range</h2>
+    <p class="lead" style="max-width:700px">Buyers don't apply a single industry multiple. They start with the range and adjust based on factors they can observe directly. Understanding these factors — and where your business stands on each — is the core purpose of the worksheet.</p>
+    <table class="factors-table">
+      <thead>
+        <tr>
+          <th>Factor</th>
+          <th>Multiple Expansion</th>
+          <th>Multiple Compression</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="factor-name">Revenue Quality</td>
+          <td><span class="badge-up">+0.5x</span> Recurring or contractual revenue, high renewal rates</td>
+          <td><span class="badge-dn">&minus;0.5x</span> Transactional revenue, project-dependent, high concentration</td>
+        </tr>
+        <tr>
+          <td class="factor-name">Customer Concentration</td>
+          <td><span class="badge-up">+0.25x</span> No customer &gt;10% of revenue, diversified base</td>
+          <td><span class="badge-dn">&minus;0.75x</span> One customer &gt;25% of revenue, limited diversification</td>
+        </tr>
+        <tr>
+          <td class="factor-name">Owner Dependency</td>
+          <td><span class="badge-up">+0.5x</span> Management team can operate independently, owner is strategic only</td>
+          <td><span class="badge-dn">&minus;0.75x</span> Owner holds key relationships, operational knowledge not transferred</td>
+        </tr>
+        <tr>
+          <td class="factor-name">Management Depth</td>
+          <td><span class="badge-up">+0.25x</span> Defined roles, clear authority, leadership team retained through transition</td>
+          <td><span class="badge-dn">&minus;0.5x</span> Thin management layer, key-person risk concentrated in 1&ndash;2 individuals</td>
+        </tr>
+        <tr>
+          <td class="factor-name">Revenue Growth</td>
+          <td><span class="badge-up">+0.5x</span> Consistent double-digit growth, clear expansion levers</td>
+          <td><span class="badge-dn">&minus;0.5x</span> Declining or flat revenue, no visible growth catalyst</td>
+        </tr>
+        <tr>
+          <td class="factor-name">Financial Record Quality</td>
+          <td><span class="badge-up">+0.25x</span> Clean, audited or reviewed financials with documented add-backs</td>
+          <td><span class="badge-dn">&minus;0.5x</span> Tax-basis financials, undocumented adjustments, inconsistent presentation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label">How It Works</div>
+    <h2>Three Steps. Ten Minutes. A Realistic Number.</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Enter Your Inputs</h3>
+        <p>Enter your EBITDA, select your industry, and check the factors that apply to your business. The worksheet does the calculation.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>See Your Range</h3>
+        <p>The worksheet displays a low, mid, and high enterprise value range based on your industry multiple and risk-adjusted factors.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Identify the Gaps</h3>
+        <p>Compare your range to your expectations. The compression factors you check tell you where buyer scrutiny will land — and what's worth addressing before a formal process.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="section-inner-wide">
+    <div class="section-label">Owner Perspective</div>
+    <h2>What Owners Say About the Process</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <p>"I had a number in my head for years. When we worked through the worksheet before engaging buyers, I realized my EBITDA was about $300K lower than I'd been telling myself — because I hadn't thought carefully about what buyers would accept as normalized. That conversation three years before my sale was worth far more than it cost."</p>
+        <div class="attr">— Manufacturing company owner, Southern California</div>
+      </div>
+      <div class="testimonial">
+        <p>"The multiple compression factors were an eye-opener. I knew I had customer concentration, but I hadn't quantified what it would mean to a buyer's offer. Seeing it spelled out — that my two largest customers were likely to shave half a turn off my multiple — motivated me to fix it while I had time."</p>
+        <div class="attr">— Business services owner, Pacific Northwest</div>
+      </div>
+      <div class="testimonial">
+        <p>"I've talked to other advisors who told me what I wanted to hear. Dave told me what my business would actually trade for, and why. That kind of honesty is exactly what you need when you're three years out and have time to do something about it."</p>
+        <div class="attr">— Distribution company owner, Bay Area</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="alt">
+  <div class="section-inner">
+    <div class="section-label">About Horizon M&amp;A Advisors</div>
+    <h2>Built for Lower Middle Market Business Owners</h2>
+    <div class="about-grid">
+      <div class="about-avatar">DH</div>
+      <div class="about-text">
+        <p>Dave Halvorson founded Horizon M&amp;A Advisors to serve business owners in the $10M–$100M revenue range who are planning an exit over a 1–3 year horizon. The firm focuses exclusively on sell-side advisory — representing owners, not buyers — in the lower middle market.</p>
+        <p>The valuation framework in this worksheet reflects the factors Horizon evaluates in every engagement: what drives buyer pricing, what drives multiple compression, and what owners can do — with enough lead time — to improve their outcome before they engage the market.</p>
+        <p>Horizon M&amp;A Advisors is based in Campbell, CA and advises owners throughout California and the Western United States.</p>
+        <div class="credentials">
+          <span class="cred">DRE Licensed</span>
+          <span class="cred">IBBA Member</span>
+          <span class="cred">M&amp;A Source</span>
+          <span class="cred">Sell-Side Only</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Common Questions</div>
+    <h2>What Owners Ask Before Downloading</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <h4>How accurate is the valuation range the worksheet produces?</h4>
+        <p>The worksheet is a planning tool, not a formal valuation opinion. It uses current lower middle market transaction data by industry and applies the risk adjustment factors buyers commonly use. The range it produces is a reasonable starting point for understanding where a formal offer might land — not a guarantee. A formal business valuation requires a certified appraiser or investment banker with access to comparable transaction data.</p>
+      </div>
+      <div class="faq-item">
+        <h4>My business is profitable but I've run personal expenses through it. Does that affect the analysis?</h4>
+        <p>Yes — this is exactly what the EBITDA normalization step addresses. Expenses that are personal in nature, non-recurring, or above-market owner compensation should be added back to calculate normalized EBITDA. The worksheet walks through the most common categories. The key is that each add-back needs to be documentable — buyers will ask for supporting detail on every adjustment.</p>
+      </div>
+      <div class="faq-item">
+        <h4>My industry isn't on the list. What should I do?</h4>
+        <p>Use the industry that most closely resembles your business model. If your business spans multiple categories, use the one that best reflects your primary revenue driver. The industry multiple is a starting point — the compression and expansion factors are what refine the output to your specific situation.</p>
+      </div>
+      <div class="faq-item">
+        <h4>I'm not planning to sell for 3+ years. Is this relevant for me?</h4>
+        <p>Yes — and arguably more relevant. Owners who are 3 or more years from a planned exit have the most time to address the factors that drive multiple compression. The worksheet is most valuable as a planning tool, not a pre-sale checklist. Knowing where you stand now gives you time to act on it.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What happens after I enter my email?</h4>
+        <p>You'll receive immediate access to the interactive worksheet. Over the following weeks, you'll receive a short email series covering the key valuation factors in more depth — EBITDA normalization, multiple drivers, working capital — based on what we see most consistently in lower middle market transactions. You can unsubscribe at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <h2>Get Your Valuation Reality Check</h2>
+  <p>Free. Interactive. Built on the same framework buyers use to underwrite lower middle market transactions.</p>
+  <div class="final-form">
+    <input type="email" placeholder="Enter your email address" />
+    <button class="btn-primary">Get the Worksheet</button>
+  </div>
+  <p style="margin-top:14px;font-size:12px;color:rgba(255,255,255,0.3);">Immediate access. Unsubscribe at any time.</p>
+</div>
+
+<footer>
+  <p>&copy; 2025 Horizon M&amp;A Advisors &mdash; Campbell, CA &mdash; DRE Licensed &mdash; IBBA Member<br>
+  This worksheet is provided for informational purposes only and does not constitute a formal business valuation or investment advice.</p>
+  <p><a href="https://horizonmaa.com">horizonmaa.com</a> &mdash; <a href="mailto:dave@horizonmaa.com">dave@horizonmaa.com</a> &mdash; 408-398-5553</p>
+</footer>
+
+</body>
+</html>

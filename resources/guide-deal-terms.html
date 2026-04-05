@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Deal Behind the Deal — Transaction Terms Reference Guide | Horizon M&A Advisors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#0d2140; --navy-mid:#163460; --gold:#b8912a;
+      --text:#0f1923; --text-mid:#374151; --text-light:#6b7280;
+      --border:#c8cdd6; --border-light:#e5e9ef; --bg:#f7f8fb;
+      --green-bg:#dcfce7; --green-text:#166534;
+      --yellow-bg:#fef9c3; --yellow-text:#854d0e;
+      --red-bg:#fee2e2; --red-text:#991b1b;
+    }
+    body { font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; color:var(--text); font-size:15px; line-height:1.65; -webkit-font-smoothing:antialiased; background:#fff; }
+
+    /* ── LETTERHEAD ── */
+    .letterhead { background:var(--navy); padding:0; }
+    .lh-top { display:flex; justify-content:space-between; align-items:stretch; border-bottom:3px solid var(--gold); }
+    .lh-firm { padding:28px 40px 24px; }
+    .lh-firm .firm-name { font-size:13px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:#fff; margin-bottom:4px; }
+    .lh-firm .firm-name span { color:var(--gold); }
+    .lh-firm .firm-tagline { font-size:11px; color:rgba(255,255,255,0.45); letter-spacing:0.05em; }
+    .lh-right { padding:28px 40px 24px; text-align:right; border-left:1px solid rgba(255,255,255,0.08); }
+    .lh-right .doc-type { font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+    .lh-right .doc-title { font-size:15px; font-weight:700; color:#fff; line-height:1.25; }
+    .lh-meta { padding:10px 40px; display:flex; gap:32px; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .lh-meta-item { font-size:11px; color:rgba(255,255,255,0.4); }
+    .lh-meta-item strong { color:rgba(255,255,255,0.65); font-weight:600; }
+    .confid-bar { background:rgba(255,255,255,0.04); padding:7px 40px; display:flex; align-items:center; gap:10px; }
+    .confid-badge { background:var(--gold); color:#fff; font-size:9px; font-weight:800; letter-spacing:0.1em; padding:3px 8px; text-transform:uppercase; flex-shrink:0; }
+    .confid-text { font-size:10px; color:rgba(255,255,255,0.35); }
+
+    /* ── BODY ── */
+    .doc-body { max-width:880px; margin:0 auto; padding:40px 40px 60px; }
+
+    /* intro */
+    .intro-block { border-left:3px solid var(--gold); padding:16px 20px; background:var(--bg); margin-bottom:40px; }
+    .intro-block p { font-size:14px; color:var(--text-mid); line-height:1.7; }
+    .intro-block p + p { margin-top:8px; }
+
+    /* section headers */
+    .term-section { margin-bottom:48px; }
+    .term-section-header { background:var(--navy); color:#fff; padding:10px 18px; display:flex; align-items:center; justify-content:space-between; margin-bottom:0; }
+    .term-section-header h2 { font-size:13px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#fff; }
+    .term-section-num { font-size:11px; color:rgba(255,255,255,0.4); font-weight:600; letter-spacing:0.06em; }
+
+    /* term card */
+    .term-card { border:1px solid var(--border); border-top:none; }
+    .term-card + .term-card { border-top:none; }
+    .term-header { padding:18px 20px 12px; border-bottom:1px solid var(--border-light); display:flex; justify-content:space-between; align-items:baseline; }
+    .term-name { font-size:15px; font-weight:700; color:var(--navy); }
+    .term-importance { font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; }
+    .imp-high { color:#991b1b; }
+    .imp-med { color:#854d0e; }
+    .term-body { padding:16px 20px; }
+    .term-def { font-size:14px; color:var(--text-mid); line-height:1.7; margin-bottom:14px; }
+    .term-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); margin-top:16px; }
+    .term-cell { background:#fff; padding:14px 16px; }
+    .term-cell-label { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-light); margin-bottom:8px; }
+    .term-cell-body { font-size:13px; color:var(--text-mid); line-height:1.55; }
+    .term-cell.cell-green { background:var(--green-bg); }
+    .term-cell.cell-green .term-cell-label { color:var(--green-text); }
+    .term-cell.cell-green .term-cell-body { color:#14532d; }
+    .term-cell.cell-yellow { background:var(--yellow-bg); }
+    .term-cell.cell-yellow .term-cell-label { color:var(--yellow-text); }
+    .term-cell.cell-yellow .term-cell-body { color:#713f12; }
+    .term-cell.cell-red { background:var(--red-bg); }
+    .term-cell.cell-red .term-cell-label { color:var(--red-text); }
+    .term-cell.cell-red .term-cell-body { color:#7f1d1d; }
+    .term-example { margin-top:14px; padding:12px 16px; background:var(--bg); border-left:3px solid var(--navy-mid); }
+    .term-example-label { font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-light); margin-bottom:6px; }
+    .term-example-body { font-size:13px; color:var(--text-mid); line-height:1.55; }
+
+    /* glossary table */
+    .glossary-table { width:100%; border-collapse:collapse; border:1px solid var(--border); margin-top:0; }
+    .glossary-table th { background:var(--navy); color:#fff; font-size:10px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:9px 16px; text-align:left; border-right:1px solid rgba(255,255,255,0.08); }
+    .glossary-table th:last-child { border-right:none; }
+    .glossary-table td { padding:11px 16px; font-size:13px; color:var(--text-mid); border-bottom:1px solid var(--border-light); border-right:1px solid var(--border-light); vertical-align:top; line-height:1.55; }
+    .glossary-table td:last-child { border-right:none; }
+    .glossary-table tr:last-child td { border-bottom:none; }
+    .glossary-table tr:nth-child(even) td { background:var(--bg); }
+    .glossary-table td.term-col { font-weight:700; color:var(--navy); white-space:nowrap; }
+
+    /* negotiation tips */
+    .tip-list { display:flex; flex-direction:column; border:1px solid var(--border); margin-top:0; }
+    .tip-item { display:flex; align-items:stretch; border-bottom:1px solid var(--border-light); }
+    .tip-item:last-child { border-bottom:none; }
+    .tip-num { width:40px; background:var(--navy); color:var(--gold); font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .tip-body { padding:14px 18px; }
+    .tip-body strong { display:block; font-size:13.5px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+    .tip-body span { font-size:13px; color:var(--text-mid); line-height:1.55; }
+
+    /* CTA box */
+    .cta-box { border:1px solid var(--gold); padding:28px 32px; margin-top:40px; display:flex; justify-content:space-between; align-items:center; gap:24px; flex-wrap:wrap; }
+    .cta-box-text h3 { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:6px; }
+    .cta-box-text p { font-size:13.5px; color:var(--text-mid); line-height:1.6; max-width:520px; }
+    .cta-btn { background:var(--navy); color:#fff; font-size:12px; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; padding:12px 24px; text-decoration:none; white-space:nowrap; border:none; cursor:pointer; }
+
+    /* footer */
+    .doc-footer { background:var(--navy); padding:20px 40px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; border-top:1px solid var(--gold); }
+    .doc-footer p { font-size:11px; color:rgba(255,255,255,0.35); line-height:1.5; }
+    .doc-footer a { color:rgba(255,255,255,0.5); text-decoration:none; }
+
+    /* disclaimer */
+    .disclaimer { background:var(--bg); border-top:1px solid var(--border); padding:14px 40px; }
+    .disclaimer p { font-size:11px; color:var(--text-light); line-height:1.6; }
+
+    @media print {
+      body { font-size:12px; }
+      .doc-body { padding:20px; max-width:100%; }
+      .term-grid { break-inside:avoid; }
+      .term-section { break-inside:avoid; }
+      .cta-box { display:none; }
+    }
+    @media(max-width:700px){
+      .lh-top { flex-direction:column; }
+      .lh-right { text-align:left; border-left:none; border-top:1px solid rgba(255,255,255,0.08); }
+      .lh-meta { flex-wrap:wrap; gap:12px; }
+      .doc-body { padding:24px 20px 40px; }
+      .term-grid { grid-template-columns:1fr; }
+      .confid-bar { padding:7px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- LETTERHEAD -->
+<div class="letterhead">
+  <div class="lh-top">
+    <div class="lh-firm">
+      <div class="firm-name">Horizon <span>M&amp;A</span> Advisors</div>
+      <div class="firm-tagline">Lower Middle Market M&amp;A Advisory &mdash; Campbell, CA</div>
+    </div>
+    <div class="lh-right">
+      <div class="doc-type">Seller Reference Guide</div>
+      <div class="doc-title">The Deal Behind the Deal:<br>Transaction Terms for Business Owners</div>
+    </div>
+  </div>
+  <div class="lh-meta">
+    <div class="lh-meta-item"><strong>Prepared by:</strong> Horizon M&amp;A Advisors</div>
+    <div class="lh-meta-item"><strong>Target audience:</strong> Business owners planning an exit in 1&ndash;3 years</div>
+    <div class="lh-meta-item"><strong>Transaction scope:</strong> Lower middle market ($10M&ndash;$100M revenue)</div>
+  </div>
+  <div class="confid-bar">
+    <span class="confid-badge">Confidential</span>
+    <span class="confid-text">Prepared for the exclusive use of the recipient. Not for distribution. Does not constitute legal or financial advice.</span>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="doc-body">
+
+  <div class="intro-block">
+    <p>In a lower middle market sale process, the headline purchase price and the amount the seller actually receives — at closing and over time — are frequently different numbers. The gap lives in the deal structure: the terms that govern how the price is paid, under what conditions, over what timeline, and with what contingencies.</p>
+    <p>This guide explains the transaction terms that most directly affect seller economics. It is not a legal document and does not constitute legal or financial advice. Its purpose is to ensure that when these terms appear in an offer, you understand what you are looking at before you respond to it.</p>
+  </div>
+
+  <!-- ══ SECTION 1: PURCHASE PRICE STRUCTURE ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Purchase Price Structure</h2>
+      <span class="term-section-num">Section 1 of 5</span>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Enterprise Value vs. Equity Value</span>
+        <span class="term-importance imp-high">High Importance</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">Enterprise value (EV) is the total value of the business — the number buyers quote in offers and the press covers in deal announcements. Equity value is what the seller actually receives after adjustments: adding excess cash, subtracting funded debt, and adjusting for working capital. In most lower middle market transactions, the seller's proceeds equal equity value, not enterprise value.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Favorable</div>
+            <div class="term-cell-body">Excess cash retained by seller; minimal funded debt; working capital at or above the agreed target at closing</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Negotiate Carefully</div>
+            <div class="term-cell-body">Understand exactly which liabilities are being deducted and which assets are being included in the "cash-free, debt-free" definition</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Watch For</div>
+            <div class="term-cell-body">Broad debt definitions that capture deferred revenue, accrued liabilities, or unfunded pension obligations not traditionally classified as debt</div>
+          </div>
+        </div>
+        <div class="term-example">
+          <div class="term-example-label">Illustrative Example</div>
+          <div class="term-example-body">Enterprise value: $12,000,000. Less: funded debt ($800K), working capital shortfall ($200K), escrow holdback ($720K). Cash at closing: $10,280,000. The seller's check is 14% below the headline number — before earnout, rep &amp; warranty claims, or post-close adjustments.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Closing Consideration vs. Deferred Consideration</span>
+        <span class="term-importance imp-high">High Importance</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">The total purchase price is typically split between consideration paid at closing and consideration paid after closing. Deferred consideration includes earnouts, equity rollover, and seller notes. Only closing consideration is certain — deferred consideration is contingent on future events, business performance, or the buyer's financial health.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Favorable Structure</div>
+            <div class="term-cell-body">80%+ of total consideration paid at closing in cash; deferred consideration tied to objective, auditable metrics</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Acceptable with Protections</div>
+            <div class="term-cell-body">60–79% at closing; earnout tied to EBITDA or revenue with clear measurement criteria and dispute resolution process</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Unfavorable</div>
+            <div class="term-cell-body">Less than 60% at closing; large seller note; earnout tied to subjective criteria or buyer's internal reporting</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 2: EARNOUTS ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Earnouts</h2>
+      <span class="term-section-num">Section 2 of 5</span>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Earnout Structure &amp; Mechanics</span>
+        <span class="term-importance imp-high">High Importance</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">An earnout is a deferred payment contingent on the business achieving specified performance targets — typically revenue or EBITDA — over a defined period after closing. Earnouts are used when buyer and seller disagree on the value of near-term growth projections. They allow the seller to receive additional consideration if the projections prove accurate, while protecting the buyer if they don't.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Seller-Favorable Design</div>
+            <div class="term-cell-body">Revenue-based metric (easier to measure); short duration (12 months); low threshold relative to recent performance; buyer covenant to not starve the business of resources</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Acceptable with Protections</div>
+            <div class="term-cell-body">EBITDA-based metric with agreed accounting treatment; 18&ndash;24 months; threshold at or below last full year actual performance; independent accountant for dispute resolution</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Exercise Caution</div>
+            <div class="term-cell-body">Metrics subject to buyer's internal accounting decisions; 3+ year duration; targets based on projections that exceed historical performance; no buyer obligation to fund growth investment</div>
+          </div>
+        </div>
+        <div class="term-example">
+          <div class="term-example-label">Key Negotiation Points</div>
+          <div class="term-example-body">Push for: (1) objective, auditable measurement criteria; (2) buyer covenants to maintain adequate resources; (3) acceleration upon change of control; (4) independent accountant for disputes; (5) carved-out categories of costs the buyer cannot add to reduce earnout EBITDA.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">When Earnouts Are Appropriate (and When They Aren't)</span>
+        <span class="term-importance imp-med">Context-Dependent</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">Earnouts are appropriate when there is a genuine valuation gap driven by near-term growth projections that the historical financials don't yet support — the seller believes the business will grow significantly, and the earnout captures value if that growth materializes. Earnouts are not appropriate as a substitute for buyers underwriting the current, demonstrated earnings of the business.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Appropriate Use</div>
+            <div class="term-cell-body">Business has signed contracts not yet generating revenue; recent contract wins not reflected in trailing EBITDA; clear, near-term growth event (product launch, geographic expansion)</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Inappropriate Use</div>
+            <div class="term-cell-body">Buyer applying earnout to demonstrated, historical earnings they could verify in diligence; earnout used to bridge a valuation gap created by the buyer's own conservative normalization</div>
+          </div>
+          <div class="term-cell">
+            <div class="term-cell-label">Advisor Note</div>
+            <div class="term-cell-body">If a buyer is using an earnout to avoid paying for what the business demonstrably earns today, that is a different transaction structure than the headline suggests. Understand which situation applies before accepting.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 3: WORKING CAPITAL ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Working Capital Adjustment</h2>
+      <span class="term-section-num">Section 3 of 5</span>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Working Capital Target &amp; Peg Mechanism</span>
+        <span class="term-importance imp-high">High Importance</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">Working capital — typically accounts receivable plus inventory minus accounts payable — is expected to transfer with the business at closing at a "target" level. If actual working capital at closing is below the target, the purchase price is adjusted down dollar-for-dollar. If above, the price adjusts up. The target is negotiated at LOI, before formal diligence confirms what the actual figure will be.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Favorable</div>
+            <div class="term-cell-body">Target set at trailing 12-month average of actual working capital; clear definition of included/excluded items; seller-friendly dispute resolution (neutral accountant, not buyer's auditor)</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Watch Carefully</div>
+            <div class="term-cell-body">Target set at trailing 3-month average (can be inflated by seasonal highs); definition of current liabilities includes items the seller considers non-current</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Unfavorable</div>
+            <div class="term-cell-body">Target set above historical average; broad definition of current liabilities; buyer's auditor serves as dispute resolver; adjustment applied to the full closing consideration rather than just the escrow</div>
+          </div>
+        </div>
+        <div class="term-example">
+          <div class="term-example-label">Why This Matters at LOI Stage</div>
+          <div class="term-example-body">The working capital target is agreed at LOI — before formal diligence. Buyers will have modeled the target carefully. Sellers who haven't run their own analysis consistently accept targets set in the buyer's favor. A target set 15% above your trailing average requires you to fund the difference out of the closing proceeds — dollar for dollar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 4: ESCROW & REP/WARRANTY ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Escrow, Indemnification &amp; Representations</h2>
+      <span class="term-section-num">Section 4 of 5</span>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Escrow &amp; Indemnification Holdback</span>
+        <span class="term-importance imp-high">High Importance</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">A portion of the closing consideration — typically 8–15% — is held in escrow for a defined period (12–24 months) as security for the seller's indemnification obligations. If the buyer makes a valid indemnification claim during that period, the amount is deducted from escrow before the balance is released to the seller. Escrow is not a penalty — it is a mechanism for resolving legitimate post-close claims without litigation.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Favorable Terms</div>
+            <div class="term-cell-body">Holdback: 8% or less; duration: 12 months; release: automatic upon expiration absent pending claims; claims threshold (basket): 0.75% or more of purchase price</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Market Standard</div>
+            <div class="term-cell-body">Holdback: 10%; duration: 18 months; basket: 0.5–0.75%; cap on indemnification: equal to purchase price for fundamental reps, holdback amount for general reps</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Unfavorable</div>
+            <div class="term-cell-body">Holdback: 15%+; duration: 24 months; no basket (first dollar indemnification); cap on indemnification equals full purchase price for general reps</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Representations &amp; Warranties</span>
+        <span class="term-importance imp-high">High Importance</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">In a purchase agreement, the seller makes a set of representations and warranties — factual statements about the business that are true as of closing. If any representation is materially false, the buyer may have an indemnification claim against the seller. The scope and survival period of these reps directly affect the seller's exposure after closing.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Seller-Favorable</div>
+            <div class="term-cell-body">Reps qualified by "knowledge" and "materiality"; fundamental reps (title, authority) survive longer but limited in number; general reps survive 12–18 months; narrow definition of "material adverse effect"</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Negotiate Qualification</div>
+            <div class="term-cell-body">Work with transaction counsel to add knowledge qualifiers to reps covering matters outside the seller's direct knowledge; limit reps to periods within the seller's tenure</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Watch For</div>
+            <div class="term-cell-body">Unqualified reps covering historical periods before seller's control; broad "material adverse effect" definitions; environmental reps with no knowledge qualifier; reps that survive beyond 24 months for general matters</div>
+          </div>
+        </div>
+        <div class="term-example">
+          <div class="term-example-label">Rep &amp; Warranty Insurance</div>
+          <div class="term-example-body">In transactions above approximately $15M of enterprise value, rep and warranty insurance (RWI) is increasingly common. RWI allows the buyer to make indemnification claims against an insurer rather than the seller's escrow, often reducing or eliminating the seller's holdback obligation. Ask your advisor whether RWI is appropriate for your transaction.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 5: EQUITY ROLLOVER & SELLER NOTES ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Equity Rollover &amp; Seller Notes</h2>
+      <span class="term-section-num">Section 5 of 5</span>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Equity Rollover</span>
+        <span class="term-importance imp-med">Situationally Important</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">In transactions involving private equity buyers, sellers are frequently asked to "roll" a portion of their equity — typically 10–20% of their proceeds — into the new, post-acquisition entity. The rollover is a second bite at the apple: if the business grows under the PE firm's ownership and is eventually sold, the seller participates in the exit at the higher value. The risk is that the second bite may be worth less than expected — or may never materialize.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Favorable Terms</div>
+            <div class="term-cell-body">Tag-along rights (seller can exit alongside PE in future sale); anti-dilution protection; information rights; defined exit timeline; rollover valued at same basis as PE investment</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Negotiate These Points</div>
+            <div class="term-cell-body">Governance rights (board observer seat); drag-along limitations; put option allowing seller to force liquidity after a defined period; clear definition of "exit" for acceleration purposes</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Exercise Caution</div>
+            <div class="term-cell-body">No tag-along rights; rollover equity subordinated to PE preferred; no information rights; mandatory rollover with no negotiation on percentage or terms</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="term-card">
+      <div class="term-header">
+        <span class="term-name">Seller Notes</span>
+        <span class="term-importance imp-med">Situationally Important</span>
+      </div>
+      <div class="term-body">
+        <div class="term-def">A seller note (or seller financing) involves the seller lending a portion of the purchase price to the buyer, to be repaid over time with interest. Seller notes are common in lower middle market transactions where the buyer's financing package doesn't fully cover the purchase price. They are not equivalent to cash at closing — they are an unsecured loan to the buyer, with the associated credit risk.</div>
+        <div class="term-grid">
+          <div class="term-cell cell-green">
+            <div class="term-cell-label">Favorable Structure</div>
+            <div class="term-cell-body">Short duration (3–4 years); market interest rate (prime + 1–2%); security interest in business assets if possible; prepayment without penalty; acceleration upon change of control</div>
+          </div>
+          <div class="term-cell cell-yellow">
+            <div class="term-cell-label">Acceptable</div>
+            <div class="term-cell-body">5-year duration; reasonable interest rate; subordinated to senior lender; clear repayment schedule with defined default provisions</div>
+          </div>
+          <div class="term-cell cell-red">
+            <div class="term-cell-label">Unfavorable</div>
+            <div class="term-cell-body">7+ years; below-market interest rate; entirely subordinated with no security; seller note used as primary financing mechanism rather than a gap-fill</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ QUICK REFERENCE GLOSSARY ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Quick Reference: Transaction Terminology</h2>
+      <span class="term-section-num">Reference</span>
+    </div>
+    <table class="glossary-table">
+      <thead>
+        <tr>
+          <th style="width:200px">Term</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="term-col">Adjusted EBITDA</td>
+          <td>Earnings before interest, taxes, depreciation, and amortization, normalized to remove non-recurring, owner-specific, or non-operating items. The earnings figure buyers use to underwrite and apply a purchase multiple.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Basket / Deductible</td>
+          <td>The minimum threshold of indemnification claims required before the seller owes anything. Claims below the basket threshold are the buyer's responsibility. A "tipping basket" means the full amount is owed once the threshold is crossed; a "true deductible" means only the excess over the threshold is owed.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Cash-Free, Debt-Free</td>
+          <td>Standard assumption in lower middle market transactions: the buyer acquires the business without the seller's excess cash and without assuming the seller's funded debt. Both items are adjusted in the enterprise-to-equity-value bridge.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Closing Condition</td>
+          <td>A requirement that must be satisfied before the transaction can close. If a closing condition is not met, the buyer may have the right to terminate or renegotiate. Common conditions include regulatory approvals, third-party consents, and material adverse change provisions.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Drag-Along Rights</td>
+          <td>PE buyer's right to require minority equity holders (including a rolling seller) to participate in a future sale on the same terms as the majority. Limits the seller's ability to block a future exit.</td>
+        </tr>
+        <tr>
+          <td class="term-col">EBITDA Multiple</td>
+          <td>The ratio of enterprise value to adjusted EBITDA. The primary valuation metric in lower middle market M&A. A business trading at 6x EBITDA with $2M of adjusted EBITDA has an enterprise value of $12M.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Letter of Intent (LOI)</td>
+          <td>A non-binding document that outlines the key economic and structural terms of a proposed transaction. The LOI is signed before formal diligence and establishes the framework for the definitive purchase agreement. Most LOIs include an exclusivity period during which the seller cannot negotiate with other buyers.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Material Adverse Change (MAC)</td>
+          <td>A provision allowing the buyer to terminate the transaction if a material adverse change in the business occurs between signing and closing. MAC definitions are heavily negotiated — broader definitions favor buyers, narrower definitions favor sellers.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Rep &amp; Warranty Insurance (RWI)</td>
+          <td>Insurance purchased (typically by the buyer) that allows indemnification claims to be made against an insurer rather than the seller's escrow. Increasingly common in transactions above ~$15M of enterprise value. Can substantially reduce the seller's holdback obligation.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Tag-Along Rights</td>
+          <td>A rolling seller's right to participate alongside the PE buyer in a future sale of the business on the same terms. Protects minority equity holders from being left behind in an exit.</td>
+        </tr>
+        <tr>
+          <td class="term-col">Working Capital Peg</td>
+          <td>The negotiated target level of working capital that should be in the business at closing. Sets the baseline for post-close working capital adjustments. Established at LOI — typically before the seller has run their own working capital analysis.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ══ NEGOTIATION TIPS ══ -->
+  <div class="term-section">
+    <div class="term-section-header">
+      <h2>Negotiation Principles for Sellers</h2>
+      <span class="term-section-num">Advisory Notes</span>
+    </div>
+    <div class="tip-list">
+      <div class="tip-item">
+        <div class="tip-num">1</div>
+        <div class="tip-body">
+          <strong>Run your own working capital analysis before the LOI</strong>
+          <span>The working capital target is negotiated at LOI — before formal diligence. Buyers have already modeled it. If you haven't, you are negotiating without information against a counterparty who has it.</span>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">2</div>
+        <div class="tip-body">
+          <strong>Understand what you are accepting before you sign the LOI</strong>
+          <span>The LOI is non-binding on price — but signing it begins the exclusivity period and creates significant momentum toward the buyer's proposed structure. Changes after signing are possible but create friction and signal weakness.</span>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">3</div>
+        <div class="tip-body">
+          <strong>Evaluate earnouts on their mechanics, not their headline</strong>
+          <span>An earnout is only as valuable as the criteria used to measure it. Before accepting an earnout, understand exactly how the measurement metric is defined, who calculates it, and what remedies you have if you disagree with the result.</span>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">4</div>
+        <div class="tip-body">
+          <strong>Negotiate escrow terms alongside the purchase price</strong>
+          <span>The escrow amount, duration, basket threshold, and cap are deal terms, not boilerplate. A 10% holdback on a $15M transaction is $1.5M not available to you for 12–24 months. Negotiate it as if it were part of the price — because economically, it is.</span>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">5</div>
+        <div class="tip-body">
+          <strong>If there is equity rollover, negotiate governance rights</strong>
+          <span>As a minority equity holder in the post-acquisition entity, you have limited rights unless they are explicitly documented. At minimum, negotiate tag-along rights, information rights, and clarity on the exit timeline.</span>
+        </div>
+      </div>
+      <div class="tip-item">
+        <div class="tip-num">6</div>
+        <div class="tip-body">
+          <strong>Transaction counsel and M&A advisor are not interchangeable</strong>
+          <span>Your transaction attorney reviews and negotiates the purchase agreement. Your M&A advisor structures the process, manages buyer relationships, and advises on business and economic terms. Both roles are necessary — neither substitutes for the other.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <div class="cta-box-text">
+      <h3>Understand What Your Deal Would Actually Look Like</h3>
+      <p>A 30-minute strategy call with Dave Halvorson covers your specific situation: what a transaction structure would look like for your business, where the terms that most affect seller economics are likely to land, and what's worth preparing before you engage buyers. No commitment, no pitch.</p>
+    </div>
+    <a href="https://horizonmaa.com" class="cta-btn">Book a Strategy Call</a>
+  </div>
+
+</div><!-- /doc-body -->
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <p>This reference guide is prepared by Horizon M&amp;A Advisors for informational purposes only. It does not constitute legal advice, financial advice, or a formal business valuation. Transaction terms vary significantly based on deal-specific facts, buyer type, financing structure, and negotiating dynamics. Consult qualified legal counsel and an experienced M&amp;A advisor before responding to any offer or signing any transaction document. &copy; 2025 Horizon M&amp;A Advisors. All rights reserved.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="doc-footer">
+  <p>Horizon M&amp;A Advisors &mdash; Campbell, CA &mdash; DRE Licensed &mdash; IBBA Member<br>
+  dave@horizonmaa.com &mdash; 408-398-5553 &mdash; <a href="https://horizonmaa.com">horizonmaa.com</a></p>
+  <p>The Deal Behind the Deal &mdash; Seller Reference Guide<br>
+  For informational use only &mdash; Not for distribution</p>
+</div>
+
+</body>
+</html>

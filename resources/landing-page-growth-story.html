@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Growth Story Scorecard | Horizon M&A Advisors</title>
+  <meta name="description" content="Find out if your business's growth story will hold up to buyer scrutiny. Download the free 5-factor scorecard from Horizon M&A Advisors — 500+ closed transactions, multi-billion dollars in deal value." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2b4a;
+      --navy-light: #243556;
+      --gold: #c8973a;
+      --gold-light: #e0b060;
+      --gray-100: #f7f8fa;
+      --gray-200: #eef0f4;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --white: #ffffff;
+      --text: #1f2937;
+      --radius: 8px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 17px;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--navy);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav .logo {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    nav .logo span { color: var(--gold); }
+    nav a.nav-cta {
+      color: var(--gold);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 8px 18px;
+      border-radius: var(--radius);
+      transition: background 0.2s;
+    }
+    nav a.nav-cta:hover { background: rgba(200,151,58,0.12); }
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      color: var(--white);
+      padding: 90px 40px 80px;
+      text-align: center;
+    }
+    .hero .eyebrow {
+      display: inline-block;
+      background: rgba(200,151,58,0.18);
+      color: var(--gold-light);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 800;
+      line-height: 1.15;
+      max-width: 760px;
+      margin: 0 auto 24px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .hero p {
+      font-size: clamp(17px, 2vw, 20px);
+      color: rgba(255,255,255,0.78);
+      max-width: 620px;
+      margin: 0 auto 40px;
+    }
+    .form-inline {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .form-inline input {
+      flex: 1;
+      min-width: 220px;
+      padding: 14px 18px;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 16px;
+      outline: none;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn:hover { background: var(--gold-light); transform: translateY(-1px); }
+    .btn-lg { font-size: 18px; padding: 17px 36px; }
+    .hero .fine {
+      margin-top: 14px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* SOCIAL PROOF BAR */
+    .proof-bar {
+      background: var(--navy-light);
+      color: rgba(255,255,255,0.65);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .proof-bar span { display: flex; align-items: center; gap: 8px; }
+    .proof-bar span::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* SECTIONS */
+    section { padding: 80px 40px; }
+    .container { max-width: 800px; margin: 0 auto; }
+    .container-wide { max-width: 1040px; margin: 0 auto; }
+
+    section.alt { background: var(--gray-100); }
+
+    h2 {
+      font-size: clamp(26px, 3.5vw, 38px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      color: var(--navy);
+      margin-bottom: 20px;
+    }
+    h3 { font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    p { margin-bottom: 16px; color: var(--gray-700); }
+    p:last-child { margin-bottom: 0; }
+
+    /* PROBLEM */
+    .insight-box {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      margin: 32px 0;
+    }
+    .insight-box p { color: rgba(255,255,255,0.78); margin-bottom: 12px; }
+    .insight-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .insight-box ul li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.85);
+      font-size: 16px;
+    }
+    .insight-box ul li::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* BULLETS */
+    .bullets { list-style: none; margin: 28px 0 0; display: flex; flex-direction: column; gap: 16px; }
+    .bullets li {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-left: 4px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+    }
+    .bullets li .icon {
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      background: rgba(200,151,58,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+    }
+    .bullets li .copy strong { display: block; color: var(--navy); font-size: 16px; margin-bottom: 4px; }
+    .bullets li .copy span { font-size: 15px; color: var(--gray-500); }
+
+    /* FIVE FACTORS */
+    .factors-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    @media (max-width: 720px) { .factors-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 420px) { .factors-grid { grid-template-columns: 1fr; } }
+    .factor-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 20px 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .factor-card .factor-icon { font-size: 28px; margin-bottom: 10px; }
+    .factor-card h4 { font-size: 14px; font-weight: 700; color: var(--navy); line-height: 1.3; }
+
+    /* HOW IT WORKS */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+    @media (max-width: 680px) { .steps { grid-template-columns: 1fr; } }
+    .step {
+      text-align: center;
+      padding: 32px 24px;
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .step .num {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+    }
+    .step h3 { margin-bottom: 8px; }
+    .step p { font-size: 15px; }
+
+    /* TESTIMONIALS */
+    .testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    @media (max-width: 680px) { .testimonials { grid-template-columns: 1fr; } }
+    .testimonial {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      position: relative;
+    }
+    .testimonial::before {
+      content: '\201C';
+      font-size: 64px;
+      color: var(--gold);
+      line-height: 1;
+      position: absolute;
+      top: 12px;
+      left: 20px;
+      opacity: 0.3;
+    }
+    .testimonial p { font-size: 15px; font-style: italic; color: var(--gray-700); margin-bottom: 14px; }
+    .testimonial .attr { font-size: 13px; font-weight: 600; color: var(--navy); }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 36px;
+      align-items: start;
+      margin-top: 8px;
+    }
+    @media (max-width: 580px) { .about-grid { grid-template-columns: 1fr; } }
+    .about-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .about-bio p { font-size: 16px; }
+    .about-bio .credentials {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      background: var(--gray-200);
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    /* FAQ */
+    .faq { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
+    .faq-item {
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      background: var(--white);
+    }
+    .faq-item h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .faq-item p { font-size: 15px; margin: 0; }
+
+    /* FINAL CTA */
+    .final-cta {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+      padding: 90px 40px;
+    }
+    .final-cta h2 { color: var(--white); margin-bottom: 16px; }
+    .final-cta p { color: rgba(255,255,255,0.72); max-width: 540px; margin: 0 auto 36px; font-size: 18px; }
+    .final-cta .fine { margin-top: 16px; font-size: 13px; color: rgba(255,255,255,0.38); }
+
+    /* FOOTER */
+    footer {
+      background: #111827;
+      color: rgba(255,255,255,0.4);
+      padding: 28px 40px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Horizon <span>M&amp;A</span> Advisors</div>
+  <a href="#cta" class="nav-cta">Book a Strategy Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="eyebrow">Free Exit Readiness Scorecard</div>
+  <h1>What Makes a Buyer Pay a Premium?<br><em>Your Growth Story.</em></h1>
+  <p>Most owners walk into buyer conversations focused on last year's revenue. Sophisticated buyers are evaluating your competitive moat, your pipeline, and where the business goes next. Find out if your growth story is ready to hold up to scrutiny.</p>
+  <div class="form-inline">
+    <input type="email" placeholder="Enter your email address" />
+    <button class="btn">Get My Growth Story Scorecard</button>
+  </div>
+  <p class="fine">No spam. No sales pressure. Unsubscribe anytime.</p>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <span>500+ Transactions Closed</span>
+  <span>Multi-Billion in Deal Value</span>
+  <span>IBBA Members</span>
+  <span>30+ Years Combined Experience</span>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <h2>Most Owners Don't Know What Buyers Are Actually Looking For</h2>
+    <p>The moment a serious buyer — a private equity firm, a strategic acquirer, a family office — starts evaluating your business, they're not just reading your P&L.</p>
+
+    <div class="insight-box">
+      <p>They're asking:</p>
+      <ul>
+        <li>Is this business defensible, or could a competitor eat their lunch in 18 months?</li>
+        <li>Is growth real and sustainable, or is it one big customer and some luck?</li>
+        <li>Are there expansion opportunities the current owner hasn't captured yet?</li>
+      </ul>
+    </div>
+
+    <p>If you can't answer those questions clearly — with documentation to back it up — buyers discount your price or walk away.</p>
+    <p>The problem isn't that your business isn't good. It's that your growth story isn't packaged the way buyers need to see it.</p>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="alt">
+  <div class="container">
+    <h2>The 5 Growth Factors Buyers Evaluate Before Making an Offer</h2>
+    <p>This scorecard focuses on the part of your business most owners overlook in exit prep: your growth narrative. Drawn from 500+ transactions and Dave Halvorson's experience evaluating acquisitions at Intel across IT services, SaaS, AI, semiconductors, and health tech.</p>
+
+    <ul class="bullets">
+      <li>
+        <div class="icon">🏰</div>
+        <div class="copy">
+          <strong>How buyers assess your competitive position</strong>
+          <span>The one question that separates defensible businesses from commodities — and how to answer it with documentation buyers trust</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon">📈</div>
+        <div class="copy">
+          <strong>Whether your pipeline and growth trajectory tell a compelling story</strong>
+          <span>Or raise red flags that quietly kill deal value before you ever get to the table</span>
+        </div>
+      </li>
+      <li>
+        <div class="icon">🚀</div>
+        <div class="copy">
+          <strong>The expansion opportunities buyers want to see documented</strong>
+          <span>And how to frame them so they become a premium, not a promise</span>
+        </div>
+      </li>
+    </ul>
+
+    <div class="factors-grid" style="margin-top: 48px;">
+      <div class="factor-card">
+        <div class="factor-icon">🏰</div>
+        <h4>Competitive Moat</h4>
+      </div>
+      <div class="factor-card">
+        <div class="factor-icon">📋</div>
+        <h4>Pipeline Visibility</h4>
+      </div>
+      <div class="factor-card">
+        <div class="factor-icon">🏆</div>
+        <h4>Recent Wins</h4>
+      </div>
+      <div class="factor-card">
+        <div class="factor-icon">🚀</div>
+        <h4>Expansion Opportunities</h4>
+      </div>
+      <div class="factor-card">
+        <div class="factor-icon">📊</div>
+        <h4>Market Position</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section>
+  <div class="container">
+    <h2>Three Steps to Your Score</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Download the Scorecard</h3>
+        <p>Enter your email and get instant access. No phone number, no sales call required.</p>
+      </div>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Score Your Business</h3>
+        <p>Work through 5 growth factors in under 10 minutes. Red, Yellow, or Green — no accounting degree needed.</p>
+      </div>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Know Where You Stand</h3>
+        <p>Your score tells you if you're ready to go to market — or how much runway you have to close the gaps.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 48px;">
+      <a href="#cta" class="btn btn-lg">Get My Growth Story Scorecard</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="alt">
+  <div class="container-wide">
+    <h2 style="text-align:center;">What Clients Say</h2>
+    <div class="testimonials">
+      <div class="testimonial">
+        <p>The process and the outcome exceeded my expectations.</p>
+        <div class="attr">— Michael Pak</div>
+      </div>
+      <div class="testimonial">
+        <p>Honesty and professionalism that is truly rare.</p>
+        <div class="attr">— Fernando Alegria, Optimus GPS Trackers</div>
+      </div>
+      <div class="testimonial">
+        <p>Greg was always there to reassure us... all shareholders are happy.</p>
+        <div class="attr">— Kent Kenning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="container">
+    <h2>Written by Someone Who's Sat on Both Sides of the Table</h2>
+    <div class="about-grid">
+      <div class="about-avatar">DH</div>
+      <div class="about-bio">
+        <p>This scorecard was developed by <strong>Dave Halvorson</strong>, M&amp;A Advisor at Horizon M&amp;A Advisors. Before advising business owners on exits, he spent over a decade leading Strategic Partnerships at Intel — evaluating, structuring, and executing acquisitions across IT services, semiconductors, and enterprise technology.</p>
+        <p>He has been the buyer in the room, asking exactly these questions about businesses like yours. That buy-side experience is what makes this scorecard different. It's not a generic checklist — it's what sophisticated buyers actually look for, and what they'll hold against you if it's not there.</p>
+        <div class="credentials">
+          <span class="badge">MBA, Santa Clara University</span>
+          <span class="badge">IBBA Member</span>
+          <span class="badge">CABB Member</span>
+          <span class="badge">M&A Source</span>
+          <span class="badge">Former Intel Corporate Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="alt">
+  <div class="container">
+    <h2>Common Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h4>Is this really free?</h4>
+        <p>Yes. No credit card, no trial, no catch. We'd rather earn your trust with something useful than pitch you before you're ready.</p>
+      </div>
+      <div class="faq-item">
+        <h4>What if I'm not planning to sell for a few years?</h4>
+        <p>That's exactly who this is for. Owners who start preparing 2–3 years out get significantly better outcomes than those who start 6 months out. The gaps this scorecard surfaces take time to close.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Is this a sales pitch in disguise?</h4>
+        <p>After you download, we'll share how we work with business owners — but there's no pressure. If and when you're ready to talk, we're here. That's it.</p>
+      </div>
+      <div class="faq-item">
+        <h4>Will I get spam?</h4>
+        <p>No. You'll receive the scorecard and occasional insights on exit planning from Horizon. Unsubscribe anytime.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="cta">
+  <h2>Find Out If Your Growth Story Will Hold Up to Buyer Scrutiny</h2>
+  <p>Enter your email and get the scorecard in your inbox in the next two minutes.</p>
+  <div class="form-inline" style="justify-content:center;">
+    <input type="email" placeholder="Enter your email address" style="min-width:240px;" />
+    <button class="btn btn-lg">Get My Growth Story Scorecard</button>
+  </div>
+  <p class="fine">No spam. No sales pressure. Unsubscribe anytime.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Horizon M&amp;A Advisors · 51 East Campbell Avenue, Suite 400-G, Campbell, CA 95008 · <a href="tel:14088980393">1-408-898-0393</a> · <a href="https://horizonmaa.com">horizonmaa.com</a></p>
+</footer>
+
+</body>
+</html>
