@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Insights Hub | Mid Mkt Advisors</title>
+  <meta name="description" content="M&A intelligence for founders thinking about an exit — valuation, deal structure, competitive processes, and exit planning from 500+ closed transactions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#0A1628;--navy-700:#0e2040;--gold:#D97706;--slate:#334155;--slate-light:#64748B;--border:#E2E8F0}
+    html{font-size:16px;-webkit-font-smoothing:antialiased}
+    body{font-family:'IBM Plex Sans',sans-serif;color:var(--navy);background:#F8FAFC}
+
+    nav{background:var(--navy);position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav-inner{max-width:1120px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:56px}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .nav-logo-mark{width:28px;height:28px;background:#1E3A8A;border-radius:4px;display:flex;align-items:center;justify-content:center}
+    .nav-logo-text{font-size:13px;font-weight:600;color:#fff;letter-spacing:.02em}
+    .nav-cta{background:var(--gold);color:#fff;font-size:12px;font-weight:600;padding:7px 16px;border-radius:6px;text-decoration:none;transition:background .2s}
+    .nav-cta:hover{background:#B45309}
+
+    .hero{background:var(--navy);padding:56px 24px 52px;text-align:center}
+    .hero-inner{max-width:640px;margin:0 auto}
+    .eyebrow{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#FBBF24;margin-bottom:16px}
+    .hero h1{font-family:'Cormorant',serif;font-size:clamp(36px,5vw,52px);font-weight:600;color:#fff;line-height:1.1;margin-bottom:16px}
+    .hero p{color:rgba(255,255,255,.5);font-size:1rem;font-weight:300;line-height:1.7;max-width:480px;margin:0 auto}
+
+    .filters{background:#fff;border-bottom:1px solid var(--border);padding:16px 24px;position:sticky;top:56px;z-index:40}
+    .filters-inner{max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px}
+    .cat-btn{border:1px solid var(--border);border-radius:99px;padding:6px 16px;font-size:13px;font-weight:500;color:var(--slate);background:#fff;cursor:pointer;transition:all .2s;white-space:nowrap;font-family:inherit}
+    .cat-btn:hover,.cat-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+
+    .grid-wrap{max-width:1120px;margin:0 auto;padding:48px 24px 80px}
+    .articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+
+    .card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
+    .card:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(10,22,40,.10);border-color:#CBD5E1}
+    .card-img{height:160px;display:flex;align-items:flex-end;padding:16px}
+    .card-body{padding:20px 22px 22px;flex:1;display:flex;flex-direction:column}
+    .card-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:12px;color:var(--slate-light)}
+    .card-meta .sep{opacity:.4}
+    .card-title{font-family:'Cormorant',serif;font-size:20px;font-weight:600;color:var(--navy);line-height:1.25;margin-bottom:10px}
+    .card:hover .card-title{color:#1E3A8A}
+    .card-excerpt{font-size:13.5px;color:var(--slate-light);line-height:1.65;margin-bottom:14px;flex:1}
+    .card-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border);padding-top:12px;margin-top:auto}
+    .card-author{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate-light)}
+    .avatar{width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#1E3A8A,#D97706);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff;flex-shrink:0}
+    .card-link{font-size:12px;font-weight:600;color:#1E3A8A;transition:color .2s}
+    .card:hover .card-link{color:var(--gold)}
+
+    .tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:99px}
+    .tag-exit{background:rgba(20,184,166,.15);color:#0F766E}
+    .tag-valuation{background:rgba(245,158,11,.15);color:#92400E}
+    .tag-sell{background:rgba(59,130,246,.15);color:#1D4ED8}
+    .tag-deal{background:rgba(168,85,247,.15);color:#7E22CE}
+
+    .hidden{display:none!important}
+
+    footer{background:var(--navy);border-top:1px solid rgba(255,255,255,.07);padding:28px 24px;text-align:center}
+    footer p{font-size:12px;color:rgba(255,255,255,.3)}
+    footer a{color:rgba(255,255,255,.45);text-decoration:none}
+    footer a:hover{color:#FBBF24}
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="../index.html">
+      <div class="nav-logo-mark">
+        <svg width="16" height="16" viewBox="0 0 36 36" fill="none"><path d="M7 26V12l5.5 7.5L18 12l5.5 7.5V26M24 12v14h5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <span class="nav-logo-text">Mid Mkt Advisors</span>
+    </a>
+    <a class="nav-cta" href="../index.html#schedule">Get a Free Valuation</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">M&amp;A Intelligence</p>
+    <h1>The Insights Hub</h1>
+    <p>Valuation, deal structure, competitive processes, and exit planning — from 500+ closed lower middle market transactions.</p>
+  </div>
+</header>
+
+<div class="filters">
+  <div class="filters-inner">
+    <button class="cat-btn active" data-cat="all">All Articles</button>
+    <button class="cat-btn" data-cat="exit-planning">Exit Planning</button>
+    <button class="cat-btn" data-cat="valuation">Valuation</button>
+    <button class="cat-btn" data-cat="sell-side">Sell-Side</button>
+    <button class="cat-btn" data-cat="deal-structure">Deal Structure</button>
+  </div>
+</div>
+
+<main class="grid-wrap">
+  <div class="articles-grid" id="grid">
+
+    <a class="card" href="exit-readiness-checklist.html" data-cat="exit-planning">
+      <div class="card-img" style="background:linear-gradient(135deg,#0F766E,#0891B2)">
+        <span class="tag tag-exit">Exit Planning</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span>Apr 14, 2026</span><span class="sep">&middot;</span><span>9 min read</span></div>
+        <p class="card-title">How to Prepare Your Business for a Sale: The 12-Month Exit Readiness Checklist</p>
+        <p class="card-excerpt">Most founders who go to market unprepared leave 20–40% of their business value on the table. The exact timeline we use with every client before approaching a single buyer.</p>
+        <div class="card-footer">
+          <span class="card-author"><span class="avatar">DH</span>David Halvorson</span>
+          <span class="card-link">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="ebitda-multiples-q1-2026.html" data-cat="valuation">
+      <div class="card-img" style="background:linear-gradient(135deg,#92400E,#D97706)">
+        <span class="tag tag-valuation">Valuation</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span>Apr 11, 2026</span><span class="sep">&middot;</span><span>7 min read</span></div>
+        <p class="card-title">EBITDA Multiples in the Lower Middle Market: Q1 2026 Report</p>
+        <p class="card-excerpt">Current buyer appetite, sector-by-sector multiple ranges, and what's driving the compression in services vs. the expansion in technology-enabled businesses.</p>
+        <div class="card-footer">
+          <span class="card-author"><span class="avatar">DH</span>David Halvorson</span>
+          <span class="card-link">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="competitive-process.html" data-cat="sell-side">
+      <div class="card-img" style="background:linear-gradient(135deg,#1E3A8A,#1D4ED8)">
+        <span class="tag tag-sell">Sell-Side</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span>Apr 8, 2026</span><span class="sep">&middot;</span><span>6 min read</span></div>
+        <p class="card-title">Why 80% of Business Owners Leave Money on the Table Without a Competitive Process</p>
+        <p class="card-excerpt">Single-buyer negotiations almost always end the same way. The data from 500+ transactions on what parallel processes deliver and why it matters more than the headline multiple.</p>
+        <div class="card-footer">
+          <span class="card-author"><span class="avatar">DH</span>David Halvorson</span>
+          <span class="card-link">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="sba-vs-conventional-financing.html" data-cat="deal-structure">
+      <div class="card-img" style="background:linear-gradient(135deg,#581C87,#7E22CE)">
+        <span class="tag tag-deal">Deal Structure</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span>Apr 5, 2026</span><span class="sep">&middot;</span><span>8 min read</span></div>
+        <p class="card-title">SBA vs. Conventional Financing: What Every Seller Needs to Know About Their Buyer's Capital Stack</p>
+        <p class="card-excerpt">When your buyer uses SBA 7(a) financing, deal mechanics change dramatically — price, timing, holdbacks, and seller note structure all shift.</p>
+        <div class="card-footer">
+          <span class="card-author"><span class="avatar">DH</span>David Halvorson</span>
+          <span class="card-link">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="key-person-risk.html" data-cat="exit-planning">
+      <div class="card-img" style="background:linear-gradient(135deg,#134E4A,#0F766E)">
+        <span class="tag tag-exit">Exit Planning</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span>Apr 2, 2026</span><span class="sep">&middot;</span><span>5 min read</span></div>
+        <p class="card-title">Key Person Risk: The Single Biggest Valuation Discount Most Founders Don't See Coming</p>
+        <p class="card-excerpt">If the business can't run without you, buyers know it and price it accordingly. A practical framework for reducing owner dependency before you go to market.</p>
+        <div class="card-footer">
+          <span class="card-author"><span class="avatar">DH</span>David Halvorson</span>
+          <span class="card-link">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="earnouts-explained.html" data-cat="deal-structure">
+      <div class="card-img" style="background:linear-gradient(135deg,#3B0764,#6D28D9)">
+        <span class="tag tag-deal">Deal Structure</span>
+      </div>
+      <div class="card-body">
+        <div class="card-meta"><span>Mar 28, 2026</span><span class="sep">&middot;</span><span>10 min read</span></div>
+        <p class="card-title">Earnouts Explained: When They Protect You and When They're a Trap</p>
+        <p class="card-excerpt">Earnouts appear in roughly 30% of LMM deals. Done right, they bridge valuation gaps. Done wrong, they're mechanisms that let buyers pay you less.</p>
+        <div class="card-footer">
+          <span class="card-author"><span class="avatar">DH</span>David Halvorson</span>
+          <span class="card-link">Read &rarr;</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer>
+  <p>&copy; 2026 Mid Mkt Advisors &mdash; Horizon M&A Advisors &nbsp;&middot;&nbsp;
+    <a href="../index.html">Home</a> &nbsp;&middot;&nbsp;
+    <a href="mailto:dave@horizonmaa.com">dave@horizonmaa.com</a> &nbsp;&middot;&nbsp;
+    <a href="tel:+14083985553">408-398-5553</a>
+  </p>
+</footer>
+
+<script>
+  const btns = document.querySelectorAll('.cat-btn');
+  const cards = document.querySelectorAll('.card');
+  btns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cat = btn.dataset.cat;
+      cards.forEach(c => {
+        c.classList.toggle('hidden', cat !== 'all' && c.dataset.cat !== cat);
+      });
+    });
+  });
+</script>
+</body>
+</html>
